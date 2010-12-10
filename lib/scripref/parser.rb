@@ -5,6 +5,8 @@ module Scripref
   
   class Parser < StringScanner
 
+    NUMBER_RE = /\d+\s*/
+
     def initialize mod
       extend mod
     end
@@ -17,10 +19,10 @@ module Scripref
 
     def start
       @text = ''
-      b1 #or nil handle_fail
+      b1 or []
     end
 
-    # 1st book scanned
+    # try to parse first book
     def b1
       s = scan(book_re) or return nil
       @text << s
@@ -31,10 +33,25 @@ module Scripref
       epsilon or c1 or nil
     end
 
+    # try parse first chapter
     def c1
-      s = scan(/\d+\s*/) or return nil
+      s = scan(NUMBER_RE) or return nil
       @text << s
       @c1 = @c2 = s.to_i
+
+      if s = scan(cv_sep_re)
+        @text << s
+        v1 or nil
+      else
+        epsilon or nil
+      end
+    end
+
+    # try to parse first verse
+    def v1
+      s = scan(NUMBER_RE) or return nil
+      @text << s
+      @v1 = @v2 = s.to_i
 
       epsilon or nil
     end

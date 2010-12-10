@@ -2,7 +2,12 @@
 require 'test/unit'
 require 'scripref'
 
-module Test::Passage
+module Test::Helper
+
+  def assert_array_size arr, size
+    assert_kind_of Array, arr
+    assert_equal size, arr.size, 'Array size'
+  end
 
   def assert_equal_passage expected, actual
     assert_equal expected.text, actual.text, 'Parsed text'

@@ -23,4 +23,8 @@ module Scripref::German
     book_names.index(str.strip) + 1
   end
 
+  def cv_sep_re
+    @cv_separator ||= /,\s*/
+  end
+
 end
