@@ -27,4 +27,8 @@ module Scripref::German
     @cv_separator ||= /,\s*/
   end
 
+  def hyphen_re
+    @hyphen_re ||= /\s*-\s*/
+  end
+
 end

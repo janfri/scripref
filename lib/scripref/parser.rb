@@ -53,6 +53,20 @@ module Scripref
       @text << s
       @v1 = @v2 = s.to_i
 
+      if s = scan(hyphen_re)
+        @text << s
+        v2 or nil
+      else
+        epsilon or nil
+      end
+    end
+
+    # try to parse second verse
+    def v2
+      s = scan(NUMBER_RE) or return nil
+      @text << s
+      @v2 = s.to_i
+
       epsilon or nil
     end
 
