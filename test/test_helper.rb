@@ -4,7 +4,7 @@ require 'scripref'
 
 module Test::Helper
 
-  def assert_array_size arr, size
+  def assert_array_size size, arr
     assert_kind_of Array, arr
     assert_equal size, arr.size, 'Array size'
   end
@@ -17,6 +17,12 @@ module Test::Helper
     assert_equal expected.b2, actual.b2, 'Second book'
     assert_equal expected.c2, actual.c2, 'Second chapter'
     assert_equal expected.v2, actual.v2, 'Second verse'
+  end
+
+  def assert_parsed_passage expected_passage, text
+    res = @parser.parse(text)
+    assert_array_size 1, res
+    assert_equal_passage expected_passage, res.first
   end
 
 end
