@@ -44,4 +44,11 @@ class TestParser < Test::Unit::TestCase
     assert_equal_passage Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7), res.first
   end
 
+  def test_chapter_range
+    text = 'Ruth 2-3'
+    res = @parser.parse(text)
+    assert_array_size res, 1
+    assert_equal_passage Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max), res.first
+  end
+
 end

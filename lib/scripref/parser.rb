@@ -42,6 +42,9 @@ module Scripref
       if s = scan(cv_sep_re)
         @text << s
         v1 or nil
+      elsif s = scan(hyphen_re)
+        @text << s
+        c2 or nil
       else
         epsilon or nil
       end
