@@ -55,6 +55,24 @@ module Scripref
 
       if s = scan(hyphen_re)
         @text << s
+        if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
+          c2
+        else
+          v2 or nil
+        end
+      else
+        epsilon or nil
+      end
+    end
+
+    # try to parse second chapter
+    def c2
+      s = scan(NUMBER_RE) or return nil
+      @text << s
+      @c2 = s.to_i
+
+      if s = scan(cv_sep_re)
+        @text << s
         v2 or nil
       else
         epsilon or nil

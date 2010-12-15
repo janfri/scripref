@@ -36,4 +36,12 @@ class TestParser < Test::Unit::TestCase
     assert_array_size res, 1
     assert_equal_passage Scripref::Passage.new(text, 8, 2, 5, 8, 2, 11), res.first
   end
+
+  def test_chapter_verse_range
+    text = 'Ruth 2,5-3,7'
+    res = @parser.parse(text)
+    assert_array_size res, 1
+    assert_equal_passage Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7), res.first
+  end
+
 end
