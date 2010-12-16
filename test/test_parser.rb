@@ -1,9 +1,8 @@
 # - encoding: utf-8 -
-require 'test_helper'
+require 'test/unit'
+require 'scripref'
 
 class TestParser < Test::Unit::TestCase
-
-  include Test::Helper
 
   def setup
     @parser = Scripref::Parser.new(Scripref::German)
@@ -11,32 +10,52 @@ class TestParser < Test::Unit::TestCase
 
   def test_only_book
     text = 'Ruth'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 1, 1, 8, :max, :max), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 1, 1, 8, :max, :max)], text
   end
 
   def test_book_and_chapter
     text ='Ruth 2'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 2, 1, 8, 2, :max), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 2, :max)], text
   end
 
   def test_book_chapter_and_verse
     text ='Ruth 2,5'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 2, 5, 8, 2, 5), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 5)], text
   end
 
   def test_verse_range
     text ='Ruth 2,5-11'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 2, 5, 8, 2, 11), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 11)], text
   end
 
   def test_chapter_verse_range
     text ='Ruth 2,5-3,7'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7)], text
   end
 
   def test_chapter_range
     text ='Ruth 2-3'
-    assert_parsed_passage Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max), text
+    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max)], text
+  end
+
+  protected
+
+  def assert_equal_passage expected, actual
+    assert_equal expected.text, actual.text, 'Parsed text'
+    assert_equal expected.b1, actual.b1, 'First book'
+    assert_equal expected.c1, actual.c1, 'First chapter'
+    assert_equal expected.v1, actual.v1, 'First verse'
+    assert_equal expected.b2, actual.b2, 'Second book'
+    assert_equal expected.c2, actual.c2, 'Second chapter'
+    assert_equal expected.v2, actual.v2, 'Second verse'
+  end
+
+  def assert_parsed_ast_for_text expected_ast, text
+    res = @parser.parse(text)
+    assert_equal expected_ast.size, res.size, 'Array size of AST'
+    expected_ast.zip(res) do |expected_elem, actual_elem|
+      assert_equal_passage expected_elem, actual_elem
+    end
   end
 
 end
