@@ -66,7 +66,7 @@ module Scripref
       elsif s = scan(ref_sep_re)
         push_passage
         @result << s
-        b1
+        b1 or c1
       else
         epsilon or nil
       end
