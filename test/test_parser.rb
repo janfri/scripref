@@ -14,29 +14,33 @@ class TestParser < Test::Unit::TestCase
   end
 
   def test_book_and_chapter
-    text ='Ruth 2'
+    text = 'Ruth 2'
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 2, :max)], text
   end
 
   def test_book_chapter_and_verse
-    text ='Ruth 2,5'
+    text = 'Ruth 2,5'
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 5)], text
   end
 
   def test_verse_range
-    text ='Ruth 2,5-11'
+    text = 'Ruth 2,5-11'
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 11)], text
   end
 
   def test_chapter_verse_range
-    text ='Ruth 2,5-3,7'
+    text = 'Ruth 2,5-3,7'
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7)], text
   end
 
   def test_chapter_range
-    text ='Ruth 2-3'
+    text = 'Ruth 2-3'
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max)], text
   end
+
+  ######################################################################
+  # more than one reference
+  ######################################################################
 
   def test_two_complete_refs
     text = 'Ruth 2,1; Markus 4,8'
@@ -67,6 +71,29 @@ class TestParser < Test::Unit::TestCase
     t1, t2 = text.split('.')
     assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 5, 8, 2, 5), '.', Scripref::Passage.new(t2, 8, 2, 11, 8, 2, 11)], text
   end
+
+  ######################################################################
+  # mixed variants of more than one reference
+  ######################################################################
+
+  def test_verse_range_and_separated_verse
+    text = 'Ruth 2,1-3.11'
+    t1, t2 = text.split('.')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 3), '.', Scripref::Passage.new(t2, 8, 2, 11, 8, 2, 11)], text
+  end
+
+  def test_separate_verse_and_verse_range
+    text = 'Ruth 2,1.3-11'
+    t1, t2 = text.split('.')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 1), '.', Scripref::Passage.new(t2, 8, 2, 3, 8, 2, 11)], text
+  end
+
+  def test_two_verse_ranges
+    text = 'Ruth 2,1-3.7-11'
+    t1, t2 = text.split('.')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 3), '.', Scripref::Passage.new(t2, 8, 2, 7, 8, 2, 11)], text
+  end
+
 
   protected
 

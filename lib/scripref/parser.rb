@@ -100,7 +100,13 @@ module Scripref
       @text << s
       @v2 = s.to_i
 
-      epsilon or nil
+      if s = scan(verse_sep_re)
+        push_passage
+        @result << s
+        v1
+      else
+        epsilon or nil
+      end
     end
 
     def epsilon
