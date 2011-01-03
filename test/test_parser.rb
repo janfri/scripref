@@ -56,6 +56,12 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, :max), '; ', Scripref::Passage.new(t2, 8, 5, 1, 8, 5, :max)], text
   end
 
+  def test_two_chapters_different_book
+    text = 'Ruth 2; Markus 4'
+    t1, t2 = text.split('; ')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, :max), '; ', Scripref::Passage.new(t2, 41, 4, 1, 41, 4, :max)], text
+  end
+
   protected
 
   def assert_equal_passage expected, actual
