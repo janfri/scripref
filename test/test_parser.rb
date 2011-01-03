@@ -38,6 +38,12 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max)], text
   end
 
+  def test_two_complete_refs
+    text = 'Ruth 2,1; Markus 4,8'
+    t1, t2 = text.split('; ')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 1), '; ', Scripref::Passage.new(t2, 41, 4, 8, 41, 4, 8)], text
+  end
+
   protected
 
   def assert_equal_passage expected, actual
@@ -54,7 +60,11 @@ class TestParser < Test::Unit::TestCase
     res = @parser.parse(text)
     assert_equal expected_ast.size, res.size, 'Array size of AST'
     expected_ast.zip(res) do |expected_elem, actual_elem|
-      assert_equal_passage expected_elem, actual_elem
+      if !expected_elem.kind_of?(String)
+        assert_equal_passage expected_elem, actual_elem
+      else
+        assert_equal expected_elem, actual_elem
+      end
     end
   end
 

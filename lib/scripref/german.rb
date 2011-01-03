@@ -31,4 +31,8 @@ module Scripref::German
     @hyphen_re ||= /\s*-\s*/
   end
 
+  def ref_sep_re
+    @ref_sep_re ||= /;\s*/
+  end
+
 end

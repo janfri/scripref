@@ -63,6 +63,10 @@ module Scripref
         else
           v2 or nil
         end
+      elsif s = scan(ref_sep_re)
+        push_passage
+        @result << s
+        b1
       else
         epsilon or nil
       end
@@ -93,11 +97,15 @@ module Scripref
 
     def epsilon
       if eos?
-        @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2)
-        @text = ''
+        push_passage
         return @result
       end
       nil
+    end
+
+    def push_passage
+      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2)
+      @text = ''
     end
 
     def handle_fail
