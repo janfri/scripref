@@ -71,6 +71,10 @@ module Scripref
         push_passage
         @result << s
         b1 or c1
+      elsif s = scan(verse_sep_re)
+        push_passage
+        @result << s
+        v1
       else
         epsilon or nil
       end

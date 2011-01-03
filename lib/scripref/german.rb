@@ -35,4 +35,8 @@ module Scripref::German
     @ref_sep_re ||= /;\s*/
   end
 
+  def verse_sep_re
+    @verse_sep_re ||= /\.\s*/
+  end
+
 end
