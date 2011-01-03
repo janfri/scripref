@@ -94,6 +94,36 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 3), '.', Scripref::Passage.new(t2, 8, 2, 7, 8, 2, 11)], text
   end
 
+  def test_two_verse_range_different_books
+    text = 'Ruth 2,1-11; Markus 4,3-7'
+    t1, t2 = text.split('; ')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '; ', Scripref::Passage.new(t2, 41, 4, 3,41, 4, 7)], text
+  end
+
+  def test_two_verse_range_different_chapters
+    text = 'Ruth 2,1-11; 3,10-19'
+    t1, t2 = text.split('; ')
+    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '; ', Scripref::Passage.new(t2, 8, 3, 10, 8, 3, 19)], text
+  end
+
+  ######################################################################
+  # complex variants of references
+  ######################################################################
+
+  def test_complex_example
+    text = 'Ruth 2,1-11.15; 3,7.9-12; Markus 4; 5,3.18-21'
+    t1, t2, t3, t4, t5, t6, t7 = text.split(/; |\./)
+    ast = [
+      Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '.',
+      Scripref::Passage.new(t2, 8, 2, 15, 8, 2, 15), '; ',
+      Scripref::Passage.new(t3, 8, 3, 7, 8, 3, 7), '.',
+      Scripref::Passage.new(t4, 8, 3, 9, 8, 3, 12), '; ',
+      Scripref::Passage.new(t5, 41, 4, 1, 41, 4, :max), '; ',
+      Scripref::Passage.new(t6, 41, 5, 3, 41, 5, 3), '.',
+      Scripref::Passage.new(t7, 41, 5, 18, 41, 5, 21)
+    ]
+    assert_parsed_ast_for_text ast, text
+  end
 
   protected
 
