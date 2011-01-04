@@ -39,15 +39,11 @@ module Scripref
       @text << s
       @c1 = @c2 = s.to_i
 
-      if s = scan(cv_sep_re)
-        @text << s
+      if cv_sep
         v1 or nil
-      elsif s = scan(hyphen_re)
-        @text << s
+      elsif hyphen
         c2 or nil
-      elsif s = scan(ref_sep_re)
-        push_passage
-        @result << s
+      elsif ref_sep
         b1 or c1
       else
         epsilon or nil
@@ -60,20 +56,15 @@ module Scripref
       @text << s
       @v1 = @v2 = s.to_i
 
-      if s = scan(hyphen_re)
-        @text << s
+      if hyphen
         if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
           c2
         else
           v2 or nil
         end
-      elsif s = scan(ref_sep_re)
-        push_passage
-        @result << s
+      elsif ref_sep
         b1 or c1
-      elsif s = scan(verse_sep_re)
-        push_passage
-        @result << s
+      elsif verse_sep
         v1
       else
         epsilon or nil
@@ -86,8 +77,7 @@ module Scripref
       @text << s
       @c2 = s.to_i
 
-      if s = scan(cv_sep_re)
-        @text << s
+      if cv_sep
         v2 or nil
       else
         epsilon or nil
@@ -100,13 +90,9 @@ module Scripref
       @text << s
       @v2 = s.to_i
 
-      if s = scan(verse_sep_re)
-        push_passage
-        @result << s
+      if verse_sep
         v1
-      elsif s = scan(ref_sep_re)
-        push_passage
-        @result << s
+      elsif ref_sep
         b1 or c1
       else
         epsilon or nil
@@ -119,6 +105,44 @@ module Scripref
         return @result
       end
       nil
+    end
+
+    def cv_sep
+      if s = scan(cv_sep_re)
+        @text << s
+        s
+      else
+        nil
+      end
+    end
+
+    def hyphen
+      if s = scan(hyphen_re)
+        @text << s
+        s
+      else
+        nil
+      end
+    end
+
+    def ref_sep
+      if s = scan(ref_sep_re)
+        push_passage
+        @result << s
+        s
+      else
+        nil
+      end
+    end
+
+    def verse_sep
+      if s = scan(verse_sep_re)
+        push_passage
+        @result << s
+        s
+      else
+        nil
+      end
     end
 
     def push_passage
