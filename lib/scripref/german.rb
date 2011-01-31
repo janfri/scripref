@@ -14,12 +14,16 @@ module Scripref
       2. Johannes, 3. Johannes, Judas, Offenbarung
     END
 
-    BOOK_RE = Regexp.new(BOOK_NAMES.map {|bn| bn + '\s*'}.join('|'))
+    BOOKS_RES = BOOK_NAMES.map do |bn|
+      Regexp.new(bn.gsub(/([^1-5A-Z])/, '\1?').gsub('.', '\.') << '\b\s*')
+    end
+
+    BOOK_RE = Regexp.new('^' << BOOKS_RES.map {|re| '(' << re.to_s << ')' }.join('|'))
 
     CV_SEP_RE = /,\s*/
-      HYPHEN_RE = /\s*-\s*/
-      REF_SEP_RE = /;\s*/
-      VERSE_SEP_RE = /\.\s*/o
+    HYPHEN_RE = /\s*-\s*/
+    REF_SEP_RE = /;\s*/
+    VERSE_SEP_RE = /\.\s*/o
 
     def book_re
       BOOK_RE
@@ -27,7 +31,12 @@ module Scripref
 
     def book2num str
       return nil unless book_re =~str
-      BOOK_NAMES.index(str.strip) + 1
+      BOOKS_RES.each_with_index do |re, i|
+       if str =~ Regexp.new('^' << re.to_s << '$')
+         num = i + 1
+         return num
+       end
+      end
     end
 
     def cv_sep_re
