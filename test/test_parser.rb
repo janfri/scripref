@@ -10,32 +10,32 @@ class TestParser < Test::Unit::TestCase
 
   def test_only_book
     text = 'Ruth'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 1, 1, 8, :max, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, 1, 1, 8, :max, :max)], text
   end
 
   def test_book_and_chapter
     text = 'Ruth 2'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 2, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, 1, 8, 2, :max)], text
   end
 
   def test_book_chapter_and_verse
     text = 'Ruth 2,5'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 5)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, 5)], text
   end
 
   def test_verse_range
     text = 'Ruth 2,5-11'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 2, 11)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, 11)], text
   end
 
   def test_chapter_verse_range
     text = 'Ruth 2,5-3,7'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 5, 8, 3, 7)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 3, 7)], text
   end
 
   def test_chapter_range
     text = 'Ruth 2-3'
-    assert_parsed_ast_for_text [Scripref::Passage.new(text, 8, 2, 1, 8, 3, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, 1, 8, 3, :max)], text
   end
 
   ######################################################################
@@ -45,31 +45,31 @@ class TestParser < Test::Unit::TestCase
   def test_two_complete_refs
     text = 'Ruth 2,1; Markus 4,8'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 1), '; ', Scripref::Passage.new(t2, 41, 4, 8, 41, 4, 8)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '; ', pass(t2, 41, 4, 8, 41, 4, 8)], text
   end
 
   def test_two_refs_same_book
     text = 'Ruth 2,1; 5,4'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 1), '; ', Scripref::Passage.new(t2, 8, 5, 4, 8, 5, 4)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '; ', pass(t2, 8, 5, 4, 8, 5, 4)], text
   end
 
   def test_two_chapters_same_book
     text = 'Ruth 2; 5'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, :max), '; ', Scripref::Passage.new(t2, 8, 5, 1, 8, 5, :max)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, :max), '; ', pass(t2, 8, 5, 1, 8, 5, :max)], text
   end
 
   def test_two_chapters_different_book
     text = 'Ruth 2; Markus 4'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, :max), '; ', Scripref::Passage.new(t2, 41, 4, 1, 41, 4, :max)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, :max), '; ', pass(t2, 41, 4, 1, 41, 4, :max)], text
   end
 
   def test_two_verses
     text = 'Ruth 2,5.11'
     t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 5, 8, 2, 5), '.', Scripref::Passage.new(t2, 8, 2, 11, 8, 2, 11)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), '.', pass(t2, 8, 2, 11, 8, 2, 11)], text
   end
 
   ######################################################################
@@ -79,31 +79,31 @@ class TestParser < Test::Unit::TestCase
   def test_verse_range_and_separated_verse
     text = 'Ruth 2,1-3.11'
     t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 3), '.', Scripref::Passage.new(t2, 8, 2, 11, 8, 2, 11)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), '.', pass(t2, 8, 2, 11, 8, 2, 11)], text
   end
 
   def test_separate_verse_and_verse_range
     text = 'Ruth 2,1.3-11'
     t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 1), '.', Scripref::Passage.new(t2, 8, 2, 3, 8, 2, 11)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '.', pass(t2, 8, 2, 3, 8, 2, 11)], text
   end
 
   def test_two_verse_ranges
     text = 'Ruth 2,1-3.7-11'
     t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 3), '.', Scripref::Passage.new(t2, 8, 2, 7, 8, 2, 11)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), '.', pass(t2, 8, 2, 7, 8, 2, 11)], text
   end
 
   def test_two_verse_range_different_books
     text = 'Ruth 2,1-11; Markus 4,3-7'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '; ', Scripref::Passage.new(t2, 41, 4, 3,41, 4, 7)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), '; ', pass(t2, 41, 4, 3,41, 4, 7)], text
   end
 
   def test_two_verse_range_different_chapters
     text = 'Ruth 2,1-11; 3,10-19'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '; ', Scripref::Passage.new(t2, 8, 3, 10, 8, 3, 19)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), '; ', pass(t2, 8, 3, 10, 8, 3, 19)], text
   end
 
   ######################################################################
@@ -114,18 +114,22 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 2,1-11.15; 3,7.9-12; Markus 4; 5,3.18-21'
     t1, t2, t3, t4, t5, t6, t7 = text.split(/; |\./)
     ast = [
-      Scripref::Passage.new(t1, 8, 2, 1, 8, 2, 11), '.',
-      Scripref::Passage.new(t2, 8, 2, 15, 8, 2, 15), '; ',
-      Scripref::Passage.new(t3, 8, 3, 7, 8, 3, 7), '.',
-      Scripref::Passage.new(t4, 8, 3, 9, 8, 3, 12), '; ',
-      Scripref::Passage.new(t5, 41, 4, 1, 41, 4, :max), '; ',
-      Scripref::Passage.new(t6, 41, 5, 3, 41, 5, 3), '.',
-      Scripref::Passage.new(t7, 41, 5, 18, 41, 5, 21)
+      pass(t1, 8, 2, 1, 8, 2, 11), '.',
+      pass(t2, 8, 2, 15, 8, 2, 15), '; ',
+      pass(t3, 8, 3, 7, 8, 3, 7), '.',
+      pass(t4, 8, 3, 9, 8, 3, 12), '; ',
+      pass(t5, 41, 4, 1, 41, 4, :max), '; ',
+      pass(t6, 41, 5, 3, 41, 5, 3), '.',
+      pass(t7, 41, 5, 18, 41, 5, 21)
     ]
     assert_parsed_ast_for_text ast, text
   end
 
   protected
+
+  def pass *args
+    Scripref::Passage.new(*args)
+  end
 
   def assert_equal_passage expected, actual
     assert_equal expected.text, actual.text, 'Parsed text'
