@@ -1,9 +1,0 @@
-CHANGELOG
-LICENSE
-Manifest
-Rakefile
-lib/scripref.rb
-lib/scripref/german.rb
-lib/scripref/parser.rb
-test/test_german.rb
-test/test_parser.rb
