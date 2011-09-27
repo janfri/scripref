@@ -1,7 +1,7 @@
 require 'rim'
 require 'rim/gem'
 require 'rim/git'
-require 'rim/ripl'
+require 'rim/rimrc'
 require 'rim/test'
 
 Rim.setup do
