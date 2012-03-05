@@ -2,7 +2,7 @@
 require 'strscan'
 
 module Scripref
-  
+
   class Parser < StringScanner
 
     NUMBER_RE = /\d+\s*/
@@ -55,6 +55,13 @@ module Scripref
       s = scan(NUMBER_RE) or return nil
       @text << s
       @v1 = @v2 = s.to_i
+
+      if addon = verse_addon
+        case addon
+        when :f, :ff
+          @v2 = addon
+        end
+      end
 
       if hyphen
         if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
@@ -140,6 +147,15 @@ module Scripref
         push_passage
         @result << s
         s
+      else
+        nil
+      end
+    end
+
+    def verse_addon
+      if s = scan(verse_addon_re)
+        @text << s
+        s.to_sym
       else
         nil
       end

@@ -38,6 +38,16 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 8, 2, 1, 8, 3, :max)], text
   end
 
+  def test_one_following_verse
+    text = 'Ruth 2,5f'
+    assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, :f)], text
+  end
+
+  def test_more_following_verse
+    text = 'Ruth 2,5ff'
+    assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, :ff)], text
+  end
+
   ######################################################################
   # more than one reference
   ######################################################################

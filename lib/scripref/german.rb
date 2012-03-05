@@ -20,10 +20,12 @@ module Scripref
 
     BOOK_RE = Regexp.new('^' << BOOKS_RES.map {|re| '(' << re.to_s << ')' }.join('|'))
 
-    CV_SEP_RE = /,\s*/
-    HYPHEN_RE = /\s*-\s*/
-    REF_SEP_RE = /;\s*/
+    CV_SEP_RE = /,\s*/o
+    HYPHEN_RE = /\s*-\s*/o
+    REF_SEP_RE = /;\s*/o
     VERSE_SEP_RE = /\.\s*/o
+
+    VERSE_ADDON_RE = /([ab]|ff?)\s*/o
 
     def book_re
       BOOK_RE
@@ -53,6 +55,10 @@ module Scripref
 
     def verse_sep_re
       VERSE_SEP_RE
+    end
+
+    def verse_addon_re
+      VERSE_ADDON_RE
     end
 
   end
