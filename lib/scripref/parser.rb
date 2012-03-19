@@ -7,8 +7,11 @@ module Scripref
 
     NUMBER_RE = /\d+\s*/
 
-    def initialize mod
-      extend mod
+    def initialize *mods
+      @mods = mods
+      mods.each do |m|
+        extend m
+      end
     end
 
     def parse str
@@ -168,6 +171,10 @@ module Scripref
 
     def handle_fail
       raise 'failure'
+    end
+
+    def inspect
+      "#<#{self.class} #{@mods.inspect}>"
     end
 
   end

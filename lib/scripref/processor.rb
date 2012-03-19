@@ -6,9 +6,12 @@ module Scripref
 
   class Processor
 
-    def initialize mod
-      extend mod
-      @parser = Parser.new(mod)
+    def initialize *mods
+      @mods = mods
+      mods.each do |m|
+        extend m
+      end
+      @parser = Parser.new(*mods)
     end
 
     # Callback to handle normal text (no reference).
@@ -71,6 +74,9 @@ module Scripref
       enum
     end
 
+    def inspect
+      "#<#{self.class} #{@mods.inspect}, @parser=#{@parser.inspect}>"
+    end
 
   end
 
