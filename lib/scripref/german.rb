@@ -27,6 +27,9 @@ module Scripref
 
     VERSE_ADDON_RE = /([ab]|ff?)\s*/o
 
+    pass = '([1-5]\.?\s*)?[A-Z][a-zäöü]+\.?\s*(\d+\s*[,.\-]\s*)*\d+\s*'
+    REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
+
     def book_re
       BOOK_RE
     end
@@ -59,6 +62,10 @@ module Scripref
 
     def verse_addon_re
       VERSE_ADDON_RE
+    end
+
+    def reference_re
+      REFERENCE_RE
     end
 
   end
