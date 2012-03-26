@@ -7,6 +7,7 @@ module Scripref
 
     NUMBER_RE = /\d+\s*/
 
+    # @param mods on ore more modules to include
     def initialize *mods
       @mods = mods
       mods.each do |m|
@@ -14,12 +15,15 @@ module Scripref
       end
     end
 
+    # Parsing a string of a scripture reference
+    # @param str string to parse
     def parse str
       self.string = str
       @result = []
       start
     end
 
+    # start of parsing grammer
     def start
       @text = ''
       b1 or []
@@ -109,6 +113,7 @@ module Scripref
       end
     end
 
+    # try to parse <tt>end of string</tt>
     def epsilon
       if eos?
         push_passage
@@ -117,6 +122,7 @@ module Scripref
       nil
     end
 
+    # try to parse separator or chapter and verse
     def cv_sep
       if s = scan(cv_sep_re)
         @text << s
@@ -126,6 +132,7 @@ module Scripref
       end
     end
 
+    # try to parse hyphen
     def hyphen
       if s = scan(hyphen_re)
         @text << s
@@ -135,6 +142,7 @@ module Scripref
       end
     end
 
+    # try to parse reference separator (separator between passages)
     def ref_sep
       if s = scan(ref_sep_re)
         push_passage
@@ -145,6 +153,7 @@ module Scripref
       end
     end
 
+    # try to parse verse separator
     def verse_sep
       if s = scan(verse_sep_re)
         push_passage
@@ -155,6 +164,7 @@ module Scripref
       end
     end
 
+    # try to parse addons for verses
     def verse_addon
       if s = scan(verse_addon_re)
         @text << s
@@ -167,10 +177,6 @@ module Scripref
     def push_passage
       @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2)
       @text = ''
-    end
-
-    def handle_fail
-      raise 'failure'
     end
 
     def inspect
