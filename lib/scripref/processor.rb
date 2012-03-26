@@ -6,7 +6,12 @@ module Scripref
 
   class Processor
 
-    def initialize *mods
+    include Enumerable
+
+    attr_accessor :text
+
+    def initialize text, *mods
+      @text = text
       @mods = mods
       mods.each do |m|
         extend m
@@ -14,70 +19,40 @@ module Scripref
       @parser = Parser.new(*mods)
     end
 
-    # Callback to handle normal text (no reference).
-    def text &blk
-      @text = blk
-    end
-
-    # Callback to handle references.
-    def ref &blk
-      @ref = blk
-    end
-
-    # Process <tt>str</tt> and execute the callbac(s) if given.
-    def process str
-      each str do |e|
-        if @text && e.kind_of?(String)
-          @text.call e
-        end
-        if @ref && e.kind_of?(Array)
-          @ref.call e
-        end
-      end
-      self
-    end
-
     # Iterate over each parsed reference if block given, gets an iterator
     # over each parsed reference otherwise.
-    def each_ref str
-      enum = Enumerator.new do |y|
-        scanner = StringScanner.new(str)
+    def each_ref
+      if block_given?
+        scanner = StringScanner.new(text)
         while scanner.scan_until(reference_re)
-          y << @parser.parse(scanner.matched)
+          yield @parser.parse(scanner.matched)
         end
+        self
+      else
+        enum_for :each_ref
       end
-      if block_given?
-        enum.each do |e|
-          yield e
-        end
-      end
-      enum
     end
 
-
-    # Iterate over each piece of <tt>str</tt> (text and parsed references)
-    # if block given, gets an iterator over the pieces otherwise.
-    def each str
-      enum = Enumerator.new do |y|
-        scanner = StringScanner.new(str)
-        while scanner.scan(/(.*?)(#{Regexp.new(reference_re.to_s)})/)
-          y << scanner[1]
-          y << @parser.parse(scanner[2])
-        end
-        y << scanner.rest if scanner.rest
+  # Iterate over each piece of <tt>str</tt> (text and parsed references)
+  # if block given, gets an iterator over the pieces otherwise.
+  def each
+    if block_given?
+      scanner = StringScanner.new(text)
+      while scanner.scan(/(.*?)(#{Regexp.new(reference_re.to_s)})/)
+        yield scanner[1]
+        yield @parser.parse(scanner[2])
       end
-      if block_given?
-        enum.each do |e|
-          yield e
-        end
-      end
-      enum
+      yield scanner.rest if scanner.rest
+      self
+    else
+      enum_for :each
     end
-
-    def inspect
-      "#<#{self.class} #{@mods.inspect}, @parser=#{@parser.inspect}>"
-    end
-
   end
+
+  def inspect
+    "#<#{self.class} #{@mods.inspect}>"
+  end
+
+end
 
 end
