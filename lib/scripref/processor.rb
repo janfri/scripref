@@ -33,26 +33,26 @@ module Scripref
       end
     end
 
-  # Iterate over each piece of <tt>str</tt> (text and parsed references)
-  # if block given, gets an iterator over the pieces otherwise.
-  def each
-    if block_given?
-      scanner = StringScanner.new(text)
-      while scanner.scan(/(.*?)(#{Regexp.new(reference_re.to_s)})/)
-        yield scanner[1]
-        yield @parser.parse(scanner[2])
+    # Iterate over each piece of <tt>str</tt> (text and parsed references)
+    # if block given, gets an iterator over the pieces otherwise.
+    def each
+      if block_given?
+        scanner = StringScanner.new(text)
+        while scanner.scan(/(.*?)(#{Regexp.new(reference_re.to_s)})/)
+          yield scanner[1]
+          yield @parser.parse(scanner[2])
+        end
+        yield scanner.rest if scanner.rest
+        self
+      else
+        enum_for :each
       end
-      yield scanner.rest if scanner.rest
-      self
-    else
-      enum_for :each
     end
-  end
 
-  def inspect
-    "#<#{self.class} #{@mods.inspect}>"
-  end
+    def inspect
+      "#<#{self.class} #{@mods.inspect}>"
+    end
 
-end
+  end
 
 end
