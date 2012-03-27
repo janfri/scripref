@@ -1,11 +1,15 @@
 require 'rim'
+require 'rim/check_version'
 require 'rim/gem'
 require 'rim/git'
 require 'rim/rimrc'
 require 'rim/test'
 
+$:.unshift File.dirname(__FILE__) + '/lib'
+require 'scripref'
+
 Rim.setup do
   name 'scripref'
   authors 'Jan Friedrich'
-  version '0.0.1'
+  version Scripref::VERSION
 end
