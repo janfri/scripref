@@ -1,4 +1,6 @@
 # - encoding: utf-8 -
+require 'scripref/const_reader'
+
 module Scripref
 
   module German
@@ -30,9 +32,8 @@ module Scripref
     pass = '([1-5]\.?\s*)?[A-Z][a-zäöü]+\.?\s*(\d+\s*[,.\-]\s*)*\d+\s*'
     REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
 
-    def book_re
-      BOOK_RE
-    end
+    extend ConstReader
+    const_reader constants
 
     def book2num str
       return nil unless book_re =~str
@@ -43,31 +44,6 @@ module Scripref
        end
       end
     end
-
-    def cv_sep_re
-      CV_SEP_RE
-    end
-
-    def hyphen_re
-      HYPHEN_RE
-    end
-
-    def ref_sep_re
-      REF_SEP_RE
-    end
-
-    def verse_sep_re
-      VERSE_SEP_RE
-    end
-
-    def verse_addon_re
-      VERSE_ADDON_RE
-    end
-
-    def reference_re
-      REFERENCE_RE
-    end
-
   end
 
 end
