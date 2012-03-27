@@ -20,7 +20,7 @@ module Scripref
       Regexp.new(bn.gsub(/([^1-5A-Z])/, '\1?').gsub('.', '\.') << '\b\s*')
     end
 
-    BOOK_RE = Regexp.new('^' << BOOKS_RES.map {|re| '(' << re.to_s << ')' }.join('|'))
+    BOOK_RE = Regexp.new(BOOKS_RES.map {|re| '(^' << re.to_s << ')' }.join('|'))
 
     CV_SEP_RE = /,\s*/o
     HYPHEN_RE = /\s*-\s*/o

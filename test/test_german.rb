@@ -11,6 +11,7 @@ class TestGerman < Test::Unit::TestCase
     assert_match '2. Mose', book_re
     assert_match 'Matthäus', book_re
     assert_match '2. Timotheus', book_re
+    assert_not_match '2. 2. Timotheus', book_re
     assert_match 'Offenbarung', book_re
     assert_not_match 'something', book_re
     assert_match '1. Mo', book_re
