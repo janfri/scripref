@@ -1,6 +1,7 @@
 # - encoding: utf-8 -
 require 'scripref/parser'
 require 'scripref/processor'
+require 'scripref/english'
 require 'scripref/german'
 
 module Scripref
