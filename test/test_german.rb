@@ -21,14 +21,19 @@ class TestGerman < Test::Unit::TestCase
   end
 
   def test_book2num
-    assert_equal 1, book2num('1. Mose')
-    assert_equal 40, book2num('Matthäus')
-    assert_equal 66, book2num('Offenbarung')
-    assert_equal 1, book2num('1. Mo')
-    assert_equal 1, book2num('1.Mo')
-    assert_equal 1, book2num('1M')
-    assert_equal 40, book2num('Mat')
-    assert_equal 66, book2num('Off')
+    assert_book_num 1, '1. Mose'
+    assert_book_num 40, 'Matthäus'
+    assert_book_num 66, 'Offenbarung'
+    assert_book_num 1, '1. Mo'
+    assert_book_num 1, '1.Mo'
+    assert_book_num 1, '1M'
+    assert_book_num 40, 'Mat'
+    assert_book_num 66, 'Off'
+  end
+
+  def assert_book_num num, str
+    @parser ||= Scripref::Parser.new(Scripref::German)
+    assert_equal num, @parser.parse(str).first.b1
   end
 
 end

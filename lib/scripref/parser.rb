@@ -179,6 +179,16 @@ module Scripref
       @text = ''
     end
 
+    def book2num str
+      return nil unless book_re =~str
+      books_res.each_with_index do |re, i|
+       if str =~ Regexp.new('^' << re.to_s << '$')
+         num = i + 1
+         return num
+       end
+      end
+    end
+
     def inspect
       "#<#{self.class} #{@mods.inspect}>"
     end

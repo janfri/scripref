@@ -35,15 +35,6 @@ module Scripref
     extend ConstReader
     const_reader constants
 
-    def book2num str
-      return nil unless book_re =~str
-      BOOKS_RES.each_with_index do |re, i|
-       if str =~ Regexp.new('^' << re.to_s << '$')
-         num = i + 1
-         return num
-       end
-      end
-    end
   end
 
 end
