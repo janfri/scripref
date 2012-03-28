@@ -12,4 +12,5 @@ Rim.setup do
   name 'scripref'
   authors 'Jan Friedrich'
   version Scripref::VERSION
+  summary 'Library for parsing scripture references in real texts.'
 end
