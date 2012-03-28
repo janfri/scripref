@@ -32,8 +32,8 @@ module Scripref
     # Regular expression to match a hyphen.
     HYPHEN_RE = /\s*-\s*/o
 
-    # Regular expression to match a separator between passages in a reference.
-    REF_SEP_RE = /;\s*/o
+    # Regular expression to match a separator between passages.
+    PASS_SEP_RE = /;\s*/o
 
     # Regular expression to match a separator between verses.
     VERSE_SEP_RE = /\.\s*/o

@@ -50,7 +50,7 @@ module Scripref
         v1 or nil
       elsif hyphen
         c2 or nil
-      elsif ref_sep
+      elsif pass_sep
         b1 or c1
       else
         epsilon or nil
@@ -76,7 +76,7 @@ module Scripref
         else
           v2 or nil
         end
-      elsif ref_sep
+      elsif pass_sep
         b1 or c1
       elsif verse_sep
         v1
@@ -106,7 +106,7 @@ module Scripref
 
       if verse_sep
         v1
-      elsif ref_sep
+      elsif pass_sep
         b1 or c1
       else
         epsilon or nil
@@ -142,9 +142,9 @@ module Scripref
       end
     end
 
-    # try to parse reference separator (separator between passages)
-    def ref_sep
-      if s = scan(ref_sep_re)
+    # try to parse separator between passages
+    def pass_sep
+      if s = scan(pass_sep_re)
         push_passage
         @result << s
         s
