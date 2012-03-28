@@ -6,7 +6,7 @@ require 'scripref/german'
 
 module Scripref
 
-  VERSION = '0.1.0'
+  VERSION = '0.2.0'
 
   Passage = Struct.new(:text, :b1, :c1, :v1, :b2, :c2, :v2)
 
