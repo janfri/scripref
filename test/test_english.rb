@@ -7,18 +7,18 @@ class TestEnglish < Test::Unit::TestCase
   include Scripref::English
 
   def test_book_re
-    assert_match 'Genesis', book_re
-    assert_match 'Exodus', book_re
-    assert_match 'Matthew', book_re
-    assert_match '2 Timothy', book_re
-    assert_not_match '2 2 Timothy', book_re
-    assert_match 'Revelation', book_re
-    assert_not_match 'something', book_re
-    assert_match 'Gen', book_re
-    assert_match 'Ex', book_re
-    assert_match 'Mat', book_re
-    assert_match '2 Tim', book_re
-    assert_match 'Rev', book_re
+    assert_match book_re, 'Genesis'
+    assert_match book_re, 'Exodus'
+    assert_match book_re, 'Matthew'
+    assert_match book_re, '2 Timothy'
+    assert_not_match book_re, '2 2 Timothy'
+    assert_match book_re, 'Revelation'
+    assert_not_match book_re, 'something'
+    assert_match book_re, 'Gen'
+    assert_match book_re, 'Ex'
+    assert_match book_re, 'Mat'
+    assert_match book_re, '2 Tim'
+    assert_match book_re, 'Rev'
   end
 
   def test_book2num

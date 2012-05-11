@@ -7,18 +7,18 @@ class TestGerman < Test::Unit::TestCase
   include Scripref::German
 
   def test_book_re
-    assert_match '1. Mose', book_re
-    assert_match '2. Mose', book_re
-    assert_match 'Matthäus', book_re
-    assert_match '2. Timotheus', book_re
-    assert_not_match '2. 2. Timotheus', book_re
-    assert_match 'Offenbarung', book_re
-    assert_not_match 'something', book_re
-    assert_match '1. Mo', book_re
-    assert_match '2.Mo', book_re
-    assert_match 'Mat', book_re
-    assert_match '2. Tim', book_re
-    assert_match 'Off', book_re
+    assert_match book_re, '1. Mose'
+    assert_match book_re, '2. Mose'
+    assert_match book_re, 'Matthäus'
+    assert_match book_re, '2. Timotheus'
+    assert_not_match book_re, '2. 2. Timotheus'
+    assert_match book_re, 'Offenbarung'
+    assert_not_match book_re, 'something'
+    assert_match book_re, '1. Mo'
+    assert_match book_re, '2.Mo'
+    assert_match book_re, 'Mat'
+    assert_match book_re, '2. Tim'
+    assert_match book_re, 'Off'
   end
 
   def test_book2num
