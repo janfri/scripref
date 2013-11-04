@@ -11,6 +11,10 @@ module Scripref
     def initialize *mods
       @mods = mods
       mods.each do |m|
+        m.class_eval do
+          extend ConstReader
+          const_reader constants
+        end
         extend m
       end
     end

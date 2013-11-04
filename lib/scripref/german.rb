@@ -46,11 +46,6 @@ module Scripref
     # Regular expression to parse a reference
     REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
 
-    # Define instance methods for the mixin.
-
-    extend ConstReader
-    const_reader constants
-
   end
 
 end
