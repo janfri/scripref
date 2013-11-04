@@ -7,7 +7,7 @@ class TestProcessor < Test::Unit::TestCase
   def setup
     @text = 'Some text Mt 1,1 and Mr 2 and so on ...'
     @mt = [Scripref::Passage.new('Mt 1,1 ', 40, 1, 1, 40, 1, 1)]
-    @mr = [Scripref::Passage.new('Mr 2 ', 41, 2, 1, 41, 2, :max)]
+    @mr = [Scripref::Passage.new('Mr 2 ', 41, 2, nil, 41, 2, nil)]
     @processor = Scripref::Processor.new(@text, Scripref::German)
     @chunks = ['Some text ', @mt, 'and ', @mr, 'and so on ...']
   end

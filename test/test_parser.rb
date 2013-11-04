@@ -10,12 +10,12 @@ class TestParser < Test::Unit::TestCase
 
   def test_only_book
     text = 'Ruth'
-    assert_parsed_ast_for_text [pass(text, 8, 1, 1, 8, :max, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
   end
 
   def test_book_and_chapter
     text = 'Ruth 2'
-    assert_parsed_ast_for_text [pass(text, 8, 2, 1, 8, 2, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, nil, 8, 2, nil)], text
   end
 
   def test_book_chapter_and_verse
@@ -35,7 +35,7 @@ class TestParser < Test::Unit::TestCase
 
   def test_chapter_range
     text = 'Ruth 2-3'
-    assert_parsed_ast_for_text [pass(text, 8, 2, 1, 8, 3, :max)], text
+    assert_parsed_ast_for_text [pass(text, 8, 2, nil, 8, 3, nil)], text
   end
 
   def test_one_following_verse
@@ -67,13 +67,13 @@ class TestParser < Test::Unit::TestCase
   def test_two_chapters_same_book
     text = 'Ruth 2; 5'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, :max), '; ', pass(t2, 8, 5, 1, 8, 5, :max)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), '; ', pass(t2, 8, 5, nil, 8, 5, nil)], text
   end
 
   def test_two_chapters_different_book
     text = 'Ruth 2; Markus 4'
     t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, :max), '; ', pass(t2, 41, 4, 1, 41, 4, :max)], text
+    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), '; ', pass(t2, 41, 4, nil, 41, 4, nil)], text
   end
 
   def test_two_verses
@@ -128,7 +128,7 @@ class TestParser < Test::Unit::TestCase
       pass(t2, 8, 2, 15, 8, 2, 15), '; ',
       pass(t3, 8, 3, 7, 8, 3, 7), '.',
       pass(t4, 8, 3, 9, 8, 3, 12), '; ',
-      pass(t5, 41, 4, 1, 41, 4, :max), '; ',
+      pass(t5, 41, 4, nil, 41, 4, nil), '; ',
       pass(t6, 41, 5, 3, 41, 5, 3), '.',
       pass(t7, 41, 5, 18, 41, 5, 21)
     ]

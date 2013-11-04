@@ -34,8 +34,8 @@ module Scripref
       s = scan(book_re) or return nil
       @text << s
       @b1 = @b2 = book2num(s)
-      @c1 = @v1 = 1
-      @c2 = @v2 = :max
+      @c1 = @v1 = nil
+      @c2 = @v2 = nil
 
       epsilon or c1 or nil
     end
