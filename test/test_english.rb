@@ -1,9 +1,11 @@
 # - encoding: utf-8 -
 require 'test/unit'
+require 'test_helper'
 require 'scripref/english'
 
 class TestEnglish < Test::Unit::TestCase
 
+  include Test::Helper
   include Scripref::English
 
   def test_book_re
@@ -38,6 +40,13 @@ class TestEnglish < Test::Unit::TestCase
   def assert_book_num num, str
     @parser ||= Scripref::Parser.new(Scripref::English)
     assert_equal num, @parser.parse(str).first.b1
+  end
+
+  def test_book_with_only_one_chapter
+    @parser ||= Scripref::Parser.new(Scripref::English)
+    text = 'Obad 1:3'
+    ast = [pass(text, 31, 1, 3, 31, 1, 3)]
+    assert_parsed_ast_for_text ast, text
   end
 
 end
