@@ -71,6 +71,8 @@ module Scripref
         case addon
         when :f, :ff
           @v2 = addon
+        when :a, :b, :c
+          @a1 = addon
         end
       end
 
@@ -179,7 +181,7 @@ module Scripref
     end
 
     def push_passage
-      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2)
+      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1)
       @text = ''
     end
 
