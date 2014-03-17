@@ -110,6 +110,13 @@ module Scripref
       @text << s
       @v2 = s.to_i
 
+      if addon = verse_addon
+        case addon
+        when :a, :b, :c
+          @a2 = addon
+        end
+      end
+
       if verse_sep
         v1
       elsif pass_sep
@@ -181,7 +188,7 @@ module Scripref
     end
 
     def push_passage
-      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1)
+      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1, a2: @a2)
       @text = ''
     end
 

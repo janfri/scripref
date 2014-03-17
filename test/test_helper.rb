@@ -13,6 +13,7 @@ module Test::Helper
     assert_equal expected.c2, actual.c2, 'Second chapter'
     assert_equal expected.v2, actual.v2, 'Second verse'
     assert_equal expected.a1, actual.a1, 'First addon'
+    assert_equal expected.a2, actual.a2, 'Second addon'
   end
 
   def assert_parsed_ast_for_text expected_ast, text
