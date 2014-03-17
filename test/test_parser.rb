@@ -66,6 +66,13 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, 7, a1: :b, a2: :a)], text
   end
 
+  def test_reset_addons
+    @parser.parse 'Ruth 2,5b-7a'
+    text = 'Ruth'
+    assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
+  end
+
+
   ######################################################################
   # more than one reference
   ######################################################################

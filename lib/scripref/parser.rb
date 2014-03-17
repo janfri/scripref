@@ -190,6 +190,7 @@ module Scripref
     def push_passage
       @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1, a2: @a2)
       @text = ''
+      @a1 = @a2 = nil
     end
 
     def book2num str
