@@ -11,7 +11,7 @@ module Scripref
     attr_accessor :text
 
     # @param text text to parse
-    # @param mods on ore more modules to include in processor and parser
+    # @param mods one or more modules to include in processor and parser
     def initialize text=nil, *mods
       @text = text
       @mods = mods

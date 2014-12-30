@@ -7,7 +7,7 @@ module Scripref
 
     NUMBER_RE = /\d+\s*/
 
-    # @param mods on ore more modules to include
+    # @param mods one or more modules to include
     def initialize *mods
       @mods = mods
       mods.each do |m|
