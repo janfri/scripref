@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - gem install rim regtest
+  - gem install rim regtest test-unit
 rvm:
   - 1.9.2
   - 1.9.3
