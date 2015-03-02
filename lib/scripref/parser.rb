@@ -41,7 +41,7 @@ module Scripref
       @c1 = @v1 = nil
       @c2 = @v2 = nil
 
-      epsilon or c1 or nil
+      epsilon or (hyphen and b2) or c1 or nil
     end
 
     # try parse first chapter
@@ -53,7 +53,7 @@ module Scripref
       if cv_sep
         v1 or nil
       elsif hyphen
-        c2 or nil
+        b2 or c2 or nil
       elsif pass_sep
         b1 or c1
       else
@@ -77,11 +77,12 @@ module Scripref
       end
 
       if hyphen
+        b2 or (
         if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
           c2
         else
           v2 or nil
-        end
+        end)
       elsif pass_sep
         b1 or c1
       elsif verse_sep
@@ -89,6 +90,16 @@ module Scripref
       else
         epsilon or nil
       end
+    end
+
+    # try to parse second book
+    def b2
+      s = scan(book_re) or return nil
+      @text << s
+      @b2 = book2num(s)
+      @c2 = @v2 = nil
+
+      epsilon or c2 or nil
     end
 
     # try to parse second chapter

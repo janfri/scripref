@@ -41,6 +41,21 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 8, 2, nil, 8, 3, nil)], text
   end
 
+  def test_book_range
+    text = '1. Mose - Offenbarung'
+    assert_parsed_ast_for_text [pass(text, 1, nil, nil, 66, nil, nil)], text
+  end
+
+  def test_book_chapter_range
+    text = '1. Mose 1 - Offenbarung 22'
+    assert_parsed_ast_for_text [pass(text, 1, 1, nil, 66, 22, nil)], text
+  end
+
+  def test_book_chapter_verse_range
+    text = '1. Mose 1,1-Offenbarung 22,21'
+    assert_parsed_ast_for_text [pass(text, 1, 1, 1, 66, 22, 21)], text
+  end
+
   def test_one_following_verse
     text = 'Ruth 2,5f'
     assert_parsed_ast_for_text [pass(text, 8, 2, 5, 8, 2, :f)], text
