@@ -41,6 +41,12 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
+  def test_passage_with_same_verse
+    @german = '2. Petrus 1,13-2,13'
+    @english = '2 Peter 1:13-2:13'
+    check_formatting
+  end
+
   def test_changed_hyphen_separator
     @german = '1. Korinther 1,1 - 2. Korinther 13,13'
     @english = '1 Corinthians 1:1 - 2 Corinthians 13:13'
