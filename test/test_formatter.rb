@@ -41,6 +41,14 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
+  def test_changed_hyphen_separator
+    @german = '1. Korinther 1,1 - 2. Korinther 13,13'
+    @english = '1 Corinthians 1:1 - 2 Corinthians 13:13'
+    @german_formatter.hyphen_separator = ' - '
+    @english_formatter.hyphen_separator = ' - '
+    check_formatting
+  end
+
   private
 
   def check_formatting

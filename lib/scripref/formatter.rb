@@ -10,7 +10,7 @@ module Scripref
       mods.each do |m|
         m.class_eval do
           extend ConstReader
-          const_reader constants
+          const_accessor constants
         end
         extend m
       end
