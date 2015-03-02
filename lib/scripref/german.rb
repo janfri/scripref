@@ -26,11 +26,20 @@ module Scripref
     # Regular expression to match a book.
     BOOK_RE = Regexp.new(BOOKS_RES.map {|re| '(^' << re.to_s << ')' }.join('|'))
 
+    # Separator between chapter and verse.
+    CV_SEPARATOR = ','
+
     # Regular expression to match a separator between chapter and verse.
     CV_SEP_RE = /,\s*/o
 
+    # Separator between a range.
+    HYPHEN_SEPARATOR = '-'
+
     # Regular expression to match a hyphen.
     HYPHEN_RE = /\s*-\s*/o
+
+    # Separator between passages.
+    PASS_SEPARATOR = '; '
 
     # Regular expression to match a separator between passages.
     PASS_SEP_RE = /;\s*/o
