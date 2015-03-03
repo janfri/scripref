@@ -115,7 +115,16 @@ module Scripref
       @b2 = book2num(s)
       @c2 = @v2 = nil
 
-      epsilon or c2 or nil
+      if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
+        c2
+      else
+        if book_has_only_one_chapter?(@b2)
+          @c2 = 1
+          epsilon or v2 or nil
+        else
+          epsilon or c2 or nil
+        end
+      end
     end
 
     # try to parse second chapter
