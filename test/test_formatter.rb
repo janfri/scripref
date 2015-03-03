@@ -47,6 +47,25 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
+  def test_book_with_only_one_chapter
+    @german = 'Obadja 3'
+    @english = 'Obadiah 3'
+    check_formatting
+  end
+
+  def test_book_with_only_one_chapter_range
+    @german = 'Obadja 3-5'
+    @english = 'Obadiah 3-5'
+    check_formatting
+  end
+
+  def test_book_with_only_one_chapter_at_end_of_range
+    @german = 'Amos 2,4-Obadja 3'
+    @english = 'Amos 2:4-Obadiah 3'
+    check_formatting
+  end
+
+
   def test_changed_hyphen_separator
     @german = '1. Korinther 1,1 - 2. Korinther 13,13'
     @english = '1 Corinthians 1:1 - 2 Corinthians 13:13'

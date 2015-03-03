@@ -29,12 +29,18 @@ module Scripref
           changed = true
         end
         if changed || last_c != pass.c1
-          s << ' ' << pass.c1.to_s
+          s << ' '
+          if ! Scripref.book_has_only_one_chapter?(pass.b1)
+            s << pass.c1.to_s
+          end
           last_c = pass.c1
           changed = true
         end
         if changed || last_v != pass.v1
-          s << cv_separator << pass.v1.to_s
+          if ! Scripref.book_has_only_one_chapter?(pass.b1)
+            s << cv_separator
+          end
+          s << pass.v1.to_s
           last_v = pass.v1
           changed = true
         end
@@ -48,8 +54,10 @@ module Scripref
         end
         if changed || last_c != pass.c2
           a2 << ' ' if pass.b1 != pass.b2
-          a2 << pass.c2.to_s
-          a2 << cv_separator
+          if ! Scripref.book_has_only_one_chapter?(pass.b2)
+            a2 << pass.c2.to_s
+            a2 << cv_separator
+          end
           last_c = pass.c2
           changed = true
         end
