@@ -44,7 +44,7 @@ module Scripref
         @c2 = @v2 = nil
         c1
       else
-        if book_has_only_one_chapter?(@b1)
+        if Scripref.book_has_only_one_chapter?(@b1)
           @c1 = @c2 = 1
           epsilon or (hyphen and b2) or v1 or nil
         else
@@ -53,11 +53,6 @@ module Scripref
           epsilon or (hyphen and b2) or c1 or nil
         end
       end
-    end
-
-    # check if the book has only one chapter
-    def book_has_only_one_chapter? book
-      [31, 63, 64, 65].include?(book)
     end
 
     # try parse first chapter
@@ -118,7 +113,7 @@ module Scripref
       if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
         c2
       else
-        if book_has_only_one_chapter?(@b2)
+        if Scripref.book_has_only_one_chapter?(@b2)
           @c2 = 1
           epsilon or v2 or nil
         else
@@ -243,6 +238,11 @@ module Scripref
       "#<#{self.class} #{@mods.inspect}>"
     end
 
+  end
+
+  # check if the book has only one chapter
+  def self.book_has_only_one_chapter? book
+    [31, 63, 64, 65].include?(book)
   end
 
 end
