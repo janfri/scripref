@@ -41,7 +41,7 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
-  def test_passage_with_same_verse
+  def test_passage_with_different_chapter_and_same_verse
     @german = '2. Petrus 1,13-2,13'
     @english = '2 Peter 1:13-2:13'
     check_formatting
