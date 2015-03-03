@@ -55,26 +55,6 @@ module Scripref
     # Regular expression to parse a reference
     REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
 
-    # try to parse first book
-    def b1
-      s = scan(book_re) or return nil
-      @text << s
-      @b1 = @b2 = book2num(s)
-
-      if book_has_only_one_chapter?(@b1)
-        @c1 = @c2 = 1
-        epsilon or (hyphen and b2) or v1 or nil
-      else
-        @c1 = @v1 = nil
-        @c2 = @v2 = nil
-        epsilon or (hyphen and b2) or c1 or nil
-      end
-    end
-
-    def book_has_only_one_chapter? book
-      [31, 63, 64, 65].include?(book)
-    end
-
   end
 
 end

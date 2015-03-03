@@ -87,6 +87,16 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
   end
 
+  def test_book_with_only_one_chapter
+    text = 'Obad 3'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 3, 31, 1, 3)], text
+    text = 'Obad 1,3'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 3, 31, 1, 3)], text
+    text = 'Obad 1'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 1, 31, 1, 1)], text
+    text = 'Obad 1,1'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 1, 31, 1, 1)], text
+  end
 
   ######################################################################
   # more than one reference

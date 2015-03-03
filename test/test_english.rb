@@ -42,11 +42,4 @@ class TestEnglish < Test::Unit::TestCase
     assert_equal num, @parser.parse(str).first.b1
   end
 
-  def test_book_with_only_one_chapter
-    @parser ||= Scripref::Parser.new(Scripref::English)
-    text = 'Obad 1:3'
-    ast = [pass(text, 31, 1, 3, 31, 1, 3)]
-    assert_parsed_ast_for_text ast, text
-  end
-
 end
