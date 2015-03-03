@@ -1,3 +1,6 @@
+0.4.0
+Handling books with only one chapter correct.
+
 0.3.0
 Set unspecified chapter or verse values to nil instead to 1 or :max.
   Example: parser.parse("Ruth 2") => [#<struct Scripref::Passage text="Ruth 2", b1=8, c1=2, v1=nil, b2=8, c2=2, v2=nil>]
