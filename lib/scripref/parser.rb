@@ -240,9 +240,4 @@ module Scripref
 
   end
 
-  # check if the book has only one chapter
-  def self.book_has_only_one_chapter? book
-    [31, 63, 64, 65].include?(book)
-  end
-
 end
