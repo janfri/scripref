@@ -238,6 +238,8 @@ module Scripref
       "#<#{self.class} #{@mods.inspect}>"
     end
 
+    alias << parse
+
   end
 
 end

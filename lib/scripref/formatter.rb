@@ -74,6 +74,8 @@ module Scripref
       pass_texts.join(pass_separator)
     end
 
+    alias << format
+
   end
 
 end
