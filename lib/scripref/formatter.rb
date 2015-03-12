@@ -16,9 +16,8 @@ module Scripref
       end
     end
 
-    # Formats a reference (array of passages) with full
-    # book names (i.e. Hebrews 3:8)
-    def fullref *reference
+    # Formats a reference (array of passages)
+    def format *reference
       last_b = last_c = last_v = nil
       pass_texts = reference.flatten.map do |pass|
         changed = false

@@ -78,8 +78,8 @@ class TestFormatter < Test::Unit::TestCase
 
   def check_formatting
     ast = @parser.parse(@german)
-    assert_equal @german, @german_formatter.fullref(ast)
-    assert_equal @english, @english_formatter.fullref(ast)
+    assert_equal @german, @german_formatter.format(ast)
+    assert_equal @english, @english_formatter.format(ast)
   end
 
 end
