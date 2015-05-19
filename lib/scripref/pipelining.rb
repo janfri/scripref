@@ -3,20 +3,17 @@
 module Scripref
 
   module Pipelining
-
-    refine String do
-      def >> o
-        o << self
-      end
+    def >> o
+      o << self
     end
-
-    refine Array do
-      def >> o
-        o << self
-      end
-    end
-
   end
 
 end
 
+class Array
+ include Scripref::Pipelining
+end
+
+class String
+  include Scripref::Pipelining
+end

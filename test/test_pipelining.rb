@@ -2,7 +2,6 @@
 require 'test/unit'
 require 'test_helper'
 require 'scripref'
-require 'scripref/pipelining'
 
 class TestPipelining < Test::Unit::TestCase
 
@@ -17,9 +16,8 @@ class TestPipelining < Test::Unit::TestCase
     assert_equal 'Hebrews 13:8', result
   end
 
-  using Pipelining
-
   def test_left_to_right
+    require 'scripref/pipelining'
     text = 'Hebräer 13,8'
     parser = Parser.new(German)
     formatter = Formatter.new(English)
