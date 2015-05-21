@@ -29,7 +29,6 @@ class TestEnglish < Test::Unit::TestCase
     assert_book_num 66, 'Revelation'
     assert_book_num 1, 'Gen'
     assert_book_num 1, 'Ge'
-    assert_book_num 1, 'G'
     assert_book_num 55, '2 Tim'
     assert_book_num 55, '2Tim'
     assert_book_num 55, '2Tm'

@@ -37,7 +37,7 @@ module Scripref
     def b1
       s = scan(book_re) or return nil
       @text << s
-      @b1 = @b2 = book2num(s)
+      @b1 = @b2 = abbrev2num(s)
 
       if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
         @c1 = @v1 = nil
@@ -107,7 +107,7 @@ module Scripref
     def b2
       s = scan(book_re) or return nil
       @text << s
-      @b2 = book2num(s)
+      @b2 = abbrev2num(s)
       @c2 = @v2 = nil
 
       if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
@@ -224,14 +224,26 @@ module Scripref
       @a1 = @a2 = nil
     end
 
+    def abbrev2num str
+      book2num(abbrev2book(str))
+    end
+
+    def abbrev2book str
+      @books_str ||= ('#' << book_names.join('#') << '#')
+      pattern = str.strip.each_char.map {|c| c << '[^#]*'}.join
+      pattern.gsub!('.', '\\.')
+      re = /(?<=#)#{pattern}(?=#)/
+      names = @books_str.scan(re)
+      fail Error, format("Abbreviation %s is ambiguous it matches %s!", str, names.join(', ')) unless names.size == 1
+      names.first
+    end
+
     def book2num str
-      return nil unless book_re =~str
-      books_res.each_with_index do |re, i|
-       if str =~ Regexp.new('^' << re.to_s << '$')
-         num = i + 1
-         return num
-       end
+      unless @book2num
+        @book2num = {}
+        book_names.each_with_index {|s, i| @book2num[s] = i+1}
       end
+      @book2num[str]
     end
 
     def inspect
@@ -239,6 +251,8 @@ module Scripref
     end
 
     alias << parse
+
+    class Error < RuntimeError; end
 
   end
 
