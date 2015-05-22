@@ -230,8 +230,7 @@ module Scripref
 
     def abbrev2book str
       @books_str ||= ('#' << book_names.join('#') << '#')
-      pattern = str.strip.each_char.map {|c| c << '[^#]*'}.join
-      pattern.gsub!('.', '\\.')
+      pattern = str.strip.each_char.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
       fail Error, format("Abbreviation %s is ambiguous it matches %s!", str, names.join(', ')) unless names.size == 1
