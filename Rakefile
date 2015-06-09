@@ -1,5 +1,6 @@
 require 'rim/tire'
 require 'rim/regtest'
+require 'rim/version'
 
 $:.unshift File.dirname(__FILE__) + '/lib'
 require 'scripref'
