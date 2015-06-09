@@ -1,7 +1,9 @@
-personal_ws-1.1 en 6 
+personal_ws-1.1 en 8 
 Scripref
 struct
 addons
 formatter
 refactoring
+fullref
 sep
+pipelining

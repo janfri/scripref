@@ -1,3 +1,8 @@
+0.5.0
+Rename Formatter#fullref -> #format.
+Implementing pipelining with >>.
+Fix typo in German book names.
+
 0.4.0
 Handling books with only one chapter correct.
 
