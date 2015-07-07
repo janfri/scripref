@@ -1,4 +1,5 @@
 # - encoding: utf-8 -
+require 'delegate'
 require 'scripref/parser'
 require 'scripref/processor'
 require 'scripref/formatter'
@@ -17,6 +18,14 @@ module Scripref
 
     alias to_s text
   end
+
+  class Sep < DelegateClass(String)
+    def initialize s
+      super s
+    end
+  end
+  class PassSep < Sep; end
+  class VerseSep < Sep; end
 
   # check if the book has only one chapter
   def self.book_has_only_one_chapter? book

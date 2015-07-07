@@ -190,7 +190,7 @@ module Scripref
     def pass_sep
       if s = scan(pass_sep_re)
         push_passage
-        @result << s
+        @result << PassSep.new(s)
         s
       else
         nil
@@ -201,7 +201,7 @@ module Scripref
     def verse_sep
       if s = scan(verse_sep_re)
         push_passage
-        @result << s
+        @result << VerseSep.new(s)
         s
       else
         nil

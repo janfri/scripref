@@ -4,6 +4,14 @@ module Test::Helper
     Scripref::Passage.new(*args)
   end
 
+  def semi
+    Scripref::PassSep.new('; ')
+  end
+
+  def dot
+    Scripref::VerseSep.new('.')
+  end
+
   def assert_equal_passage expected, actual
     assert_equal expected.text, actual.text, 'Parsed text'
     assert_equal expected.b1, actual.b1, 'First book'
@@ -20,7 +28,7 @@ module Test::Helper
     res = @parser.parse(text)
     assert_equal expected_ast.size, res.size, 'Array size of AST'
     expected_ast.zip(res) do |expected_elem, actual_elem|
-      if !expected_elem.kind_of?(String)
+      if expected_elem.kind_of?(Scripref::Passage)
         assert_equal_passage expected_elem, actual_elem
       else
         assert_equal expected_elem, actual_elem

@@ -137,32 +137,32 @@ class TestParser < Test::Unit::TestCase
 
   def test_two_complete_refs
     text = 'Ruth 2,1; Markus 4,8'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '; ', pass(t2, 41, 4, 8, 41, 4, 8)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), semi, pass(t2, 41, 4, 8, 41, 4, 8)], text
   end
 
   def test_two_refs_same_book
     text = 'Ruth 2,1; 5,4'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '; ', pass(t2, 8, 5, 4, 8, 5, 4)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), semi, pass(t2, 8, 5, 4, 8, 5, 4)], text
   end
 
   def test_two_chapters_same_book
     text = 'Ruth 2; 5'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), '; ', pass(t2, 8, 5, nil, 8, 5, nil)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), semi, pass(t2, 8, 5, nil, 8, 5, nil)], text
   end
 
   def test_two_chapters_different_book
     text = 'Ruth 2; Markus 4'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), '; ', pass(t2, 41, 4, nil, 41, 4, nil)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, nil, 8, 2, nil), semi, pass(t2, 41, 4, nil, 41, 4, nil)], text
   end
 
   def test_two_verses
     text = 'Ruth 2,5.11'
-    t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), '.', pass(t2, 8, 2, 11, 8, 2, 11)], text
+    t1, t2 = text.split(dot)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), dot, pass(t2, 8, 2, 11, 8, 2, 11)], text
   end
 
   ######################################################################
@@ -171,32 +171,32 @@ class TestParser < Test::Unit::TestCase
 
   def test_verse_range_and_separated_verse
     text = 'Ruth 2,1-3.11'
-    t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), '.', pass(t2, 8, 2, 11, 8, 2, 11)], text
+    t1, t2 = text.split(dot)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), dot, pass(t2, 8, 2, 11, 8, 2, 11)], text
   end
 
   def test_separate_verse_and_verse_range
     text = 'Ruth 2,1.3-11'
-    t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), '.', pass(t2, 8, 2, 3, 8, 2, 11)], text
+    t1, t2 = text.split(dot)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 1), dot, pass(t2, 8, 2, 3, 8, 2, 11)], text
   end
 
   def test_two_verse_ranges
     text = 'Ruth 2,1-3.7-11'
-    t1, t2 = text.split('.')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), '.', pass(t2, 8, 2, 7, 8, 2, 11)], text
+    t1, t2 = text.split(dot)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 3), dot, pass(t2, 8, 2, 7, 8, 2, 11)], text
   end
 
   def test_two_verse_range_different_books
     text = 'Ruth 2,1-11; Markus 4,3-7'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), '; ', pass(t2, 41, 4, 3,41, 4, 7)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), semi, pass(t2, 41, 4, 3,41, 4, 7)], text
   end
 
   def test_two_verse_range_different_chapters
     text = 'Ruth 2,1-11; 3,10-19'
-    t1, t2 = text.split('; ')
-    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), '; ', pass(t2, 8, 3, 10, 8, 3, 19)], text
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), semi, pass(t2, 8, 3, 10, 8, 3, 19)], text
   end
 
   ######################################################################
@@ -207,12 +207,12 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 2,1-11.15; 3,7.9-12; Markus 4; 5,3.18-21'
     t1, t2, t3, t4, t5, t6, t7 = text.split(/; |\./)
     ast = [
-      pass(t1, 8, 2, 1, 8, 2, 11), '.',
-      pass(t2, 8, 2, 15, 8, 2, 15), '; ',
-      pass(t3, 8, 3, 7, 8, 3, 7), '.',
-      pass(t4, 8, 3, 9, 8, 3, 12), '; ',
-      pass(t5, 41, 4, nil, 41, 4, nil), '; ',
-      pass(t6, 41, 5, 3, 41, 5, 3), '.',
+      pass(t1, 8, 2, 1, 8, 2, 11), dot,
+      pass(t2, 8, 2, 15, 8, 2, 15), semi,
+      pass(t3, 8, 3, 7, 8, 3, 7), dot,
+      pass(t4, 8, 3, 9, 8, 3, 12), semi,
+      pass(t5, 41, 4, nil, 41, 4, nil), semi,
+      pass(t6, 41, 5, 3, 41, 5, 3), dot,
       pass(t7, 41, 5, 18, 41, 5, 21)
     ]
     assert_parsed_ast_for_text ast, text
