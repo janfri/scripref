@@ -9,7 +9,7 @@ $parser = Parser.new(German)
 def s text
   sample text do
     res = $parser.parse(text)
-    res.map {|r| r.respond_to?(:to_h) ? r.to_h : r}
+    res.map {|r| r.respond_to?(:to_h) ? r.to_h : r.to_s}
   end
 end
 
