@@ -17,13 +17,9 @@ class TestParser < Test::Unit::TestCase
   end
 
   def test_ambiguous_book
-    assert_raises Scripref::Parser::Error do
-      begin
-        @parser.parse 'Jo'
-      rescue RuntimeError => e
-        assert_equal 'Abbreviation Jo is ambiguous it matches Josua, Joel, Jona, Johannes, Jakobus!', e.message
-        raise e
-      end
+    msg = 'Abbreviation Jo is ambiguous it matches Josua, Joel, Jona, Johannes, Jakobus!'
+    assert_raises Scripref::ParserError, msg do
+      @parser.parse 'Jo'
     end
   end
 
