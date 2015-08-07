@@ -36,4 +36,15 @@ module Test::Helper
     end
   end
 
+  def assert_parser_error msg
+    assert_raise Scripref::ParserError do
+      begin
+        yield
+      rescue Scripref::ParserError => e
+        assert_equal msg, e.message
+        raise e
+      end
+    end
+  end
+
 end
