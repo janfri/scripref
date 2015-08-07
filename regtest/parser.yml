@@ -77,49 +77,177 @@ result: []
 sample: Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 21a-11.15a; 37b.9-12b; Markus 4; 53a.18b-21a
+sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a11.15a; 3,7b.912b; Markus 4; 5,3a.18b21a
+sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-1115a; 3,7b9-12b; Markus 4; 5,3a18b-21a
-result: []
+sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+result:
+- :text: Ruth 2,1a-1115a
+  :b1: 8
+  :c1: 2
+  :v1: 1
+  :b2: 8
+  :c2: 2
+  :v2: 1115
+  :a1: :a
+  :a2: :a
+- "; "
+- :text: 3,7b
+  :b1: 8
+  :c1: 3
+  :v1: 7
+  :b2: 8
+  :c2: 3
+  :v2: 7
+  :a1: :b
+  :a2: 
+- "."
+- :text: 9-12b
+  :b1: 8
+  :c1: 3
+  :v1: 9
+  :b2: 8
+  :c2: 3
+  :v2: 12
+  :a1: 
+  :a2: :b
+- "; "
+- :text: Markus 4
+  :b1: 41
+  :c1: 4
+  :v1: 
+  :b2: 41
+  :c2: 4
+  :v2: 
+  :a1: 
+  :a2: 
+- "; "
+- :text: 5,3a
+  :b1: 41
+  :c1: 5
+  :v1: 3
+  :b2: 41
+  :c2: 5
+  :v2: 3
+  :a1: :a
+  :a2: 
+- "."
+- :text: 18b-21a
+  :b1: 41
+  :c1: 5
+  :v1: 18
+  :b2: 41
+  :c2: 5
+  :v2: 21
+  :a1: :b
+  :a2: :a
 ---
 sample: Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-11.15a3,7b.9-12bMarkus 45,3a.18b-21a
+sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 21a-11.15a; 37b.9-12b; Markus 4; 53a.18b-21a
+sample: Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-1115a; 3,7b9-12b; Markus 4; 5,3a18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a11.15a; 3,7b.912b; Markus 4; 5,3a.18b21a
-result: []
+sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3a.18b-21a
+result:
+- :text: Ruth 2,1a-11
+  :b1: 8
+  :c1: 2
+  :v1: 1
+  :b2: 8
+  :c2: 2
+  :v2: 11
+  :a1: :a
+  :a2: 
+- "."
+- :text: 15a
+  :b1: 8
+  :c1: 2
+  :v1: 15
+  :b2: 8
+  :c2: 2
+  :v2: 15
+  :a1: :a
+  :a2: 
+- "; "
+- :text: 3,7b
+  :b1: 8
+  :c1: 3
+  :v1: 7
+  :b2: 8
+  :c2: 3
+  :v2: 7
+  :a1: :b
+  :a2: 
+- "."
+- :text: 912b
+  :b1: 8
+  :c1: 3
+  :v1: 912
+  :b2: 8
+  :c2: 3
+  :v2: 912
+  :a1: :b
+  :a2: 
+- "; "
+- :text: Markus 4
+  :b1: 41
+  :c1: 4
+  :v1: 
+  :b2: 41
+  :c2: 4
+  :v2: 
+  :a1: 
+  :a2: 
+- "; "
+- :text: 5,3a
+  :b1: 41
+  :c1: 5
+  :v1: 3
+  :b2: 41
+  :c2: 5
+  :v2: 3
+  :a1: :a
+  :a2: 
+- "."
+- :text: 18b-21a
+  :b1: 41
+  :c1: 5
+  :v1: 18
+  :b2: 41
+  :c2: 5
+  :v2: 21
+  :a1: :b
+  :a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-11.15a3,7b.9-12bMarkus 45,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
@@ -197,25 +325,84 @@ result:
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-11.15a3,7b.9-12bMarkus 45,3a.18b-21a
-result: []
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3a.18b-21a
+result:
+- :text: Ruth 2,1a-11
+  :b1: 8
+  :c1: 2
+  :v1: 1
+  :b2: 8
+  :c2: 2
+  :v2: 11
+  :a1: :a
+  :a2: 
+- "."
+- :text: 15a
+  :b1: 8
+  :c1: 2
+  :v1: 15
+  :b2: 8
+  :c2: 2
+  :v2: 15
+  :a1: :a
+  :a2: 
+- "; "
+- :text: 3,7b
+  :b1: 8
+  :c1: 3
+  :v1: 7
+  :b2: 8
+  :c2: 3
+  :v2: 7
+  :a1: :b
+  :a2: 
+- "."
+- :text: 9-12b
+  :b1: 8
+  :c1: 3
+  :v1: 9
+  :b2: 8
+  :c2: 3
+  :v2: 12
+  :a1: 
+  :a2: :b
+- "; "
+- :text: Markus 45,3a
+  :b1: 41
+  :c1: 45
+  :v1: 3
+  :b2: 41
+  :c2: 45
+  :v2: 3
+  :a1: :a
+  :a2: 
+- "."
+- :text: 18b-21a
+  :b1: 41
+  :c1: 45
+  :v1: 18
+  :b2: 41
+  :c2: 45
+  :v2: 21
+  :a1: :b
+  :a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
 result: []
 ---
-sample: Ruth 21a-11.15a; 37b.9-12b; Markus 4; 53a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
 result: []
 ---
-sample: Ruth 2,1a-1115a; 3,7b9-12b; Markus 4; 5,3a18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
 result: []
 ---
-sample: Ruth 2,1a11.15a; 3,7b.912b; Markus 4; 5,3a.18b21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
 result: []
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
