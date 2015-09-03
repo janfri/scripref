@@ -30,7 +30,7 @@ module Scripref
     # start of parsing grammer
     def start
       @text = ''
-      b1 or []
+      b1 or error 'Book expected!'
     end
 
     # try to parse first book
@@ -46,11 +46,11 @@ module Scripref
       else
         if Scripref.book_has_only_one_chapter?(@b1)
           @c1 = @c2 = 1
-          epsilon or (hyphen and b2) or v1 or nil
+          epsilon or (hyphen and b2) or v1 or error 'EOS or hyphen and book or verse expected!'
         else
           @c1 = @v1 = nil
           @c2 = @v2 = nil
-          epsilon or (hyphen and b2) or c1 or nil
+          epsilon or (hyphen and b2) or c1 or error 'EOS or hyphen and book or chapter expected!'
         end
       end
     end
@@ -62,13 +62,13 @@ module Scripref
       @c1 = @c2 = s.to_i
 
       if cv_sep
-        v1 or nil
+        v1 or error 'Verse expected!'
       elsif hyphen
-        b2 or c2 or nil
+        b2 or c2 or error 'Book or chapter expected!'
       elsif pass_sep
-        b1 or c1
+        b1 or c1 or error 'Book or chapter expected!'
       else
-        epsilon or nil
+        epsilon or error 'EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!'
       end
     end
 
@@ -92,14 +92,14 @@ module Scripref
         if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
           c2
         else
-          v2 or nil
+          v2 or error 'Chapter or verse expected!'
         end)
       elsif pass_sep
-        b1 or c1
+        b1 or c1 or error 'Book or chapter expected!'
       elsif verse_sep
-        v1
+        v1 or error 'Verse expected!'
       else
-        epsilon or nil
+        epsilon or error 'EOS or passage separator or verse separator or hyphen expected!'
       end
     end
 
@@ -115,9 +115,9 @@ module Scripref
       else
         if Scripref.book_has_only_one_chapter?(@b2)
           @c2 = 1
-          epsilon or v2 or nil
+          epsilon or v2 or error 'EOS or chapter or verse expected!'
         else
-          epsilon or c2 or nil
+          epsilon or c2 or ('EOS or chapter expected')
         end
       end
     end
@@ -129,9 +129,9 @@ module Scripref
       @c2 = s.to_i
 
       if cv_sep
-        v2 or nil
+        v2 or error 'Verse expected!'
       else
-        epsilon or nil
+        epsilon or error 'EOS or chapter verse separator expected!'
       end
     end
 
@@ -149,11 +149,11 @@ module Scripref
       end
 
       if verse_sep
-        v1
+        v1 or error 'Verse expected!'
       elsif pass_sep
-        b1 or c1
+        b1 or c1 or error 'Book or chapter expected!'
       else
-        epsilon or nil
+        epsilon or error 'EOS or verse separator or passage separator expected!'
       end
     end
 
@@ -247,6 +247,11 @@ module Scripref
 
     def inspect
       "#<#{self.class} #{@mods.inspect}>"
+    end
+
+    def error msg
+      message = format("%s\n%s^\n%s", string, ' ' * pointer, msg)
+      fail ParserError, message
     end
 
     alias << parse
