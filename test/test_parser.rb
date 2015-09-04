@@ -214,4 +214,19 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text ast, text
   end
 
+  ######################################################################
+  # malformed references
+  ######################################################################
+
+  def test_error_message
+    text = 'Ruth 2,x'
+    begin
+      @parser.parse text
+    rescue Scripref::ParserError
+    end
+    assert_equal 'Verse expected!', @parser.error
+    formated_error = "Ruth 2,x\n       ^\nVerse expected!"
+    assert_equal formated_error, @parser.format_error
+  end
+
 end

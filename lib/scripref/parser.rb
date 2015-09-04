@@ -5,6 +5,8 @@ module Scripref
 
   class Parser < StringScanner
 
+    attr_reader :error
+
     NUMBER_RE = /\d+\s*/
 
     # @param mods one or more modules to include
@@ -24,13 +26,14 @@ module Scripref
     def parse str
       self.string = str
       @result = []
+      @error = nil
       start
     end
 
     # start of parsing grammer
     def start
       @text = ''
-      b1 or error 'Book expected!'
+      b1 or give_up 'Book expected!'
     end
 
     # try to parse first book
@@ -46,11 +49,11 @@ module Scripref
       else
         if Scripref.book_has_only_one_chapter?(@b1)
           @c1 = @c2 = 1
-          epsilon or (hyphen and b2) or v1 or error 'EOS or hyphen and book or verse expected!'
+          epsilon or (hyphen and b2) or v1 or give_up 'EOS or hyphen and book or verse expected!'
         else
           @c1 = @v1 = nil
           @c2 = @v2 = nil
-          epsilon or (hyphen and b2) or c1 or error 'EOS or hyphen and book or chapter expected!'
+          epsilon or (hyphen and b2) or c1 or give_up 'EOS or hyphen and book or chapter expected!'
         end
       end
     end
@@ -62,13 +65,13 @@ module Scripref
       @c1 = @c2 = s.to_i
 
       if cv_sep
-        v1 or error 'Verse expected!'
+        v1 or give_up 'Verse expected!'
       elsif hyphen
-        b2 or c2 or error 'Book or chapter expected!'
+        b2 or c2 or give_up 'Book or chapter expected!'
       elsif pass_sep
-        b1 or c1 or error 'Book or chapter expected!'
+        b1 or c1 or give_up 'Book or chapter expected!'
       else
-        epsilon or error 'EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!'
+        epsilon or give_up 'EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!'
       end
     end
 
@@ -92,14 +95,14 @@ module Scripref
         if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
           c2
         else
-          v2 or error 'Chapter or verse expected!'
+          v2 or give_up 'Chapter or verse expected!'
         end)
       elsif pass_sep
-        b1 or c1 or error 'Book or chapter expected!'
+        b1 or c1 or give_up 'Book or chapter expected!'
       elsif verse_sep
-        v1 or error 'Verse expected!'
+        v1 or give_up 'Verse expected!'
       else
-        epsilon or error 'EOS or passage separator or verse separator or hyphen expected!'
+        epsilon or give_up 'EOS or passage separator or verse separator or hyphen expected!'
       end
     end
 
@@ -115,7 +118,7 @@ module Scripref
       else
         if Scripref.book_has_only_one_chapter?(@b2)
           @c2 = 1
-          epsilon or v2 or error 'EOS or chapter or verse expected!'
+          epsilon or v2 or give_up 'EOS or chapter or verse expected!'
         else
           epsilon or c2 or ('EOS or chapter expected')
         end
@@ -129,9 +132,9 @@ module Scripref
       @c2 = s.to_i
 
       if cv_sep
-        v2 or error 'Verse expected!'
+        v2 or give_up 'Verse expected!'
       else
-        epsilon or error 'EOS or chapter verse separator expected!'
+        epsilon or give_up 'EOS or chapter verse separator expected!'
       end
     end
 
@@ -149,11 +152,11 @@ module Scripref
       end
 
       if verse_sep
-        v1 or error 'Verse expected!'
+        v1 or give_up 'Verse expected!'
       elsif pass_sep
-        b1 or c1 or error 'Book or chapter expected!'
+        b1 or c1 or give_up 'Book or chapter expected!'
       else
-        epsilon or error 'EOS or verse separator or passage separator expected!'
+        epsilon or give_up 'EOS or verse separator or passage separator expected!'
       end
     end
 
@@ -249,9 +252,17 @@ module Scripref
       "#<#{self.class} #{@mods.inspect}>"
     end
 
-    def error msg
-      message = format("%s\n%s^\n%s", string, ' ' * pointer, msg)
-      fail ParserError, message
+    def give_up msg
+      @error = msg
+      fail ParserError, format_error
+    end
+
+    def format_error
+      if error
+        format("%s\n%s^\n%s", string, ' ' * pointer, error)
+      else
+        ''
+      end
     end
 
     alias << parse
