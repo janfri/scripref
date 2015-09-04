@@ -236,7 +236,7 @@ module Scripref
       pattern = str.strip.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
-      fail ParserError, format("Abbreviation %s is ambiguous it matches %s!", str, names.join(', ')) unless names.size == 1
+      give_up format("Abbreviation %s is ambiguous it matches %s!", str, names.join(', ')) unless names.size == 1
       names.first
     end
 
