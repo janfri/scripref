@@ -17,9 +17,33 @@ class TestFormatter < Test::Unit::TestCase
     @english_formatter = Scripref::Formatter.new(Scripref::English)
   end
 
+  def test_only_book
+    @german = 'Römer'
+    @english = 'Romans'
+    check_formatting
+  end
+
+  def test_book_and_chapter
+    @german = 'Römer 8'
+    @english = 'Romans 8'
+    check_formatting
+  end
+
   def test_one_verse
     @german = 'Römer 6,23'
     @english = 'Romans 6:23'
+    check_formatting
+  end
+
+  def test_book_range
+    @german = 'Römer-Hebräer'
+    @english = 'Romans-Hebrews'
+    check_formatting
+  end
+
+  def test_chapter_range
+    @german = 'Römer 1-8'
+    @english = 'Romans 1-8'
     check_formatting
   end
 
@@ -64,7 +88,6 @@ class TestFormatter < Test::Unit::TestCase
     @english = 'Amos 2:4-Obadiah 3'
     check_formatting
   end
-
 
   def test_changed_hyphen_separator
     @german = '1. Korinther 1,1 - 2. Korinther 13,13'

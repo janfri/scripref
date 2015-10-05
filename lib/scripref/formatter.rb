@@ -17,61 +17,103 @@ module Scripref
     end
 
     # Formats a reference (array of passages)
-    def format *reference
-      last_b = last_c = last_v = nil
-      pass_texts = reference.flatten.map do |pass|
-        changed = false
-        s = ''
-        if changed || last_b != pass.b1
-          s << book_names[pass.b1 - 1]
-          last_b = pass.b1
-          changed = true
-        end
-        if changed || last_c != pass.c1
-          s << ' '
-          if ! Scripref.book_has_only_one_chapter?(pass.b1)
-            s << pass.c1.to_s
-          end
-          last_c = pass.c1
-          changed = true
-        end
-        if changed || last_v != pass.v1
-          if ! Scripref.book_has_only_one_chapter?(pass.b1)
-            s << cv_separator
-          end
-          s << pass.v1.to_s
-          last_v = pass.v1
-          changed = true
-        end
-        # second part
-        changed = false
-        a2 = []
-        if changed || last_b != pass.b2
-          a2 << book_names[pass.b2 - 1]
-          last_b = pass.b2
-          changed = true
-        end
-        if changed || last_c != pass.c2
-          a2 << ' ' if pass.b1 != pass.b2
-          if ! Scripref.book_has_only_one_chapter?(pass.b2)
-            a2 << pass.c2.to_s
-            a2 << cv_separator
-          end
-          last_c = pass.c2
-          changed = true
-        end
-        if changed || last_v != pass.v2
-          a2 << pass.v2.to_s
-          last_v = pass.v2
-          changed = true
-        end
-        if ! a2.empty?
-          s << hyphen_separator
-          s << a2.join('')
-        end
-        s
+    def format reference
+      @last_b = @last_c = @last_v = :undefined
+      @result = ''
+      Array(reference).flatten.each do |pass|
+        @pass = pass
+        format_passage
       end
-      pass_texts.join(pass_separator)
+      @result
+    end
+
+    def format_passage
+      @changed = false
+      format_b1
+    end
+
+    def format_b1
+      b1 = @pass.b1
+      if @last_b != b1
+        @result << book_names[b1 - 1]
+        @last_b = b1
+        @changed = true
+      end
+      format_c1
+    end
+
+    def format_c1
+      c1 = @pass.c1
+      if c1 && (@changed || @last_c != c1)
+        @result << ' '
+        if ! Scripref.book_has_only_one_chapter?(@pass.b1)
+          @result << c1.to_s
+        end
+        @last_c = c1
+        @changed = true
+      end
+      format_v1
+    end
+
+    def format_v1
+      v1 = @pass.v1
+      if v1 && (@changed || @last_v != v1)
+        if ! Scripref.book_has_only_one_chapter?(@pass.b1)
+          @result << cv_separator
+        end
+        @result << v1.to_s
+        @last_v = v1
+      end
+      format_b2
+    end
+
+    def format_b2
+      @changed = false
+      @hyphen = false
+      b2 = @pass.b2
+      if b2 && (@changed || @last_b != b2)
+        @result << hyphen_separator
+        @result << book_names[b2 - 1]
+        @last_b = b2
+        @changed = true
+        @hyphen = true
+      end
+      format_c2
+    end
+
+    def format_c2
+      c2 = @pass.c2
+      if c2 && (@changed || @last_c != c2)
+        if @hyphen
+          @result << ' '
+        else
+          @result << hyphen_separator
+          @hyphen = true
+        end
+        if ! Scripref.book_has_only_one_chapter?(@pass.b2)
+          @result << c2.to_s
+        end
+        @last_c = c2
+        @changed = true
+      end
+      format_v2
+    end
+
+    def format_v2
+      v2 = @pass.v2
+      if v2 && (@changed || @last_v != v2)
+        if @hyphen
+          if ! Scripref.book_has_only_one_chapter?(@pass.b2)
+            @result << cv_separator
+          end
+        else
+          @result << hyphen_separator
+          @hyphen = true
+        end
+        @result << v2.to_s
+        @last_v = @v2
+        @changed = true
+      end
     end
 
     alias << format
