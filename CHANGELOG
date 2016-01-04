@@ -1,3 +1,10 @@
+0.6.0
+Use explicit classes for separators: PassSep and VerseSep.
+Refactoring: Rename class Parser::Error -> ParserError.
+Parser raises ParserError instead of an empty array if correct parsing fails.
+Make Passage comparable and add method Passage#to_a.
+Some internal refactorings and better samples for regtest.
+
 0.5.0
 Rename Formatter#fullref -> #format.
 Implementing pipelining with >>.
