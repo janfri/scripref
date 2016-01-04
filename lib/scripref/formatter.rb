@@ -17,10 +17,10 @@ module Scripref
     end
 
     # Formats a reference (array of passages)
-    def format reference
+    def format *reference
       @last_b = @last_c = @last_v = :undefined
       @result = ''
-      Array(reference).flatten.each do |pass|
+      reference.flatten.each do |pass|
         @pass = pass
         format_passage
       end
