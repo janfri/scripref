@@ -225,7 +225,7 @@ class TestParser < Test::Unit::TestCase
     rescue Scripref::ParserError
     end
     assert_equal 'Verse expected!', @parser.error
-    formated_error = "Ruth 2,x\n       ^\nVerse expected!"
+    formated_error = "Verse expected!\nRuth 2,x\n       ^"
     assert_equal formated_error, @parser.format_error
   end
 

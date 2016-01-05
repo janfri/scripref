@@ -259,7 +259,7 @@ module Scripref
 
     def format_error
       if error
-        format("%s\n%s^\n%s", string, ' ' * pointer, error)
+        format("%s\n%s\n%s^", error, string, ' ' * pointer)
       else
         ''
       end

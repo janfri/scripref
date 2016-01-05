@@ -72,40 +72,40 @@ result:
   :a2: :a
 ---
 sample: " 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a"
-exception: |2-
+exception: |-
+  Book expected!
    2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
   ^
-  Book expected!
 ---
 sample: Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or hyphen and book or chapter expected!
   Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
        ^
-  EOS or hyphen and book or chapter expected!
 ---
 sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
   Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
          ^
-  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
 ---
 sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Verse expected!
   Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
          ^
-  Verse expected!
 ---
 sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
            ^
-  EOS or passage separator or verse separator or hyphen expected!
 ---
 sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Chapter or verse expected!
   Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
             ^
-  Chapter or verse expected!
 ---
 sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
@@ -171,45 +171,45 @@ result:
 ---
 sample: Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Verse expected!
   Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
                ^
-  Verse expected!
 ---
 sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
                   ^
-  EOS or passage separator or verse separator or hyphen expected!
 ---
 sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Book or chapter expected!
   Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
                     ^
-  Book or chapter expected!
 ---
 sample: Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
   Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
                       ^
-  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Verse expected!
   Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
                       ^
-  Verse expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
                         ^
-  EOS or passage separator or verse separator or hyphen expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
 exception: |-
+  Verse expected!
   Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
                          ^
-  Verse expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3a.18b-21a
 result:
@@ -285,15 +285,15 @@ result:
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
 exception: |-
+  Chapter or verse expected!
   Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
                            ^
-  Chapter or verse expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
 exception: |-
+  EOS or verse separator or passage separator expected!
   Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
                               ^
-  EOS or verse separator or passage separator expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
 result:
@@ -369,9 +369,9 @@ result:
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
 exception: |-
+  EOS or hyphen and book or chapter expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
                                        ^
-  EOS or hyphen and book or chapter expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3a.18b-21a
 result:
@@ -437,42 +437,42 @@ result:
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
 exception: |-
+  Book or chapter expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
                                           ^
-  Book or chapter expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
 exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
                                             ^
-  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
 exception: |-
+  Verse expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
                                             ^
-  Verse expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
 exception: |-
+  EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
                                               ^
-  EOS or passage separator or verse separator or hyphen expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
 exception: |-
+  Verse expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
                                                ^
-  Verse expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
 exception: |-
+  EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
                                                   ^
-  EOS or passage separator or verse separator or hyphen expected!
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
 exception: |-
+  Chapter or verse expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
                                                    ^
-  Chapter or verse expected!
