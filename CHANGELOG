@@ -1,3 +1,7 @@
+0.7.1
+Add Psalmen as alternative German book name.
+Add E-Mail address.
+
 0.7.0
 Allow alternative book names.
 Reorder formatting error messages to message, string, pointer.
