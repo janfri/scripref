@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.authors = ["Jan Friedrich"]
   s.date = "2016-01-06"
   s.description = ""
+  s.email = "janfri26@gmail.com"
   s.files = ["CHANGELOG", "LICENSE", "README.md", "Rakefile", "lib/scripref", "lib/scripref.rb", "lib/scripref/const_reader.rb", "lib/scripref/english.rb", "lib/scripref/formatter.rb", "lib/scripref/german.rb", "lib/scripref/parser.rb", "lib/scripref/pipelining.rb", "lib/scripref/processor.rb", "regtest/formatter.rb", "regtest/formatter.yml", "regtest/parser.rb", "regtest/parser.yml", "test/test_english.rb", "test/test_formatter.rb", "test/test_german.rb", "test/test_helper.rb", "test/test_parser.rb", "test/test_passage.rb", "test/test_pipelining.rb", "test/test_processor.rb"]
   s.homepage = "https://github.com/janfri/scripref"
   s.rubygems_version = "2.5.1"
