@@ -32,10 +32,14 @@ module Scripref
       format_b1
     end
 
+    def format_book num
+      Array(book_names[num - 1]).first
+    end
+
     def format_b1
       b1 = @pass.b1
       if @last_b != b1
-        @result << book_names[b1 - 1]
+        @result << format_book(b1)
         @last_b = b1
         @changed = true
       end
@@ -73,7 +77,7 @@ module Scripref
       b2 = @pass.b2
       if b2 && (@changed || @last_b != b2)
         @result << hyphen_separator
-        @result << book_names[b2 - 1]
+        @result << format_book(b2)
         @last_b = b2
         @changed = true
         @hyphen = true

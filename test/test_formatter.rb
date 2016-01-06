@@ -97,6 +97,11 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
+  def test_alternative_booknames
+    ast = @parser.parse('Zephanja 1,8')
+    assert_equal 'Zefanja 1,8', @german_formatter.format(ast)
+  end
+
   private
 
   def check_formatting

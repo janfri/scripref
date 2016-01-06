@@ -21,14 +21,6 @@ module Scripref
       Jude, Revelation
     END
 
-    # Array of regular expressions to match book names.
-    BOOKS_RES = BOOK_NAMES.map do |bn|
-      Regexp.new(bn.gsub(/([^1-3A-Z])/, '\1?').gsub('.', '\.') << '\b\s*')
-    end
-
-    # Regular expression to match a book.
-    BOOK_RE = Regexp.new(BOOKS_RES.map {|re| '(^' << re.to_s << ')' }.join('|'))
-
     # Separator between chapter and verse.
     CV_SEPARATOR = ':'
 

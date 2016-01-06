@@ -7,24 +7,16 @@ module Scripref
   module German
 
     # Array of book names.
-    BOOK_NAMES = <<-END.strip.split(/,\s*/)
+    BOOK_NAMES = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
       1. Mose, 2. Mose, 3. Mose, 4. Mose, 5. Mose, Josua, Richter, Ruth, 1. Samuel, 2. Samuel,
       1. Könige, 2. Könige, 1. Chronika, 2. Chronika, Esra, Nehemia, Esther, Hiob, Psalm,
       Sprüche, Prediger, Hohelied, Jesaja, Jeremia, Klagelieder, Hesekiel, Daniel, Hosea, Joel,
-      Amos, Obadja, Jona, Micha, Nahum, Habakuk, Zephanja, Haggai, Sacharja, Maleachi,
+      Amos, Obadja, Jona, Micha, Nahum, Habakuk, Zefanja|Zephanja, Haggai, Sacharja, Maleachi,
       Matthäus, Markus, Lukas, Johannes, Apostelgeschichte, Römer, 1. Korinther, 2. Korinther,
       Galater, Epheser, Philipper, Kolosser, 1. Thessalonicher, 2. Thessalonicher, 1. Timotheus,
       2. Timotheus, Titus, Philemon, Hebräer, Jakobus, 1. Petrus, 2. Petrus, 1. Johannes,
       2. Johannes, 3. Johannes, Judas, Offenbarung
     END
-
-    # Array of regular expressions to match book names.
-    BOOKS_RES = BOOK_NAMES.map do |bn|
-      Regexp.new(bn.gsub(/([^1-5A-Z])/, '\1?').gsub('.', '\.') << '\b\s*')
-    end
-
-    # Regular expression to match a book.
-    BOOK_RE = Regexp.new(BOOKS_RES.map {|re| '(^' << re.to_s << ')' }.join('|'))
 
     # Separator between chapter and verse.
     CV_SEPARATOR = ','

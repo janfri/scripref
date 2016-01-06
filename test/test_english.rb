@@ -6,9 +6,14 @@ require 'scripref/english'
 class TestEnglish < Test::Unit::TestCase
 
   include Test::Helper
-  include Scripref::English
+  include Scripref
+
+  def setup
+    @parser = Parser.new(English)
+  end
 
   def test_book_re
+    book_re = @parser.book_re
     assert_match book_re, 'Genesis'
     assert_match book_re, 'Exodus'
     assert_match book_re, 'Matthew'
@@ -37,7 +42,6 @@ class TestEnglish < Test::Unit::TestCase
   end
 
   def assert_book_num num, str
-    @parser ||= Scripref::Parser.new(Scripref::English)
     assert_equal num, @parser.parse(str).first.b1
   end
 

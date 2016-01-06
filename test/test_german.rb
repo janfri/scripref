@@ -6,9 +6,14 @@ require 'scripref/german'
 class TestGerman < Test::Unit::TestCase
 
   include Test::Helper
-  include Scripref::German
+  include Scripref
+
+  def setup
+    @parser = Parser.new(German)
+  end
 
   def test_book_re
+    book_re = @parser.book_re
     assert_match book_re, '1. Mose'
     assert_match book_re, '2. Mose'
     assert_match book_re, 'Matthäus'

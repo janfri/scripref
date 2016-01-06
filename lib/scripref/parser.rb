@@ -227,12 +227,21 @@ module Scripref
       @a1 = @a2 = nil
     end
 
+    # Regular expression to match a book.
+    def book_re
+      return @book_re if @book_re
+      books_res_as_strings = book_names.flatten.map do |bn|
+        (bn.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.')) << '\b\s*'
+      end
+      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(^' << s << ')' }.join('|'), nil)
+    end
+
     def abbrev2num str
       book2num(abbrev2book(str))
     end
 
     def abbrev2book str
-      @books_str ||= ('#' << book_names.join('#') << '#')
+      @books_str ||= ('#' << book_names.flatten.join('#') << '#')
       pattern = str.strip.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
@@ -243,7 +252,11 @@ module Scripref
     def book2num str
       unless @book2num
         @book2num = {}
-        book_names.each_with_index {|s, i| @book2num[s] = i+1}
+        book_names.each_with_index do |bns, i|
+          Array(bns).each do |bn|
+            @book2num[bn] = i+1
+          end
+        end
       end
       @book2num[str]
     end
