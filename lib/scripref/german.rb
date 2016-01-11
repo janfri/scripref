@@ -47,6 +47,10 @@ module Scripref
     # Regular expression to parse a reference
     REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
 
+    # Generate attr_reader methods for all constants
+    extend ConstReader
+    const_reader constants
+
   end
 
 end

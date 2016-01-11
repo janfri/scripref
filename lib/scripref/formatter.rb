@@ -4,16 +4,13 @@ module Scripref
 
   class Formatter
 
+    attr_accessor :cv_separator, :hyphen_separator, :pass_separator
+
+
     # @param mods one or more modules to include
     def initialize *mods
       @mods = mods
-      mods.each do |m|
-        m.class_eval do
-          extend ConstReader
-          const_accessor constants
-        end
-        extend m
-      end
+      mods.each {|m| extend m}
     end
 
     # Formats a reference (array of passages)

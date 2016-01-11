@@ -89,7 +89,7 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
-  def test_changed_hyphen_separator
+  def test_attr_writer_overrides_value_of_mixin
     @german = '1. Korinther 1,1 - 2. Korinther 13,13'
     @english = '1 Corinthians 1:1 - 2 Corinthians 13:13'
     @german_formatter.hyphen_separator = ' - '

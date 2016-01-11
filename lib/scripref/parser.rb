@@ -12,13 +12,7 @@ module Scripref
     # @param mods one or more modules to include
     def initialize *mods
       @mods = mods
-      mods.each do |m|
-        m.class_eval do
-          extend ConstReader
-          const_reader constants
-        end
-        extend m
-      end
+      mods.each {|m| extend m}
     end
 
     # Parsing a string of a scripture reference

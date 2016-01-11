@@ -15,9 +15,7 @@ module Scripref
     def initialize text=nil, *mods
       @text = text
       @mods = mods
-      mods.each do |m|
-        extend m
-      end
+      mods.each {|m| extend m}
       @parser = Parser.new(*mods)
     end
 
