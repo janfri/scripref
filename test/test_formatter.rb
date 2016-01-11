@@ -102,6 +102,24 @@ class TestFormatter < Test::Unit::TestCase
     assert_equal 'Zefanja 1,8', @german_formatter.format(ast)
   end
 
+  def test_addon1
+    @german = 'Markus 2,4b'
+    @english = 'Mark 2:4b'
+    check_formatting
+  end
+
+  def test_addon2
+    @german = 'Markus 2,2-4b'
+    @english = 'Mark 2:2-4b'
+    check_formatting
+  end
+
+  def test_both_addons
+    @german = 'Markus 2,2b-4a'
+    @english = 'Mark 2:2b-4a'
+    check_formatting
+  end
+
   private
 
   def check_formatting

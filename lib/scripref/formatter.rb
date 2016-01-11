@@ -64,8 +64,14 @@ module Scripref
         end
         @result << v1.to_s
         @last_v = v1
+        format_a1
       end
       format_b2
+    end
+
+    def format_a1
+      a1 = @pass.a1
+      @result << a1.to_s if a1
     end
 
     def format_b2
@@ -114,7 +120,13 @@ module Scripref
         @result << v2.to_s
         @last_v = @v2
         @changed = true
+        format_a2
       end
+    end
+
+    def format_a2
+      a2 = @pass.a2
+      @result << a2.to_s if a2
     end
 
     alias << format
