@@ -41,7 +41,7 @@ module Scripref
         @c2 = @v2 = nil
         c1
       else
-        if Scripref.book_has_only_one_chapter?(@b1)
+        if book_has_only_one_chapter?(@b1)
           @c1 = @c2 = 1
           epsilon or (hyphen and b2) or v1 or give_up 'EOS or hyphen and book or verse expected!'
         else
@@ -110,7 +110,7 @@ module Scripref
       if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
         c2
       else
-        if Scripref.book_has_only_one_chapter?(@b2)
+        if book_has_only_one_chapter?(@b2)
           @c2 = 1
           epsilon or v2 or give_up 'EOS or chapter or verse expected!'
         else

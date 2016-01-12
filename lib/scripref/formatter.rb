@@ -49,7 +49,7 @@ module Scripref
       c1 = @pass.c1
       if c1 && (@changed || @last_c != c1)
         @result << ' '
-        if ! Scripref.book_has_only_one_chapter?(@pass.b1)
+        if ! book_has_only_one_chapter?(@pass.b1)
           @result << c1.to_s
         end
         @last_c = c1
@@ -61,7 +61,7 @@ module Scripref
     def process_v1
       v1 = @pass.v1
       if v1 && (@changed || @last_v != v1)
-        if ! Scripref.book_has_only_one_chapter?(@pass.b1)
+        if ! book_has_only_one_chapter?(@pass.b1)
           @result << cv_separator
         end
         @result << v1.to_s
@@ -99,7 +99,7 @@ module Scripref
           @result << hyphen_separator
           @hyphen = true
         end
-        if ! Scripref.book_has_only_one_chapter?(@pass.b2)
+        if ! book_has_only_one_chapter?(@pass.b2)
           @result << c2.to_s
         end
         @last_c = c2
@@ -112,7 +112,7 @@ module Scripref
       v2 = @pass.v2
       if v2 && (@changed || @last_v != v2)
         if @hyphen
-          if ! Scripref.book_has_only_one_chapter?(@pass.b2)
+          if ! book_has_only_one_chapter?(@pass.b2)
             @result << cv_separator
           end
         else

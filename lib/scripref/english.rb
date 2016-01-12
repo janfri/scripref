@@ -50,6 +50,12 @@ module Scripref
     # Regular expression to parse a reference
     REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
 
+    # Check if book has only one chapter
+    # @param book book as number
+    def book_has_only_one_chapter? book
+      [31, 63, 64, 65].include?(book)
+    end
+
     # Generate attr_reader methods for all constants
     extend ConstReader
     const_reader constants
