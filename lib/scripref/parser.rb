@@ -7,12 +7,22 @@ module Scripref
 
     attr_reader :error
 
-    NUMBER_RE = /\d+\s*/
+    NUMBER_RE = /\d+\s*/o
 
     # @param mods one or more modules to include
     def initialize *mods
       @mods = mods
       mods.each {|m| extend m}
+    end
+
+    # Regular expression to match a chapter
+    def chapter_re
+      NUMBER_RE
+    end
+
+    # Regular expression to match a verse
+    def verse_re
+      NUMBER_RE
     end
 
     # Parsing a string of a scripture reference
@@ -36,7 +46,7 @@ module Scripref
       @text << s
       @b1 = @b2 = abbrev2num(s)
 
-      if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
+      if check(Regexp.new(chapter_re.source + cv_sep_re.source))
         @c1 = @v1 = nil
         @c2 = @v2 = nil
         c1
@@ -54,7 +64,7 @@ module Scripref
 
     # try parse first chapter
     def c1
-      s = scan(NUMBER_RE) or return nil
+      s = scan(chapter_re) or return nil
       @text << s
       @c1 = @c2 = s.to_i
 
@@ -71,7 +81,7 @@ module Scripref
 
     # try to parse first verse
     def v1
-      s = scan(NUMBER_RE) or return nil
+      s = scan(verse_re) or return nil
       @text << s
       @v1 = @v2 = s.to_i
 
@@ -86,7 +96,7 @@ module Scripref
 
       if hyphen
         b2 or (
-        if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
+        if check(Regexp.new(chapter_re.source + cv_sep_re.source))
           c2
         else
           v2 or give_up 'Chapter or verse expected!'
@@ -107,7 +117,7 @@ module Scripref
       @b2 = abbrev2num(s)
       @c2 = @v2 = nil
 
-      if check(Regexp.new(NUMBER_RE.source + cv_sep_re.source))
+      if check(Regexp.new(chapter_re.source + cv_sep_re.source))
         c2
       else
         if book_has_only_one_chapter?(@b2)
@@ -121,7 +131,7 @@ module Scripref
 
     # try to parse second chapter
     def c2
-      s = scan(NUMBER_RE) or return nil
+      s = scan(chapter_re) or return nil
       @text << s
       @c2 = s.to_i
 
@@ -134,7 +144,7 @@ module Scripref
 
     # try to parse second verse
     def v2
-      s = scan(NUMBER_RE) or return nil
+      s = scan(verse_re) or return nil
       @text << s
       @v2 = s.to_i
 
