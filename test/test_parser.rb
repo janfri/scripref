@@ -229,6 +229,17 @@ class TestParser < Test::Unit::TestCase
     assert_equal formated_error, @parser.format_error
   end
 
+  def test_error_message_for_unambiguous_book
+    text = 'Ruth 2,4; M 3,8'
+    begin
+      @parser.parse text
+    rescue Scripref::ParserError
+    end
+    assert_match /^Abbreviation M is ambiguous/, @parser.error
+    formated_error = "Abbreviation M is ambiguous it matches Micha, Maleachi, Matthäus, Markus!\nRuth 2,4; M 3,8\n          ^"
+    assert_equal formated_error, @parser.format_error
+  end
+
   ######################################################################
   # special things
   ######################################################################
