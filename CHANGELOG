@@ -1,3 +1,11 @@
+0.8.0
+Formatting of verse addons implemented.
+Refactoring: Rename methods in Formatter to distinguish between format_* and process_*.
+Refactoring: Move method Scripref.book_has_only_one_chapter to mixins.
+New methods Parser#chapter_re and #verse_re.
+New method Parser#special_abbrev_mapping to allow to parse special abbreviations, for example "Phil" to "Philipper" in German.
+Some bugs fixed.
+
 0.7.1
 Add Psalmen as alternative German book name.
 Add E-Mail address.

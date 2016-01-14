@@ -1,7 +1,8 @@
-personal_ws-1.1 en 14 
+personal_ws-1.1 en 16 
 Scripref
 Psalmen
 struct
+mixins
 addons
 formatter
 ParserError
@@ -9,6 +10,7 @@ PassSep
 refactoring
 VerseSep
 regtest
+Philipper
 refactorings
 fullref
 sep
