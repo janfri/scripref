@@ -36,6 +36,7 @@ class TestGerman < Test::Unit::TestCase
     assert_book_num 1, '1.Mo'
     assert_book_num 1, '1M'
     assert_book_num 40, 'Mat'
+    assert_book_num 50, 'Phil'
     assert_book_num 66, 'Off'
   end
 

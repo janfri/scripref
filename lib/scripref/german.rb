@@ -53,6 +53,9 @@ module Scripref
       [31, 63, 64, 65].include?(book)
     end
 
+    # Hash with special abbreviations
+    SPECIAL_ABBREV_MAPPING = {'Phil' => 'Philipper'}
+
     # Generate attr_reader methods for all constants
     extend ConstReader
     const_reader constants

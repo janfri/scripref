@@ -229,4 +229,17 @@ class TestParser < Test::Unit::TestCase
     assert_equal formated_error, @parser.format_error
   end
 
+  ######################################################################
+  # special things
+  ######################################################################
+
+  def test_special_book_abbrev
+    # Abbrev "Phil" would technical match "Philipper" and "Philemon"
+    # and therefore throw a ParserError because it's ambiguous,
+    # but in German the abbrev "Phil" is generally used for "Philipper",
+    # so the parser should be able to support such behaviour.
+    text = 'Phil 4,4'
+    assert_parsed_ast_for_text [pass(text, 50, 4, 4, 50, 4, 4)], text
+  end
+
 end
