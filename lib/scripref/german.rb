@@ -40,7 +40,19 @@ module Scripref
     VERSE_SEP_RE = /\.\s*/o
 
     # Regular expression to match addons for a verse.
-    VERSE_ADDON_RE = /([ab]|ff?)\s*/o
+    VERSE_ADDON_RE = /[ab]\s*/o
+
+    # Postfix for one following verse
+    POSTFIX_ONE_FOLLOWING_VERSE = 'f'
+
+    # Regular expression to match postfix for one following verse
+    POSTFIX_ONE_FOLLOWING_VERSE_RE = /f\b\s*/o
+
+    # Postfix for more following verses
+    POSTFIX_MORE_FOLLOWING_VERSES = 'ff'
+
+    # Regular expression to match postfix for more following verses
+    POSTFIX_MORE_FOLLOWING_VERSES_RE = /ff\b\s*/o
 
     pass = '([1-5]\.?\s*)?[A-Z][a-zäöü]+\.?\s*(\d+\s*[,.\-]\s*)*\d+\s*'
 

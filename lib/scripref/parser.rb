@@ -93,12 +93,11 @@ module Scripref
       @v1 = @v2 = s.to_i
 
       if addon = verse_addon
-        case addon
-        when :f, :ff
-          @v2 = addon
-        when :a, :b, :c
-          @a1 = addon
-        end
+        @a1 = addon
+      end
+
+      if postfix = verse_postfix
+        @v2 = postfix
       end
 
       if hyphen
@@ -156,10 +155,7 @@ module Scripref
       @v2 = s.to_i
 
       if addon = verse_addon
-        case addon
-        when :a, :b, :c
-          @a2 = addon
-        end
+        @a2 = addon
       end
 
       if verse_sep
@@ -225,6 +221,17 @@ module Scripref
     # try to parse addons for verses
     def verse_addon
       if s = scan(verse_addon_re)
+        @text << s
+        s.to_sym
+      else
+        nil
+      end
+    end
+
+    # try to parse postfixes for verse
+    def verse_postfix
+      s = (scan(postfix_one_following_verse_re) or scan(postfix_more_following_verses_re))
+      if s
         @text << s
         s.to_sym
       else

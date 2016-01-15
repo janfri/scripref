@@ -120,6 +120,18 @@ class TestFormatter < Test::Unit::TestCase
     check_formatting
   end
 
+  def test_postfix_one_following_verse
+    @german = 'Markus 2,2f'
+    @english = 'Mark 2:2f'
+    check_formatting
+  end
+
+  def test_postfix_more_following_verses
+    @german = 'Markus 2,2ff'
+    @english = 'Mark 2:2ff'
+    check_formatting
+  end
+
   private
 
   def check_formatting

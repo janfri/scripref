@@ -110,6 +110,14 @@ module Scripref
 
     def process_v2
       v2 = @pass.v2
+      case v2
+      when :f
+        @result << postfix_one_following_verse
+        return
+      when :ff
+        @result << postfix_more_following_verses
+        return
+      end
       if v2 && (@changed || @last_v != v2)
         if @hyphen
           if ! book_has_only_one_chapter?(@pass.b2)
