@@ -29,7 +29,7 @@ module Scripref
     # for example {'Phil' => 'Philipper'}
     # usual overwritten in Mixins
     def special_abbrev_mapping
-      Hash.new
+      @special_abbrev_mapping ||= {}
     end
 
     # Parsing a string of a scripture reference
