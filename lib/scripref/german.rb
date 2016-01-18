@@ -62,7 +62,7 @@ module Scripref
     # Check if book has only one chapter
     # @param book book as number
     def book_has_only_one_chapter? book
-      [31, 63, 64, 65].include?(book)
+      [31, 57, 63, 64, 65].include?(book)
     end
 
     # Hash with special abbreviations
