@@ -28,6 +28,27 @@ module Scripref
       a1 <=> a2
     end
 
+    def make_comparable max: 999, ff: 3
+      self.dup.make_comparable! max: max, ff: ff
+    end
+
+    def make_comparable! max: 999, ff: 3
+      self.b1 ||= 0
+      self.c1 ||= 0
+      self.v1 ||= 0
+      self.b2 ||= max
+      self.c2 ||= max
+      self.v2 ||= max
+      if self.v2 == :ff
+        self.v2 = self.v1 + ff
+      end
+      self
+    end
+
+    def comparable?
+      to_a.map {|e| Numeric === e}.uniq == [true]
+    end
+
     alias to_s text
   end
 
