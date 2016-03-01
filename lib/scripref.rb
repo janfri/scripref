@@ -28,10 +28,16 @@ module Scripref
       a1 <=> a2
     end
 
+    # Returns a copy which is comparable, that means
+    # all values are numeric.
+    # This is a heuristic approach.
     def make_comparable max: 999, ff: 3
       self.dup.make_comparable! max: max, ff: ff
     end
 
+    # Makes the Passage instance comparable, that means
+    # all values are numeric.
+    # This is a heuristic approach.
     def make_comparable! max: 999, ff: 3
       self.b1 ||= 0
       self.c1 ||= 0
@@ -45,6 +51,9 @@ module Scripref
       self
     end
 
+    # Checks if the instance is comparable, that means
+    # all values are numeric and so the <=> method
+    # can be applied.
     def comparable?
       to_a.map {|e| Numeric === e}.uniq == [true]
     end
