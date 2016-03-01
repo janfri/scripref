@@ -45,6 +45,9 @@ module Scripref
       self.b2 ||= max
       self.c2 ||= max
       self.v2 ||= max
+      if self.v2 == :f
+        self.v2 = self.v1 + 1
+      end
       if self.v2 == :ff
         self.v2 = self.v1 + ff
       end
