@@ -131,6 +131,12 @@ class TestParser < Test::Unit::TestCase
   # more than one reference
   ######################################################################
 
+  def test_two_books
+    text = 'Ruth; Markus'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, nil, nil, 8, nil, nil), semi, pass(t2, 41, nil, nil, 41, nil, nil)], text
+  end
+
   def test_two_complete_refs
     text = 'Ruth 2,1; Markus 4,8'
     t1, t2 = text.split(semi)
@@ -193,6 +199,24 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 2,1-11; 3,10-19'
     t1, t2 = text.split(semi)
     assert_parsed_ast_for_text [pass(t1, 8, 2, 1, 8, 2, 11), semi, pass(t2, 8, 3, 10, 8, 3, 19)], text
+  end
+
+  def test_book_range_and_following_book
+    text = 'Ruth-Markus; Johannes'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, nil, nil, 41, nil, nil), semi, pass(t2, 43, nil, nil, 43, nil, nil)], text
+  end
+
+  def test_chapter_range_and_following_book
+    text = 'Ruth 1-2; Joh 4'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 43, 4, nil, 43, 4, nil)], text
+  end
+
+  def test_chapter_range_and_following_chapter
+    text = 'Ruth 1-2; 4'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 8, 4, nil, 8, 4, nil)], text
   end
 
   ######################################################################

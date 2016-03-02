@@ -53,7 +53,9 @@ module Scripref
       @text << s
       @b1 = @b2 = abbrev2num(s)
 
-      if check(Regexp.new(chapter_re.source + cv_sep_re.source))
+      if pass_sep
+        b1 or give_up 'EOS or book expected!'
+      elsif check(Regexp.new(chapter_re.source + cv_sep_re.source))
         @c1 = @v1 = nil
         @c2 = @v2 = nil
         c1
@@ -123,14 +125,16 @@ module Scripref
       @b2 = abbrev2num(s)
       @c2 = @v2 = nil
 
-      if check(Regexp.new(chapter_re.source + cv_sep_re.source))
+      if pass_sep
+        b1 or give_up 'EOS or book expected!'
+      elsif check(Regexp.new(chapter_re.source + cv_sep_re.source))
         c2
       else
         if book_has_only_one_chapter?(@b2)
           @c2 = 1
           epsilon or v2 or give_up 'EOS or chapter or verse expected!'
         else
-          epsilon or c2 or ('EOS or chapter expected')
+          epsilon or c2 or give_up 'EOS or chapter expected!'
         end
       end
     end
@@ -143,6 +147,8 @@ module Scripref
 
       if cv_sep
         v2 or give_up 'Verse expected!'
+      elsif pass_sep
+        b1 or c1 or give_up 'Book or chapter expected!'
       else
         epsilon or give_up 'EOS or chapter verse separator expected!'
       end
