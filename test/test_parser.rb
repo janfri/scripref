@@ -176,6 +176,15 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), dot, pass(t2, 8, 2, 11, 8, 2, 11)], text
   end
 
+  def test_partial_passage_after_full_passage
+    text = 'Ruth 2,5; Markus'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 41, nil, nil, 41, nil, nil)], text
+    text = 'Ruth 2,5; Markus 4'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 41, 4, nil, 41, 4, nil)], text
+  end
+
   ######################################################################
   # mixed variants of more than one reference
   ######################################################################
@@ -226,6 +235,12 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 1-2; 4'
     t1, t2 = text.split(semi)
     assert_parsed_ast_for_text [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 8, 4, nil, 8, 4, nil)], text
+  end
+
+  def test_xxx
+    text = 'Matt 3,4; Mar; Joh 3,16'
+    t1, t2, t3 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 41, nil, nil, 41, nil, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)], text
   end
 
   ######################################################################

@@ -52,6 +52,7 @@ module Scripref
       s = scan(book_re) or return nil
       @text << s
       @b1 = @b2 = abbrev2num(s)
+      @c1 = @v1 = @c2 = @v2 = nil
 
       if pass_sep
         b1 or give_up 'EOS or book expected!'
