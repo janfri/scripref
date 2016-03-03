@@ -177,6 +177,9 @@ class TestParser < Test::Unit::TestCase
   end
 
   def test_partial_passage_after_full_passage
+    text = 'Ruth 2,5; 4'
+    t1, t2 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 8, 4, nil, 8, 4, nil)], text
     text = 'Ruth 2,5; Markus'
     t1, t2 = text.split(semi)
     assert_parsed_ast_for_text [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 41, nil, nil, 41, nil, nil)], text
