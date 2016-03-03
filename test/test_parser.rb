@@ -237,10 +237,16 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 8, 4, nil, 8, 4, nil)], text
   end
 
-  def test_xxx
+  def test_book_only_after_full_passage
     text = 'Matt 3,4; Mar; Joh 3,16'
     t1, t2, t3 = text.split(semi)
     assert_parsed_ast_for_text [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 41, nil, nil, 41, nil, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)], text
+  end
+
+  def test_chapter_only_after_full_passage
+    text = 'Matt 3,4; 8; Joh 3,16'
+    t1, t2, t3 = text.split(semi)
+    assert_parsed_ast_for_text [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 40, 8, nil, 40, 8, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)], text
   end
 
   ######################################################################

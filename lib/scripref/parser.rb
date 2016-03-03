@@ -77,6 +77,7 @@ module Scripref
       s = scan(chapter_re) or return nil
       @text << s
       @c1 = @c2 = s.to_i
+      @v1 = @v2 = nil
 
       if cv_sep
         v1 or give_up 'Verse expected!'
