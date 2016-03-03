@@ -116,6 +116,15 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 31, 1, 1, 31, 1, 4)], text
   end
 
+  def test_book_with_only_one_chapter_at_begin_of_range
+    text = 'Obad - Jona'
+    assert_parsed_ast_for_text [pass(text, 31, 1, nil, 32, nil, nil)], text
+    text = 'Obad 3 - Jona 2,4'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 3, 32, 2, 4)], text
+    text = 'Obad 1,3 - Jona 2,4'
+    assert_parsed_ast_for_text [pass(text, 31, 1, 3, 32, 2, 4)], text
+  end
+
   def test_book_with_only_one_chapter_at_end_of_range
     text = 'Amos 2,4 - Obad 3'
     assert_parsed_ast_for_text [pass(text, 30, 2, 4, 31, 1, 3)], text
