@@ -22,10 +22,9 @@ module Scripref
       [b1, c1, v1, b2, c2, v2]
     end
 
-    def <=> o
-      a1 = self.to_a.map {|e| e.nil? ? 0 : e}
-      a2 = o.to_a.map {|e| e.nil? ? 0 : e}
-      a1 <=> a2
+    def <=> other
+      return unless other.kind_of? Passage
+      self.make_comparable.to_a <=> other.make_comparable.to_a
     end
 
     # Returns a copy which is comparable, that means
@@ -39,9 +38,9 @@ module Scripref
     # all values are numeric.
     # This is a heuristic approach.
     def make_comparable! max: 999, ff: 3
-      self.b1 ||= 0
-      self.c1 ||= 0
-      self.v1 ||= 0
+      self.b1 ||= 1
+      self.c1 ||= 1
+      self.v1 ||= 1
       self.b2 ||= max
       self.c2 ||= max
       self.v2 ||= max
