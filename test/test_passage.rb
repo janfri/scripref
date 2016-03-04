@@ -36,7 +36,6 @@ class TestPassage < Test::Unit::TestCase
 
     ast = @parser.parse('Mar 1; 1,1; 1,1f; 1,1ff; 1,2; 1,1-2,2; Mar 1-2; Markus; Markus-Lukas; Mar 1-Luk 2; Mar 1,1-Luk 2,2')
     passages = ast.grep(Scripref::Passage)
-    passages = ast.select {|e| Scripref::Passage === e}
     formatter = Scripref::Formatter.new(Scripref::German)
     expect = ['Markus 1,1',
               'Markus 1,1f',
