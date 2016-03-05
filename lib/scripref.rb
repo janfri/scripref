@@ -60,6 +60,21 @@ module Scripref
       to_a.map {|e| Numeric === e}.uniq == [true]
     end
 
+    # Returns true if the instance and the given passage doesn't overlap.
+    # This method is the opposite of intersect?.
+    def disjoint? passage
+      !intersect? passage
+    end
+
+    # Returns true if the instance and the given passage overlap.
+    # This method is the opposite of disjoint?.
+    def intersect? passage
+      fail ArgumentError, 'value must be a passage' unless passage.kind_of? Passage
+      a = self.make_comparable.to_a
+      b = passage.make_comparable.to_a
+      [a[0..2] <=> b[3..6], b[0..2] <=> a[3..6]].max < 1
+    end
+
     alias to_s text
   end
 

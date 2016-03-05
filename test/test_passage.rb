@@ -51,4 +51,28 @@ class TestPassage < Test::Unit::TestCase
     assert_equal expect, passages.sort.map {|e| formatter << e}
   end
 
+  def test_intersect
+    a = @parser.parse('Joh 8,1-9').first
+    b = @parser.parse('Joh 8,8-11').first
+    c = @parser.parse('Joh 8,12-15').first
+    d = @parser.parse('Joh 8,15-18').first
+    e = @parser.parse('Joh 8').first
+    assert_intersect a, a
+    assert_intersect a, b
+    assert_not_intersect b, c
+    assert_intersect c, d
+    assert_intersect d, e
+  end
+
+  protected
+
+  def assert_intersect a, b
+    assert a.intersect?(b)
+    assert b.intersect?(a)
+  end
+
+  def assert_not_intersect a, b
+    assert !a.intersect?(b)
+    assert !b.intersect?(a)
+  end
 end
