@@ -72,7 +72,7 @@ module Scripref
       fail ArgumentError, 'value must be a passage' unless passage.kind_of? Passage
       a = self.make_comparable.to_a
       b = passage.make_comparable.to_a
-      [a[0..2] <=> b[3..6], b[0..2] <=> a[3..6]].max < 1
+      [a[0..2] <=> b[3..5], b[0..2] <=> a[3..5]].max < 1
     end
 
     alias to_s text
