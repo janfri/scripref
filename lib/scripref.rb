@@ -14,8 +14,8 @@ module Scripref
 
     include Comparable
 
-    def initialize text, b1, c1, v1, b2, c2, v2, opts={}
-      super text, b1, c1, v1, b2, c2, v2, opts[:a1], opts[:a2]
+    def initialize text, b1, c1, v1, b2, c2, v2, a1: nil, a2: nil
+      super text, b1, c1, v1, b2, c2, v2, a1, a2
     end
 
     def to_a
