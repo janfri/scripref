@@ -60,6 +60,16 @@ module Scripref
       [a[0..2] <=> b[3..5], b[0..2] <=> a[3..5]].max < 1
     end
 
+    # Returns an array of b1, c1, v1
+    def start
+      [b1, c1, v1]
+    end
+
+    # Returns an array of b2, c2, v2
+    def end
+      [b2, c2, v2]
+    end
+
     alias to_s text
   end
 

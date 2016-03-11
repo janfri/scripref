@@ -64,6 +64,16 @@ class TestPassage < Test::Unit::TestCase
     assert_overlap d, e
   end
 
+  def test_start
+    p = Scripref::Passage.new('', 1, 2, 3, 4, 5, 6)
+    assert_equal [1, 2, 3], p.start
+  end
+
+  def test_end
+    p = Scripref::Passage.new('', 1, 2, 3, 4, 5, 6)
+    assert_equal [4, 5, 6], p.end
+  end
+
   protected
 
   def assert_overlap a, b
