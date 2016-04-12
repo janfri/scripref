@@ -18,126 +18,114 @@ class TestFormatter < Test::Unit::TestCase
   end
 
   def test_only_book
-    @german = 'Römer'
-    @english = 'Romans'
-    check_formatting
+    text = 'Ruth'
+    assert_formated_text_for_ast text, [pass(text, 8, nil, nil, 8, nil, nil)]
   end
 
   def test_book_and_chapter
-    @german = 'Römer 8'
-    @english = 'Romans 8'
-    check_formatting
+    text = 'Ruth 2'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, nil, 8, 2, nil)]
   end
 
-  def test_one_verse
-    @german = 'Römer 6,23'
-    @english = 'Romans 6:23'
-    check_formatting
+  def test_book_chapter_and_verse
+    text = 'Ruth 2,5'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, 5)]
   end
 
-  def test_book_range
-    @german = 'Römer-Hebräer'
-    @english = 'Romans-Hebrews'
-    check_formatting
+  def test_verse_range
+    text = 'Ruth 2,5-11'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, 11)]
+  end
+
+  def test_chapter_verse_range
+    text = 'Ruth 2,5-3,7'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 3, 7)]
   end
 
   def test_chapter_range
-    @german = 'Römer 1-8'
-    @english = 'Romans 1-8'
-    check_formatting
+    text = 'Ruth 2-3'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, nil, 8, 3, nil)]
   end
 
-  def test_simple_passage
-    @german = 'Römer 8,1-10'
-    @english = 'Romans 8:1-10'
-    check_formatting
+  def test_book_range
+    text = '1. Mose-Offenbarung'
+    assert_formated_text_for_ast text, [pass(text, 1, nil, nil, 66, nil, nil)]
   end
 
-  def test_passage_with_chapter_change
-    @german = 'Römer 1,1-5,11'
-    @english = 'Romans 1:1-5:11'
-    check_formatting
+  def test_book_chapter_range
+    text = '1. Mose 1-Offenbarung 22'
+    assert_formated_text_for_ast text, [pass(text, 1, 1, nil, 66, 22, nil)]
   end
 
-  def test_passage_with_book_change
-    @german = '1. Korinther 1,1-2. Korinther 13,13'
-    @english = '1 Corinthians 1:1-2 Corinthians 13:13'
-    check_formatting
+  def test_book_chapter_verse_range
+    text = '1. Mose 1,1-Offenbarung 22,21'
+    assert_formated_text_for_ast text, [pass(text, 1, 1, 1, 66, 22, 21)]
   end
 
-  def test_passage_with_different_chapter_and_same_verse
-    @german = '2. Petrus 1,13-2,13'
-    @english = '2 Peter 1:13-2:13'
-    check_formatting
+  def test_one_following_verse
+    text = 'Ruth 2,5f'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, :f)]
   end
 
-  def test_book_with_only_one_chapter
-    @german = 'Obadja 3'
-    @english = 'Obadiah 3'
-    check_formatting
+  def test_more_following_verse
+    text = 'Ruth 2,5ff'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, :ff)]
   end
 
-  def test_book_with_only_one_chapter_range
-    @german = 'Obadja 3-5'
-    @english = 'Obadiah 3-5'
-    check_formatting
+  def test_first_addon
+    text = 'Ruth 2,5a'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, 5, a1: :a)]
   end
 
-  def test_book_with_only_one_chapter_at_end_of_range
-    @german = 'Amos 2,4-Obadja 3'
-    @english = 'Amos 2:4-Obadiah 3'
-    check_formatting
-  end
-
-  def test_attr_writer_overrides_value_of_mixin
-    @german = '1. Korinther 1,1 - 2. Korinther 13,13'
-    @english = '1 Corinthians 1:1 - 2 Corinthians 13:13'
-    @german_formatter.hyphen_separator = ' - '
-    @english_formatter.hyphen_separator = ' - '
-    check_formatting
-  end
-
-  def test_alternative_booknames
-    ast = @parser.parse('Zephanja 1,8')
-    assert_equal 'Zefanja 1,8', @german_formatter.format(ast)
-  end
-
-  def test_addon1
-    @german = 'Markus 2,4b'
-    @english = 'Mark 2:4b'
-    check_formatting
-  end
-
-  def test_addon2
-    @german = 'Markus 2,2-4b'
-    @english = 'Mark 2:2-4b'
-    check_formatting
+  def test_second_addon
+    text = 'Ruth 2,5-7a'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, 7, a2: :a)]
   end
 
   def test_both_addons
-    @german = 'Markus 2,2b-4a'
-    @english = 'Mark 2:2b-4a'
-    check_formatting
+    text = 'Ruth 2,5b-7a'
+    assert_formated_text_for_ast text, [pass(text, 8, 2, 5, 8, 2, 7, a1: :b, a2: :a)]
   end
 
-  def test_postfix_one_following_verse
-    @german = 'Markus 2,2f'
-    @english = 'Mark 2:2f'
-    check_formatting
+  def test_reset_addons
+    @parser.parse 'Ruth 2,5b-7a'
+    text = 'Ruth'
+    assert_formated_text_for_ast text, [pass(text, 8, nil, nil, 8, nil, nil)]
   end
 
-  def test_postfix_more_following_verses
-    @german = 'Markus 2,2ff'
-    @english = 'Mark 2:2ff'
-    check_formatting
+  def test_book_with_only_one_chapter
+    text = 'Obadja 3'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, 3, 31, 1, 3)]
+    text = 'Obadja 1'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, 1, 31, 1, 1)]
+  end
+
+  def test_book_with_only_one_chapter_range
+    text = 'Obadja 3-5'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, 3, 31, 1, 5)]
+    text = 'Obadja 1-4'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, 1, 31, 1, 4)]
+  end
+
+  def test_book_with_only_one_chapter_at_begin_of_range
+    omit "Doesn't work yet."
+    text = 'Obadja-Jona'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, nil, 32, nil, nil)]
+    text = 'Obadja 3-Jona 2,4'
+    assert_formated_text_for_ast text, [pass(text, 31, 1, 3, 32, 2, 4)]
+  end
+
+  def test_book_with_only_one_chapter_at_end_of_range
+    text = 'Amos 2,4-Obadja 3'
+    assert_formated_text_for_ast text, [pass(text, 30, 2, 4, 31, 1, 3)]
+    text = 'Amos 2,4-Obadja 1'
+    assert_formated_text_for_ast text, [pass(text, 30, 2, 4, 31, 1, 1)]
   end
 
   private
 
-  def check_formatting
-    ast = @parser.parse(@german)
-    assert_equal @german, @german_formatter.format(ast)
-    assert_equal @english, @english_formatter.format(ast)
+  def assert_formated_text_for_ast text, ast
+    assert_equal text, @german_formatter.format(ast)
   end
 
 end
