@@ -11,14 +11,23 @@ module Scripref
 
   VERSION = '0.9.1'
 
-  class Sep < DelegateClass(String)
-    def initialize s
-      super s
+  class Token < DelegateClass(String)
+    def initialize *args
+      super
     end
   end
 
-  class PassSep < Sep; end
+  class Book < Token; end
+  class Chapter < Token; end
+  class Verse < Token; end
 
+  class Addon < Token; end
+  class Postfix < Token; end
+
+  class Sep < Token; end
+  class PassSep < Sep; end
   class VerseSep < Sep; end
+
+  class Space < Token; end
 
 end

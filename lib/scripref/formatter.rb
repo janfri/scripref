@@ -16,16 +16,32 @@ module Scripref
     # Formats a reference (array of passages)
     def format *reference
       @last_b = @last_c = @last_v = :undefined
-      @result = ''
+      @result = []
       reference.flatten.each do |pass|
         @pass = pass
         process_passage
       end
-      @result
+      @result.join
     end
 
     def format_book num
       Array(book_names[num - 1]).first
+    end
+
+    def format_chapter num
+      num.to_s
+    end
+
+    def format_verse num
+      num.to_s
+    end
+
+    def format_addon a
+      a.to_s
+    end
+
+    def format_postfix p
+      p.to_s
     end
 
     private
@@ -38,7 +54,7 @@ module Scripref
     def process_b1
       b1 = @pass.b1
       if @last_b != b1
-        @result << format_book(b1)
+        push_book b1
         @last_b = b1
         @changed = true
       end
@@ -49,8 +65,8 @@ module Scripref
       c1 = @pass.c1
       if c1 && (@changed || @last_c != c1)
         if ! book_has_only_one_chapter?(@pass.b1)
-          @result << ' '
-          @result << c1.to_s
+          push_space
+          push_chapter c1
         end
         @last_c = c1
         @changed = true
@@ -62,11 +78,11 @@ module Scripref
       v1 = @pass.v1
       if v1 && (@changed || @last_v != v1)
         if ! book_has_only_one_chapter?(@pass.b1)
-          @result << cv_separator
+          push_sep cv_separator
         else
-          @result << ' '
+          push_space
         end
-        @result << v1.to_s
+        push_verse v1
         @last_v = v1
         process_a1
       end
@@ -75,7 +91,7 @@ module Scripref
 
     def process_a1
       a1 = @pass.a1
-      @result << a1.to_s if a1
+      push_addon a1
     end
 
     def process_b2
@@ -83,8 +99,8 @@ module Scripref
       @hyphen = false
       b2 = @pass.b2
       if b2 && (@changed || @last_b != b2)
-        @result << hyphen_separator
-        @result << format_book(b2)
+        push_sep hyphen_separator
+        push_book(b2)
         @last_b = b2
         @changed = true
         @hyphen = true
@@ -96,13 +112,13 @@ module Scripref
       c2 = @pass.c2
       if c2 && (@changed || @last_c != c2)
         if @hyphen
-          @result << ' '
+          push_space
         else
-          @result << hyphen_separator
+          push_sep hyphen_separator
           @hyphen = true
         end
         if ! book_has_only_one_chapter?(@pass.b2)
-          @result << c2.to_s
+          push_chapter c2
         end
         @last_c = c2
         @changed = true
@@ -114,22 +130,22 @@ module Scripref
       v2 = @pass.v2
       case v2
       when :f
-        @result << postfix_one_following_verse
+        push_postfix postfix_one_following_verse
         return
       when :ff
-        @result << postfix_more_following_verses
+        push_postfix postfix_more_following_verses
         return
       end
       if v2 && (@changed || @last_v != v2)
         if @hyphen
           if ! book_has_only_one_chapter?(@pass.b2)
-            @result << cv_separator
+            push_sep cv_separator
           end
         else
-          @result << hyphen_separator
+          push_sep hyphen_separator
           @hyphen = true
         end
-        @result << v2.to_s
+        push_verse v2
         @last_v = @v2
         @changed = true
         process_a2
@@ -138,7 +154,37 @@ module Scripref
 
     def process_a2
       a2 = @pass.a2
-      @result << a2.to_s if a2
+      push_addon a2
+    end
+
+    def push_book b
+      @result << Book.new(format_book(b))
+    end
+
+    def push_chapter c
+      @result << Chapter.new(format_chapter(c))
+    end
+
+    def push_verse v
+      @result << Verse.new(format_verse(v))
+    end
+
+    def push_addon a
+      if a
+        @result << Addon.new(format_addon(a))
+      end
+    end
+
+    def push_postfix p
+      @result << Postfix.new(format_postfix(p))
+    end
+
+    def push_space
+      @result << Space.new(' ')
+    end
+
+    def push_sep s
+      @result << Sep.new(s)
     end
 
     alias << format
