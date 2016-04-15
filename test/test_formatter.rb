@@ -108,7 +108,6 @@ class TestFormatter < Test::Unit::TestCase
   end
 
   def test_book_with_only_one_chapter_at_begin_of_range
-    omit "Doesn't work yet."
     text = 'Obadja-Jona'
     assert_formated_text_for_ast text, [pass(text, 31, 1, nil, 32, nil, nil)]
     text = 'Obadja 3-Jona 2,4'

@@ -48,8 +48,8 @@ module Scripref
     def process_c1
       c1 = @pass.c1
       if c1 && (@changed || @last_c != c1)
-        @result << ' '
         if ! book_has_only_one_chapter?(@pass.b1)
+          @result << ' '
           @result << c1.to_s
         end
         @last_c = c1
@@ -63,6 +63,8 @@ module Scripref
       if v1 && (@changed || @last_v != v1)
         if ! book_has_only_one_chapter?(@pass.b1)
           @result << cv_separator
+        else
+          @result << ' '
         end
         @result << v1.to_s
         @last_v = v1
