@@ -137,7 +137,7 @@ class TestParser < Test::Unit::TestCase
   end
 
   ######################################################################
-  # more than one reference
+  # more than one passage
   ######################################################################
 
   def test_two_books
@@ -189,7 +189,7 @@ class TestParser < Test::Unit::TestCase
   end
 
   ######################################################################
-  # mixed variants of more than one reference
+  # mixed variants of more than one passage
   ######################################################################
 
   def test_verse_range_and_separated_verse
