@@ -1,3 +1,12 @@
+0.10.0
+Add methods Passage#make_comparable, #make_comparable!, #comparable?,
+#overlap?, #start, #end and #<=>.
+Implement formatting of more than one passage with formatter.
+Allow passage separator after ranges of books and chapters.
+Add tests and fixing bugs.
+Doing a lot of internal refactorings.
+Add documentation.
+
 0.9.1
 Add Philemon to book with only one chapter.
 

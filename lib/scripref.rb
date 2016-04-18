@@ -9,7 +9,7 @@ require 'scripref/german'
 
 module Scripref
 
-  VERSION = '0.9.1'
+  VERSION = '0.10.0'
 
   class Token < DelegateClass(String)
     def initialize *args
