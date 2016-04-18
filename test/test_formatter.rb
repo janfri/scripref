@@ -121,6 +121,141 @@ class TestFormatter < Test::Unit::TestCase
     assert_formated_text_for_ast text, [pass(text, 30, 2, 4, 31, 1, 1)]
   end
 
+  ######################################################################
+  # more than one passage
+  ######################################################################
+
+  def test_two_books
+    text = 'Ruth; Markus'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, nil, nil, 8, nil, nil), semi, pass(t2, 41, nil, nil, 41, nil, nil)]
+  end
+
+  def test_two_complete_refs
+    text = 'Ruth 2,1; Markus 4,8'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 1), semi, pass(t2, 41, 4, 8, 41, 4, 8)]
+  end
+
+  def test_two_refs_same_book
+    text = 'Ruth 2,1; 5,4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 1), semi, pass(t2, 8, 5, 4, 8, 5, 4)]
+  end
+
+  def test_two_chapters_same_book
+    text = 'Ruth 2; 5'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, nil, 8, 2, nil), semi, pass(t2, 8, 5, nil, 8, 5, nil)]
+  end
+
+  def test_two_chapters_different_book
+    text = 'Ruth 2; Markus 4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, nil, 8, 2, nil), semi, pass(t2, 41, 4, nil, 41, 4, nil)]
+  end
+
+  def test_two_verses
+    text = 'Ruth 2,5.11'
+    t1, t2 = text.split(dot)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 5, 8, 2, 5), dot, pass(t2, 8, 2, 11, 8, 2, 11)]
+  end
+
+  def test_partial_passage_after_full_passage
+    text = 'Ruth 2,5; 4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 8, 4, nil, 8, 4, nil)]
+    text = 'Ruth 2,5; Markus'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 41, nil, nil, 41, nil, nil)]
+    text = 'Ruth 2,5; Markus 4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 5, 8, 2, 5), semi, pass(t2, 41, 4, nil, 41, 4, nil)]
+  end
+
+  ######################################################################
+  # mixed variants of more than one passage
+  ######################################################################
+
+  def test_verse_range_and_separated_verse
+    text = 'Ruth 2,1-3.11'
+    t1, t2 = text.split(dot)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 3), dot, pass(t2, 8, 2, 11, 8, 2, 11)]
+  end
+
+  def test_separate_verse_and_verse_range
+    text = 'Ruth 2,1.3-11'
+    t1, t2 = text.split(dot)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 1), dot, pass(t2, 8, 2, 3, 8, 2, 11)]
+  end
+
+  def test_two_verse_ranges
+    text = 'Ruth 2,1-3.7-11'
+    t1, t2 = text.split(dot)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 3), dot, pass(t2, 8, 2, 7, 8, 2, 11)]
+  end
+
+  def test_two_verse_range_different_books
+    text = 'Ruth 2,1-11; Markus 4,3-7'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 11), semi, pass(t2, 41, 4, 3,41, 4, 7)]
+  end
+
+  def test_two_verse_range_different_chapters
+    text = 'Ruth 2,1-11; 3,10-19'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 2, 1, 8, 2, 11), semi, pass(t2, 8, 3, 10, 8, 3, 19)]
+  end
+
+  def test_book_range_and_following_book
+    text = 'Ruth-Markus; Johannes'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, nil, nil, 41, nil, nil), semi, pass(t2, 43, nil, nil, 43, nil, nil)]
+  end
+
+  def test_chapter_range_and_following_book
+    text = 'Ruth 1-2; Johannes 4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 43, 4, nil, 43, 4, nil)]
+  end
+
+  def test_chapter_range_and_following_chapter
+    text = 'Ruth 1-2; 4'
+    t1, t2 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 8, 1, nil, 8, 2, nil), semi, pass(t2, 8, 4, nil, 8, 4, nil)]
+  end
+
+  def test_book_only_after_full_passage
+    text = 'Matthäus 3,4; Markus; Johannes 3,16'
+    t1, t2, t3 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 41, nil, nil, 41, nil, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)]
+  end
+
+  def test_chapter_only_after_full_passage
+    text = 'Matthäus 3,4; 8; Johannes 3,16'
+    t1, t2, t3 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 40, 8, nil, 40, 8, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)]
+  end
+
+  ######################################################################
+  # complex variants of references
+  ######################################################################
+
+  def test_complex_example
+    text = 'Ruth 2,1-11.15; 3,7.9-12; Markus 4; 5,3.18-21'
+    t1, t2, t3, t4, t5, t6, t7 = text.split(/; |\./)
+    ast = [
+      pass(t1, 8, 2, 1, 8, 2, 11), dot,
+      pass(t2, 8, 2, 15, 8, 2, 15), semi,
+      pass(t3, 8, 3, 7, 8, 3, 7), dot,
+      pass(t4, 8, 3, 9, 8, 3, 12), semi,
+      pass(t5, 41, 4, nil, 41, 4, nil), semi,
+      pass(t6, 41, 5, 3, 41, 5, 3), dot,
+      pass(t7, 41, 5, 18, 41, 5, 21)
+    ]
+    assert_formated_text_for_ast text, ast
+  end
+
   private
 
   def assert_formated_text_for_ast text, ast

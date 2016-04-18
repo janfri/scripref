@@ -17,8 +17,9 @@ module Scripref
     def format *reference
       @last_b = @last_c = @last_v = :undefined
       @result = []
-      reference.flatten.each do |pass|
-        @pass = pass
+      reference.flatten.each do |entry|
+        next if entry.kind_of? Sep
+        @pass = entry
         process_passage
       end
       @result.join
@@ -46,6 +47,10 @@ module Scripref
 
     private
 
+    def last_token
+      @result.last
+    end
+
     def process_passage
       @changed = false
       process_b1
@@ -54,6 +59,10 @@ module Scripref
     def process_b1
       b1 = @pass.b1
       if @last_b != b1
+        case last_token
+        when Token
+          push_sep pass_separator
+        end
         push_book b1
         @last_b = b1
         @changed = true
@@ -65,7 +74,12 @@ module Scripref
       c1 = @pass.c1
       if c1 && (@changed || @last_c != c1)
         if ! book_has_only_one_chapter?(@pass.b1)
-          push_space
+          case last_token
+          when Book
+            push_space
+          when Token
+            push_sep pass_separator
+          end
           push_chapter c1
         end
         @last_c = c1
@@ -78,7 +92,12 @@ module Scripref
       v1 = @pass.v1
       if v1 && (@changed || @last_v != v1)
         if ! book_has_only_one_chapter?(@pass.b1)
-          push_sep cv_separator
+          case last_token
+          when Verse
+            push_sep verse_separator
+          when Token
+            push_sep cv_separator
+          end
         else
           push_space
         end

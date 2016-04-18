@@ -39,6 +39,9 @@ module Scripref
     # Regular expression to match a separator between verses.
     VERSE_SEP_RE = /\.\s*/o
 
+    # Separator between verses.
+    VERSE_SEPARATOR = '.'
+
     # Regular expression to match addons for a verse.
     VERSE_ADDON_RE = /[ab]\s*/o
 
