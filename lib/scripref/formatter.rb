@@ -13,7 +13,7 @@ module Scripref
       mods.each {|m| extend m}
     end
 
-    # Formats a reference (array of passages)
+    # Formats a reference (array of passages and maybe separators)
     def format *reference
       @last_b = @last_c = @last_v = :undefined
       @result = []
@@ -25,22 +25,30 @@ module Scripref
       @result.join
     end
 
+    # Formats a book
+    # @param num number of book (starting at 1)
     def format_book num
       Array(book_names[num - 1]).first
     end
 
+    # Formats a chapter
+    # @param num number of chapter
     def format_chapter num
       num.to_s
     end
 
+    # Formats a verse
+    # @param num number of verse
     def format_verse num
       num.to_s
     end
 
+    # Formats a verse addon
     def format_addon a
       a.to_s
     end
 
+    # Formats a verse postfix
     def format_postfix p
       p.to_s
     end
