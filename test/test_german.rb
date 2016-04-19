@@ -12,6 +12,11 @@ class TestGerman < Test::Unit::TestCase
     @parser = Parser.new(German)
   end
 
+  def test_size_of_book_arrays
+    assert_equal 66, English::BOOK_NAMES.size
+    assert_equal 66, English::BOOK_ABBREVS.size
+  end
+
   def test_book_re
     book_re = @parser.book_re
     assert_match book_re, '1. Mose'

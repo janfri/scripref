@@ -18,6 +18,15 @@ module Scripref
       2. Johannes, 3. Johannes, Judas, Offenbarung
     END
 
+    # Array of abbreviatioons of book names.
+    BOOK_ABBREVS = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
+      1.Mo, 2.Mo, 3.Mo, 4.Mo, 5.Mo, Jos, Ri, Ruth, 1.Sam, 2.Sam, 1.Kön, 2.Kön, 1.Chr, 2.Chr,
+      Esr, Neh, Est, Hi, Ps, Spr, Pred, Hohel, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos, Obad,
+      Jona, Mich, Nah, Hab, Zef, Hag, Sach, Mal, Mat, Mar, Luk, Joh, Apg, Röm, 1.Ko, 2.Ko,
+      Gal, Eph, Phil, Kol, 1.Thes, 2.Thes, 1.Tim, 2.Tim, Tit, Philem, Heb, Jak, 1.Pet, 2.Pet,
+      1.Joh, 2.Joh, 3.Joh, Jud, Off
+    END
+
     # Separator between chapter and verse.
     CV_SEPARATOR = ','
 

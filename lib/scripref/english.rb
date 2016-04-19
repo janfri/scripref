@@ -21,6 +21,15 @@ module Scripref
       Jude, Revelation
     END
 
+    BOOK_ABBREVS = <<-END.strip.split(/,\s*/)
+      Gen, Ex, Lev, Num, Deut, Josh, Judg, Rth, 1 Sam, 2 Sam, 1 Kgs, 2 Kgs,
+      1 Chron, 2 Chron, Ezr, Neh, Esth, Job, Ps, Prov, Eccles, Song, Isa,
+      Jer, Lam, Ezek, Dan, Hos, Joel, Am, Obad, Jon, Mic, Nah, Hab, Zeph, Hag,
+      Zech, Mal, Matt, Mrk, Luk, John, Acts, Rom, 1 Cor, 2 Cor, Gal, Eph, Phil,
+      Col, 1 Thess, 2 Thess, 1 Tim, 2 Tim, Tit, Philem, Heb, Jas, 1 Pet, 2 Pet,
+      1 Joh, 2 Joh, 3 Joh, Jud, Rev
+    END
+
     # Separator between chapter and verse.
     CV_SEPARATOR = ':'
 
