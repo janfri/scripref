@@ -4,13 +4,14 @@ module Scripref
 
   class Formatter
 
-    attr_accessor :cv_separator, :hyphen_separator, :pass_separator
-
+    attr_accessor :bookformat, :cv_separator, :hyphen_separator, :pass_separator
 
     # @param mods one or more modules to include
-    def initialize *mods
+    # @param bookformat (:short use abbreviations, :long use full names of books)
+    def initialize *mods, bookformat: :long
       @mods = mods
       mods.each {|m| extend m}
+      @bookformat = bookformat
     end
 
     # Formats a reference (array of passages and maybe separators)
@@ -28,7 +29,14 @@ module Scripref
     # Formats a book
     # @param num number of book (starting at 1)
     def format_book num
-      Array(book_names[num - 1]).first
+      case @bookformat
+      when :long
+        Array(book_names[num - 1]).first
+      when :short
+        Array(book_abbrevs[num - 1]).first
+      else
+        fail ArgumentError, "bookformat #{@bookformat} is not supported!"
+      end
     end
 
     # Formats a chapter
