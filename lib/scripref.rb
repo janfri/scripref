@@ -1,5 +1,6 @@
 # - encoding: utf-8 -
 require 'delegate'
+require 'scripref/bookname'
 require 'scripref/parser'
 require 'scripref/passage'
 require 'scripref/processor'
