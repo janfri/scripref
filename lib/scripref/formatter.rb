@@ -8,7 +8,7 @@ module Scripref
 
     # @param mods one or more modules to include
     # @param bookformat (:short use abbreviations, :long use full names of books)
-    def initialize *mods, bookformat: :long
+    def initialize *mods, bookformat: :name
       @mods = mods
       mods.each {|m| extend m}
       @bookformat = bookformat
@@ -29,14 +29,7 @@ module Scripref
     # Formats a book
     # @param num number of book (starting at 1)
     def format_book num
-      case @bookformat
-      when :long
-        Array(book_names[num - 1]).first
-      when :short
-        Array(book_abbrevs[num - 1]).first
-      else
-        fail ArgumentError, "bookformat #{@bookformat} is not supported!"
-      end
+      book_names[num - 1].send @bookformat
     end
 
     # Formats a chapter
