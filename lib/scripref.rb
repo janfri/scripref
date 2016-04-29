@@ -1,16 +1,17 @@
 # - encoding: utf-8 -
 require 'delegate'
-require 'scripref/bookname'
-require 'scripref/parser'
-require 'scripref/passage'
-require 'scripref/processor'
-require 'scripref/formatter'
-require 'scripref/english'
-require 'scripref/german'
 
 module Scripref
 
   VERSION = '0.10.0'
+
+  autoload :Bookname, 'scripref/bookname'
+  autoload :English, 'scripref/english'
+  autoload :Formatter, 'scripref/formatter'
+  autoload :German, 'scripref/german'
+  autoload :Parser, 'scripref/parser'
+  autoload :Passage, 'scripref/passage'
+  autoload :Processor, 'scripref/processor'
 
   class Token < DelegateClass(String)
     def initialize *args
