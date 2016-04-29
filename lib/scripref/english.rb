@@ -1,4 +1,5 @@
 # - encoding: utf-8 -
+require 'scripref/bookname'
 require 'scripref/const_reader'
 
 module Scripref
@@ -6,8 +7,7 @@ module Scripref
   # Mixin for parsing references in English.
   module English
 
-    # Array of book names.
-    BOOK_NAMES = <<-END.strip.split(/,\s*/)
+    book_names = <<-END.strip.split(/,\s*/)
       Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges,
       Ruth, 1 Samuel, 2 Samuel, 1 Kings, 2 Kings, 1 Chronicles,
       2 Chronicles, Ezra, Nehemiah, Esther, Job, Psalms, Proverbs,
@@ -20,6 +20,18 @@ module Scripref
       Philemon, Hebrews, James, 1 Peter, 2 Peter, 1 John, 2 John, 3 John,
       Jude, Revelation
     END
+
+    book_abbrevs = <<-END.strip.split(/,\s*/)
+      Gen, Ex, Lev, Num, Deut, Josh, Judg, Rth, 1 Sam, 2 Sam, 1 Kgs, 2 Kgs,
+      1 Chron, 2 Chron, Ezr, Neh, Esth, Job, Ps, Prov, Eccles, Song, Isa,
+      Jer, Lam, Ezek, Dan, Hos, Joel, Am, Obad, Jon, Mic, Nah, Hab, Zeph, Hag,
+      Zech, Mal, Matt, Mrk, Luk, John, Acts, Rom, 1 Cor, 2 Cor, Gal, Eph, Phil,
+      Col, 1 Thess, 2 Thess, 1 Tim, 2 Tim, Tit, Philem, Heb, Jas, 1 Pet, 2 Pet,
+      1 Joh, 2 Joh, 3 Joh, Jud, Rev
+    END
+
+    # Array of book names.
+    BOOK_NAMES = book_names.zip(book_abbrevs).map {|name, abbrev| Bookname.new(name, abbrev)}
 
     # Separator between chapter and verse.
     CV_SEPARATOR = ':'

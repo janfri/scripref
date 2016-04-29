@@ -1,4 +1,5 @@
 # - encoding: utf-8 -
+require 'scripref/bookname'
 require 'scripref/const_reader'
 
 module Scripref
@@ -6,8 +7,7 @@ module Scripref
   # Mixin for parsing references in German.
   module German
 
-    # Array of book names.
-    BOOK_NAMES = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
+    book_names = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
       1. Mose, 2. Mose, 3. Mose, 4. Mose, 5. Mose, Josua, Richter, Ruth, 1. Samuel, 2. Samuel,
       1. Könige, 2. Könige, 1. Chronika, 2. Chronika, Esra, Nehemia, Esther, Hiob, Psalm|Psalmen,
       Sprüche, Prediger, Hohelied, Jesaja, Jeremia, Klagelieder, Hesekiel, Daniel, Hosea, Joel,
@@ -17,6 +17,17 @@ module Scripref
       2. Timotheus, Titus, Philemon, Hebräer, Jakobus, 1. Petrus, 2. Petrus, 1. Johannes,
       2. Johannes, 3. Johannes, Judas, Offenbarung
     END
+
+    book_abbrevs = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
+      1.Mo, 2.Mo, 3.Mo, 4.Mo, 5.Mo, Jos, Ri, Ruth, 1.Sam, 2.Sam, 1.Kön, 2.Kön, 1.Chr, 2.Chr,
+      Esr, Neh, Est, Hi, Ps, Spr, Pred, Hohel, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos, Obad,
+      Jona, Mich, Nah, Hab, Zef, Hag, Sach, Mal, Mat, Mar, Luk, Joh, Apg, Röm, 1.Ko, 2.Ko,
+      Gal, Eph, Phil, Kol, 1.Thes, 2.Thes, 1.Tim, 2.Tim, Tit, Philem, Heb, Jak, 1.Pet, 2.Pet,
+      1.Joh, 2.Joh, 3.Joh, Jud, Off
+    END
+
+    # Array of book names.
+    BOOK_NAMES = book_names.zip(book_abbrevs).map {|name, abbrev| Bookname.new(name, abbrev)}
 
     # Separator between chapter and verse.
     CV_SEPARATOR = ','

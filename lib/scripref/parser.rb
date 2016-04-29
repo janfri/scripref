@@ -256,9 +256,11 @@ module Scripref
     # Regular expression to match a book.
     def book_re
       return @book_re if @book_re
-      books_res_as_strings = book_names.flatten.map do |bn|
-        (bn.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.')) << '\b\s*'
-      end
+      books_res_as_strings = book_names.map do |bn|
+        bn.names.map do |n|
+          (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.')) << '\b\s*'
+        end
+      end.flatten
       @book_re = Regexp.compile(books_res_as_strings.map {|s| '(^' << s << ')' }.join('|'), nil)
     end
 
@@ -271,7 +273,7 @@ module Scripref
       if name = special_abbrev_mapping[s]
         return name
       end
-      @books_str ||= ('#' << book_names.flatten.join('#') << '#')
+      @books_str ||= ('#' << book_names.map(&:names).flatten.join('#') << '#')
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
@@ -285,9 +287,9 @@ module Scripref
     def book2num str
       unless @book2num
         @book2num = {}
-        book_names.each_with_index do |bns, i|
-          Array(bns).each do |bn|
-            @book2num[bn] = i+1
+        book_names.each_with_index do |bn, i|
+          bn.names.each do |n|
+            @book2num[n] = i+1
           end
         end
       end

@@ -256,6 +256,23 @@ class TestFormatter < Test::Unit::TestCase
     assert_formated_text_for_ast text, ast
   end
 
+  ######################################################################
+  # Formatting of books
+  ######################################################################
+
+  def test_formatting_with_book_abbrevs
+    @german_formatter.bookformat = :abbrev
+    text = 'Mat 3,4; Mar; Joh 3,16'
+    t1, t2, t3 = text.split(semi)
+    assert_formated_text_for_ast text, [pass(t1, 40, 3, 4, 40, 3, 4), semi, pass(t2, 41, nil, nil, 41, nil, nil), semi, pass(t3, 43, 3, 16, 43, 3, 16)]
+  end
+
+  def test_exception_for_unhandled_bookformat
+    assert_raise NoMethodError do
+      @german_formatter.bookformat = :unknown
+      @german_formatter.format [pass(1,2,3,4,5,6,7)]
+    end
+  end
   private
 
   def assert_formated_text_for_ast text, ast
