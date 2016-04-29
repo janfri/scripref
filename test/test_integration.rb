@@ -1,20 +1,14 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref'
-require 'scripref/english'
-require 'scripref/formatter'
-require 'scripref/german'
-require 'scripref/parser'
 
 class TestIntegration < Test::Unit::TestCase
 
-  include Test::Helper
+  include Scripref
 
   def setup
-    @parser = Scripref::Parser.new(Scripref::German)
-    @german_formatter = Scripref::Formatter.new(Scripref::German)
-    @english_formatter = Scripref::Formatter.new(Scripref::English)
+    @parser = Parser.new(German)
+    @german_formatter = Formatter.new(German)
+    @english_formatter = Formatter.new(English)
   end
 
   def test_only_book

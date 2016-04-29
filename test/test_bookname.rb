@@ -1,11 +1,12 @@
 # - encoding: utf-8 -
-require 'test/unit'
-require 'scripref/bookname'
+require 'test_helper'
 
 class TestBookname < Test::Unit::TestCase
 
+  include Scripref
+
   def setup
-    @zef = Scripref::Bookname.new(%w(Zefanja Zephanja), %w(Zef Zefan Zeph Zephan))
+    @zef = Bookname.new(%w(Zefanja Zephanja), %w(Zef Zefan Zeph Zephan))
   end
 
   def test_name

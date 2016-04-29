@@ -1,14 +1,16 @@
 # - encoding: utf-8 -
-require 'test/unit'
-require 'scripref'
+require 'test_helper'
 
 class TestProcessor < Test::Unit::TestCase
 
+  include Scripref
+  include Test::Helper
+
   def setup
     @text = 'Some text Mt 1,1 and Mr 2 and so on ...'
-    @mt = [Scripref::Passage.new('Mt 1,1 ', 40, 1, 1, 40, 1, 1)]
-    @mr = [Scripref::Passage.new('Mr 2 ', 41, 2, nil, 41, 2, nil)]
-    @processor = Scripref::Processor.new(@text, Scripref::German)
+    @mt = [pass('Mt 1,1 ', 40, 1, 1, 40, 1, 1)]
+    @mr = [pass('Mr 2 ', 41, 2, nil, 41, 2, nil)]
+    @processor = Processor.new(@text, German)
     @chunks = ['Some text ', @mt, 'and ', @mr, 'and so on ...']
   end
 

@@ -1,20 +1,14 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref'
-require 'scripref/english'
-require 'scripref/formatter'
-require 'scripref/german'
-require 'scripref/parser'
 
 class TestFormatter < Test::Unit::TestCase
 
+  include Scripref
   include Test::Helper
 
   def setup
-    @parser = Scripref::Parser.new(Scripref::German)
-    @german_formatter = Scripref::Formatter.new(Scripref::German)
-    @english_formatter = Scripref::Formatter.new(Scripref::English)
+    @german_formatter = Formatter.new(German)
+    @english_formatter = Formatter.new(English)
   end
 
   def test_only_book
@@ -88,7 +82,6 @@ class TestFormatter < Test::Unit::TestCase
   end
 
   def test_reset_addons
-    @parser.parse 'Ruth 2,5b-7a'
     text = 'Ruth'
     assert_formated_text_for_ast text, [pass(text, 8, nil, nil, 8, nil, nil)]
   end

@@ -1,12 +1,10 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref'
 
 class TestPipelining < Test::Unit::TestCase
 
-  include Test::Helper
   include Scripref
+  include Test::Helper
 
   def test_right_to_left
     text = 'Hebräer 13,8'

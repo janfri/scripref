@@ -1,12 +1,10 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref/english'
 
 class TestEnglish < Test::Unit::TestCase
 
-  include Test::Helper
   include Scripref
+  include Test::Helper
 
   def setup
     @parser = Parser.new(English)

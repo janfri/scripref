@@ -1,12 +1,12 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref'
 
 class TestPassage < Test::Unit::TestCase
 
+  include Scripref
+
   def setup
-    @parser = Scripref::Parser.new(Scripref::German)
+    @parser = Parser.new(German)
   end
 
   def test_to_a
@@ -26,7 +26,7 @@ class TestPassage < Test::Unit::TestCase
 
   def test_comparable_with_sort
     ast = @parser.parse('Joh 8,1-9,11; 8,2-9,12; 8,2-9,11; 8,1-9,12; Joh 8')
-    passages = ast.grep(Scripref::Passage)
+    passages = ast.grep(Passage)
     expect = ['Joh 8',
               'Joh 8,1-9,11',
               '8,1-9,12',
@@ -35,8 +35,8 @@ class TestPassage < Test::Unit::TestCase
     assert_equal expect, passages.sort.map(&:text)
 
     ast = @parser.parse('Mar 1; 1,1; 1,1f; 1,1ff; 1,2; 1,1-2,2; Mar 1-2; Markus; Markus-Lukas; Mar 1-Luk 2; Mar 1,1-Luk 2,2')
-    passages = ast.grep(Scripref::Passage)
-    formatter = Scripref::Formatter.new(Scripref::German)
+    passages = ast.grep(Passage)
+    formatter = Formatter.new(German)
     expect = ['Markus 1,1',
               'Markus 1,1f',
               'Markus 1,1ff',
@@ -65,12 +65,12 @@ class TestPassage < Test::Unit::TestCase
   end
 
   def test_start
-    p = Scripref::Passage.new('', 1, 2, 3, 4, 5, 6)
+    p = Passage.new('', 1, 2, 3, 4, 5, 6)
     assert_equal [1, 2, 3], p.start
   end
 
   def test_end
-    p = Scripref::Passage.new('', 1, 2, 3, 4, 5, 6)
+    p = Passage.new('', 1, 2, 3, 4, 5, 6)
     assert_equal [4, 5, 6], p.end
   end
 

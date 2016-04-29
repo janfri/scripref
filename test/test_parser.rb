@@ -1,14 +1,13 @@
 # - encoding: utf-8 -
-require 'test/unit'
 require 'test_helper'
-require 'scripref'
 
 class TestParser < Test::Unit::TestCase
 
+  include Scripref
   include Test::Helper
 
   def setup
-    @parser = Scripref::Parser.new(Scripref::German)
+    @parser = Parser.new(German)
   end
 
   def test_only_book
@@ -279,7 +278,7 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 2,x'
     begin
       @parser.parse text
-    rescue Scripref::ParserError
+    rescue ParserError
     end
     assert_equal 'Verse expected!', @parser.error
     formated_error = "Verse expected!\nRuth 2,x\n       ^"
@@ -290,7 +289,7 @@ class TestParser < Test::Unit::TestCase
     text = 'Ruth 2,4; M 3,8'
     begin
       @parser.parse text
-    rescue Scripref::ParserError
+    rescue ParserError
     end
     assert_match /^Abbreviation M is ambiguous/, @parser.error
     formated_error = "Abbreviation M is ambiguous it matches Micha, Maleachi, Matthäus, Markus!\nRuth 2,4; M 3,8\n          ^"
@@ -308,6 +307,39 @@ class TestParser < Test::Unit::TestCase
     # so the parser should be able to support such behaviour.
     text = 'Phil 4,4'
     assert_parsed_ast_for_text [pass(text, 50, 4, 4, 50, 4, 4)], text
+  end
+
+  private
+
+  def assert_equal_passage expected, actual
+    assert_equal expected.text, actual.text, 'Parsed text'
+    assert_equal expected.b1, actual.b1, 'First book'
+    assert_equal expected.c1, actual.c1, 'First chapter'
+    assert_equal expected.v1, actual.v1, 'First verse'
+    assert_equal expected.b2, actual.b2, 'Second book'
+    assert_equal expected.c2, actual.c2, 'Second chapter'
+    assert_equal expected.v2, actual.v2, 'Second verse'
+    assert_equal expected.a1, actual.a1, 'First addon'
+    assert_equal expected.a2, actual.a2, 'Second addon'
+  end
+
+  def assert_parsed_ast_for_text expected_ast, text
+    res = @parser.parse(text)
+    assert_equal expected_ast.size, res.size, 'Array size of AST'
+    expected_ast.zip(res) do |expected_elem, actual_elem|
+      if expected_elem.kind_of?(Passage)
+        assert_equal_passage expected_elem, actual_elem
+      else
+        assert_equal expected_elem, actual_elem
+      end
+    end
+  end
+
+  def assert_parser_error msg
+    assert_raise ParserError do
+      yield
+    end
+    assert_equal msg, @parser.error
   end
 
 end
