@@ -1,7 +1,6 @@
 language: ruby
 before_install:
   - gem install rim regtest test-unit
-  - ruby -r rim -e 'puts Rim::VERSION'
 rvm:
   - 2.0.0
   - 2.1.0
