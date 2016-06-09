@@ -12,6 +12,8 @@ Rim.setup do
   homepage 'https://github.com/janfri/scripref'
   version Scripref::VERSION
   summary 'Library for parsing scripture references in real texts.'
-  irb_requires %w(scripref scripref/include scripref/pipelining)
+  if feature_loaded? 'rim/irb'
+    irb_requires %w(scripref scripref/include scripref/pipelining)
+  end
   test_warning false
 end
