@@ -25,13 +25,6 @@ module Scripref
       NUMBER_RE
     end
 
-    # Hash with special abbreviations
-    # for example {'Phil' => 'Philipper'}
-    # usual overwritten in Mixins
-    def special_abbrev_mapping
-      @special_abbrev_mapping ||= {}
-    end
-
     # Parsing a string of a scripture reference
     # @param str string to parse
     def parse str
@@ -265,14 +258,12 @@ module Scripref
     end
 
     def abbrev2num str
-      book2num(abbrev2book(str))
+      s = str.strip
+      str2book_num(s) or str2book_num(abbrev2book(s))
     end
 
     def abbrev2book str
       s = str.strip
-      if name = special_abbrev_mapping[s]
-        return name
-      end
       @books_str ||= ('#' << book_names.map(&:names).flatten.join('#') << '#')
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
@@ -284,16 +275,19 @@ module Scripref
       names.first
     end
 
-    def book2num str
-      unless @book2num
-        @book2num = {}
+    def str2book_num str
+      unless @str2book_num
+        @str2book_num = {}
         book_names.each_with_index do |bn, i|
           bn.names.each do |n|
-            @book2num[n] = i+1
+            @str2book_num[n] = i+1
+          end
+          bn.abbrevs.each do |n|
+            @str2book_num[n] = i+1
           end
         end
       end
-      @book2num[str]
+      @str2book_num[str]
     end
 
     def inspect
