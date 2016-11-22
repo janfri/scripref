@@ -275,7 +275,7 @@ module Scripref
       names.first
     end
 
-    def str2book_num str
+    def init_str2book_num
       unless @str2book_num
         @str2book_num = {}
         book_names.each_with_index do |bn, i|
@@ -287,6 +287,10 @@ module Scripref
           end
         end
       end
+    end
+
+    def str2book_num str
+      init_str2book_num
       @str2book_num[str]
     end
 
