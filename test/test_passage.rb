@@ -75,6 +75,18 @@ class TestPassage < Test::Unit::TestCase
     assert_equal [4, 5, 6], p.end
   end
 
+  def test_sum
+    p1 = pass('', 1, 2, 3, 4, 5, 6)
+    p2 = pass('', 1, 1, 1, 1, 1, 1)
+    assert_equal [2, 3, 4, 5, 6, 7], p1 + p2
+  end
+
+  def test_differenz
+    p1 = pass('', 1, 2, 3, 4, 5, 6)
+    p2 = pass('', 1, 1, 1, 1, 1, 1)
+    assert_equal [0, 1, 2, 3, 4, 5], p2 - p1
+  end
+
   protected
 
   def assert_overlap a, b

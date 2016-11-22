@@ -9,6 +9,14 @@ module Scripref
       super text, b1, c1, v1, b2, c2, v2, a1, a2
     end
 
+    def + other
+      to_a.zip(other.to_a).map {|a, b| a + b}
+    end
+
+    def - other
+      to_a.zip(other.to_a).map {|a, b| b - a}
+    end
+
     def to_a
       [b1, c1, v1, b2, c2, v2]
     end
