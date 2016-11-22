@@ -4,6 +4,7 @@ require 'test_helper'
 class TestPassage < Test::Unit::TestCase
 
   include Scripref
+  include Test::Helper
 
   def setup
     @parser = Parser.new(German)
@@ -65,12 +66,12 @@ class TestPassage < Test::Unit::TestCase
   end
 
   def test_start
-    p = Passage.new('', 1, 2, 3, 4, 5, 6)
+    p = pass('', 1, 2, 3, 4, 5, 6)
     assert_equal [1, 2, 3], p.start
   end
 
   def test_end
-    p = Passage.new('', 1, 2, 3, 4, 5, 6)
+    p = pass('', 1, 2, 3, 4, 5, 6)
     assert_equal [4, 5, 6], p.end
   end
 
