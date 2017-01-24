@@ -20,7 +20,7 @@ class TestGerman < Test::Unit::TestCase
     assert_match book_re, '2. Mose'
     assert_match book_re, 'Matthäus'
     assert_match book_re, '2. Timotheus'
-    assert_not_match book_re, '2. 2. Timotheus'
+    assert_not_match book_re, 'x2. Timotheus'
     assert_match book_re, 'Offenbarung'
     assert_not_match book_re, 'something'
     assert_match book_re, '1. Mo'

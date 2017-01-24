@@ -251,10 +251,10 @@ module Scripref
       return @book_re if @book_re
       books_res_as_strings = book_names.map do |bn|
         bn.names.map do |n|
-          (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.')) << '\b\s*'
+          (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
         end
       end.flatten
-      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(^' << s << ')' }.join('|'), nil)
+      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\s*)' }.join('|'), nil)
     end
 
     def abbrev2num str
