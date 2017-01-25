@@ -38,11 +38,11 @@ module Scripref
     def each
       if block_given?
         scanner = StringScanner.new(text)
-        while scanner.scan(/(.*?)(#{Regexp.new(reference_re.to_s)})/)
-          yield scanner[1]
+        while scanner.scan(/(.*?)(#{reference_re.source})/)
+          yield scanner[1] unless scanner[1].empty?
           yield @parser.parse(scanner[2])
         end
-        yield scanner.rest if scanner.rest
+        yield scanner.rest if scanner.rest?
         self
       else
         enum_for :each
