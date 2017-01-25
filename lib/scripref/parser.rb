@@ -1,4 +1,5 @@
 # - encoding: utf-8 -
+require 'scripref/basic_methods'
 require 'strscan'
 
 module Scripref
@@ -6,6 +7,8 @@ module Scripref
   class Parser < StringScanner
 
     attr_reader :error
+
+    include BasicMethods
 
     NUMBER_RE = /\d+\s*/o
 
@@ -244,17 +247,6 @@ module Scripref
       @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1, a2: @a2)
       @text = ''
       @a1 = @a2 = nil
-    end
-
-    # Regular expression to match a book.
-    def book_re
-      return @book_re if @book_re
-      books_res_as_strings = book_names.map do |bn|
-        bn.names.map do |n|
-          (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
-        end
-      end.flatten
-      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\s*)' }.join('|'), nil)
     end
 
     def abbrev2num str
