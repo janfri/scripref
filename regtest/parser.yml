@@ -99,7 +99,7 @@ sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
   EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
-           ^
+          ^
 ---
 sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
@@ -179,7 +179,7 @@ sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
   EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
-                  ^
+                 ^
 ---
 sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
@@ -203,7 +203,7 @@ sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
   EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
-                        ^
+                       ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
 exception: |-
@@ -293,7 +293,7 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
 exception: |-
   EOS or verse separator or passage separator expected!
   Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
-                              ^
+                             ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
 result:
@@ -457,7 +457,7 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
 exception: |-
   EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
-                                              ^
+                                             ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
 exception: |-
@@ -469,7 +469,7 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
 exception: |-
   EOS or passage separator or verse separator or hyphen expected!
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
-                                                  ^
+                                                 ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
 exception: |-

@@ -54,7 +54,7 @@ module Scripref
     VERSE_SEPARATOR = '.'
 
     # Regular expression to match addons for a verse.
-    VERSE_ADDON_RE = /[ab]\s*/o
+    VERSE_ADDON_RE = /[ab]\b\s*/o
 
     # Postfix for one following verse
     POSTFIX_ONE_FOLLOWING_VERSE = 'f'

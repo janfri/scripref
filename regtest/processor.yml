@@ -2,17 +2,58 @@
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 11
+    a1: :a
     a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
     c1: 4
@@ -22,7 +63,32 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: " 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a"
 result:
@@ -37,7 +103,32 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
@@ -52,7 +143,32 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
@@ -77,12 +193,37 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-
   Verse expected!
-  Ruth 2,-11.15
+  Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
          ^
 ---
 sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
@@ -108,47 +249,81 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Chapter or verse expected!
+  Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+            ^
 ---
 sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-1115a
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 1115
+    a1: :a
+    a2: :a
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
     a2: 
-- 'a-1115a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
     c1: 4
@@ -158,46 +333,65 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Verse expected!
+  Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+               ^
 ---
 sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
+    v2: 11
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: '15'
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
     a1: 
     a2: 
-- 'a-11.15a3,7b.9-12b; '
+- 'a3,7b.9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -208,96 +402,90 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; ,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Book or chapter expected!
+  Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
+                    ^
 ---
 sample: Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 37b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
+  Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
+                      ^
 ---
 sample: Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Verse expected!
+  Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
+                      ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
+    v2: 11
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: '3,7'
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
     a1: 
     a2: 
-- 'a-11.15a; 3,7b9-12b; '
+- 'b9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -308,47 +496,94 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Verse expected!
+  Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
+                         ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 11
+    a1: :a
     a2: 
-- 'a-11.15a; 3,7b.912b; '
-- - !ruby/struct:Scripref::Passage
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 912b
+    b1: 8
+    c1: 3
+    v1: 912
+    b2: 8
+    c2: 3
+    v2: 912
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
     c1: 4
@@ -358,189 +593,340 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-21a"
+exception: |-
+  Chapter or verse expected!
+  Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
+                           ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
+    v2: 11
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
     a1: 
     a2: 
-- a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
+- bMarkus 4; 5,3a.18b-21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
+    v2: 11
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: ";  "
+  - !ruby/struct:Scripref::Passage
+    text: '4'
+    b1: 8
+    c1: 4
+    v1: 
+    b2: 8
+    c2: 4
+    v2: 
     a1: 
     a2: 
-- a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 8
+    c1: 5
+    v1: 3
+    b2: 8
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 8
+    c1: 5
+    v1: 18
+    b2: 8
+    c2: 5
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
+exception: |-
+  EOS or book expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
+                                         ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3a.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 11
+    a1: :a
     a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 45,3
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: Markus 45,3a
     b1: 41
     c1: 45
     v1: 3
     b2: 41
     c2: 45
     v2: 3
-    a1: 
+    a1: :a
     a2: 
-- a.18b-21a
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 18b-21a
+    b1: 41
+    c1: 45
+    v1: 18
+    b2: 41
+    c2: 45
+    v2: 21
+    a1: :b
+    a2: :a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; ,3a.18b-21a"
+exception: |-
+  Book or chapter expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
+                                          ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 53a.18b-21a"
+exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
+                                            ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,.18b-21a"
+exception: |-
+  Verse expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
+                                            ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 11
+    a1: :a
     a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
     c1: 4
@@ -550,47 +936,82 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a18b-21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: '5,3'
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: 
+    a2: 
+- a18b-21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.-21a"
+exception: |-
+  Verse expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
+                                               ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
 result:
 - - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
+    text: Ruth 2,1a-11
     b1: 8
     c1: 2
     v1: 1
     b2: 8
     c2: 2
-    v2: 1
-    a1: 
+    v2: 11
+    a1: :a
     a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 15a
+    b1: 8
+    c1: 2
+    v1: 15
+    b2: 8
+    c2: 2
+    v2: 15
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 3,7b
+    b1: 8
+    c1: 3
+    v1: 7
+    b2: 8
+    c2: 3
+    v2: 7
+    a1: :b
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: 9-12b
+    b1: 8
+    c1: 3
+    v1: 9
+    b2: 8
+    c2: 3
+    v2: 12
+    a1: 
+    a2: :b
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
     c1: 4
@@ -600,29 +1021,36 @@ result:
     v2: 
     a1: 
     a2: 
-- "; 5,3a.18b21a"
+  - !ruby/marshalable:Scripref::PassSep
+    :__v2__: []
+    []: "; "
+  - !ruby/struct:Scripref::Passage
+    text: 5,3a
+    b1: 41
+    c1: 5
+    v1: 3
+    b2: 41
+    c2: 5
+    v2: 3
+    a1: :a
+    a2: 
+  - !ruby/marshalable:Scripref::VerseSep
+    :__v2__: []
+    []: "."
+  - !ruby/struct:Scripref::Passage
+    text: '18'
+    b1: 41
+    c1: 5
+    v1: 18
+    b2: 41
+    c2: 5
+    v2: 18
+    a1: 
+    a2: 
+- b21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 2,1
-    b1: 8
-    c1: 2
-    v1: 1
-    b2: 8
-    c2: 2
-    v2: 1
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-- "; 5,3a.18b-"
+exception: |-
+  Chapter or verse expected!
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
+                                                   ^

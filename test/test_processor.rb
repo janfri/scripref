@@ -75,4 +75,11 @@ class TestProcessor < Test::Unit::TestCase
     assert_equal ast, processor.each.to_a
   end
 
+  def test_verse_addon
+    text = 'Mt 1,1a'
+    processor = Processor.new(text, German)
+    ast = [[pass('Mt 1,1a', 40, 1, 1, 40, 1, 1, a1: 'a')]]
+    assert_equal ast, processor.each.to_a
+  end
+
 end
