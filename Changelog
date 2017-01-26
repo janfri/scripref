@@ -1,3 +1,9 @@
+0.11.0
+Add class Bookname and methods Passage#+ and Passage#-.
+Make processor working for complex contexts.
+Use autoload.
+Lots of refactorings and internal improvements.
+
 0.10.0
 Add methods Passage#make_comparable, #make_comparable!, #comparable?,
 #overlap?, #start, #end and #<=>.

@@ -1,5 +1,6 @@
-personal_ws-1.1 en 18 
+personal_ws-1.1 en 20 
 Scripref
+autoload
 Psalmen
 struct
 mixins
@@ -11,6 +12,7 @@ refactoring
 VerseSep
 regtest
 Philipper
+Bookname
 postfix
 postfixes
 refactorings
