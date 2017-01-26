@@ -66,4 +66,13 @@ class TestProcessor < Test::Unit::TestCase
     assert_equal [], processor.each.to_a
   end
 
+  def test_numerical_context
+    text = '1. Mt 1,1'
+    processor = Processor.new(text, German)
+    ast = [[pass('Mt 1,1 ', 40, 1, 1, 40, 1, 1)]]
+    assert_equal ast, processor.each_ref.to_a
+    ast = ['1. ', [pass('Mt 1,1 ', 40, 1, 1, 40, 1, 1)]]
+    assert_equal ast, processor.each.to_a
+  end
+
 end

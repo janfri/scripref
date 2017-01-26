@@ -1,5 +1,6 @@
 # - encoding: utf-8 -
 require 'strscan'
+require 'scripref/basic_methods'
 require 'scripref/parser'
 
 module Scripref
@@ -7,6 +8,7 @@ module Scripref
   class Processor
 
     include Enumerable
+    include BasicMethods
 
     attr_accessor :text
 
@@ -51,6 +53,22 @@ module Scripref
 
     def inspect
       "#<#{self.class} #{@mods.inspect}>"
+    end
+
+    private
+
+    # Regular expression to parse a reference
+    def reference_re
+      return @reference_re if @reference_re
+      re_parts = [
+        '(', book_re, ')', chapter_re,
+        '((', book_re, ')|',
+        [chapter_re, cv_sep_re, verse_re, verse_sep_re, hyphen_re,
+        pass_sep_re].map(&:source).join('|'),
+        [postfix_one_following_verse_re, postfix_more_following_verses_re, verse_addon_re].map {|e| verse_re.source << e.source}.join('|'),
+        ')*'
+      ].map {|e| Regexp === e ? e.source : e}
+      @reference_re = Regexp.compile(re_parts.join, nil)
     end
 
   end

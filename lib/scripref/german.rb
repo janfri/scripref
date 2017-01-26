@@ -68,11 +68,6 @@ module Scripref
     # Regular expression to match postfix for more following verses
     POSTFIX_MORE_FOLLOWING_VERSES_RE = /ff\b\s*/o
 
-    pass = '([1-5]\.?\s*)?[A-Z][a-zäöü]+\.?\s*(\d+\s*[,.\-]\s*)*\d+\s*'
-
-    # Regular expression to parse a reference
-    REFERENCE_RE = /#{pass}(;\s*#{pass})*/o
-
     # Check if book has only one chapter
     # @param book book as number
     def book_has_only_one_chapter? book
