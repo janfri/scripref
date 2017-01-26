@@ -52,4 +52,18 @@ class TestProcessor < Test::Unit::TestCase
     assert_equal ast, processor.each.to_a
   end
 
+  def test_text_without_reference
+    text = 'some text'
+    processor = Processor.new(text, German)
+    assert_equal [], processor.each_ref.to_a
+    assert_equal [text], processor.each.to_a
+  end
+
+  def test_empty_text
+    text = ''
+    processor = Processor.new(text, German)
+    assert_equal [], processor.each_ref.to_a
+    assert_equal [], processor.each.to_a
+  end
+
 end
