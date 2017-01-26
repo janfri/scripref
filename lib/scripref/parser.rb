@@ -10,22 +10,10 @@ module Scripref
 
     include BasicMethods
 
-    NUMBER_RE = /\d+\s*/o
-
     # @param mods one or more modules to include
     def initialize *mods
       @mods = mods
       mods.each {|m| extend m}
-    end
-
-    # Regular expression to match a chapter
-    def chapter_re
-      NUMBER_RE
-    end
-
-    # Regular expression to match a verse
-    def verse_re
-      NUMBER_RE
     end
 
     # Parsing a string of a scripture reference
