@@ -171,54 +171,10 @@ result:
     a2: :a
 ---
 sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
-result:
-- - !ruby/struct:Scripref::Passage
-    text: Ruth 21
-    b1: 8
-    c1: 21
-    v1: 
-    b2: 8
-    c2: 21
-    v2: 
-    a1: 
-    a2: 
-- 'a-11.15a; 3,7b.9-12b; '
-- - !ruby/struct:Scripref::Passage
-    text: Markus 4
-    b1: 41
-    c1: 4
-    v1: 
-    b2: 41
-    c2: 4
-    v2: 
-    a1: 
-    a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
-  - !ruby/struct:Scripref::Passage
-    text: 5,3a
-    b1: 41
-    c1: 5
-    v1: 3
-    b2: 41
-    c2: 5
-    v2: 3
-    a1: :a
-    a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
-  - !ruby/struct:Scripref::Passage
-    text: 18b-21a
-    b1: 41
-    c1: 5
-    v1: 18
-    b2: 41
-    c2: 5
-    v2: 21
-    a1: :b
-    a2: :a
+exception: |-
+  EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
+  Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+         ^
 ---
 sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
 exception: |-

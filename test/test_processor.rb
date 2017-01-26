@@ -75,14 +75,11 @@ class TestProcessor < Test::Unit::TestCase
     assert_equal ast, processor.each.to_a
   end
 
-  def test_verse_addon
+  def test_verse_addon_or_postfix
     text = 'Mt 1,1a'
     processor = Processor.new(text, German)
     ast = [[pass(text, 40, 1, 1, 40, 1, 1, a1: 'a')]]
     assert_equal ast, processor.each.to_a
-  end
-
-  def test_verse_postfixes
     text = 'Mt 1,1f'
     processor = Processor.new(text, German)
     ast = [[pass(text, 40, 1, 1, 40, 1, :f)]]
@@ -90,6 +87,28 @@ class TestProcessor < Test::Unit::TestCase
     text = 'Mt 1,1ff'
     processor = Processor.new(text, German)
     ast = [[pass(text, 40, 1, 1, 40, 1, :ff)]]
+    assert_equal ast, processor.each.to_a
+  end
+
+  def test_verse_addon_or_postfix_for_books_with_only_one_chapter
+    text = '2. Joh 5b'
+    processor = Processor.new(text, German)
+    ast = [[pass(text, 63, 1, 5, 63, 1, 5, a1: 'b')]]
+    assert_equal ast, processor.each.to_a
+    text = '2. Joh 5f'
+    processor = Processor.new(text, German)
+    ast = [[pass(text, 63, 1, 5, 63, 1, :f)]]
+    assert_equal ast, processor.each.to_a
+    text = '2. Joh 5ff'
+    processor = Processor.new(text, German)
+    ast = [[pass(text, 63, 1, 5, 63, 1, :ff)]]
+    assert_equal ast, processor.each.to_a
+  end
+
+  def test_verse_sep
+    text = '2. Joh 5.8'
+    processor = Processor.new(text, German)
+    ast = [[pass(text, 63, 1, 5, 63, 1, 5), '.', pass(text, 63, 1, 8, 63, 1, 8)]]
     assert_equal ast, processor.each.to_a
   end
 
