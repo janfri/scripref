@@ -15,6 +15,20 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
   end
 
+  def test_book_abbrev
+    text = 'Ru'
+    assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
+    text = 'Offb'
+    assert_parsed_ast_for_text [pass(text, 66, nil, nil, 66, nil, nil)], text
+  end
+
+  def test_book_abbrev_with_period
+    text = 'Ru.'
+    assert_parsed_ast_for_text [pass(text, 8, nil, nil, 8, nil, nil)], text
+    text = 'Offb.'
+    assert_parsed_ast_for_text [pass(text, 66, nil, nil, 66, nil, nil)], text
+  end
+
   def test_ambiguous_book
     msg = 'Abbreviation Jo is ambiguous it matches Josua, Joel, Jona, Johannes, Jakobus!'
     assert_parser_error msg do

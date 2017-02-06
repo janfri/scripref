@@ -24,7 +24,7 @@ module Scripref
           (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
         end
       end.flatten
-      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\s*)' }.join('|'), nil)
+      @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\.?\s*)' }.join('|'), nil)
     end
 
   end

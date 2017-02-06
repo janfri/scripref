@@ -244,6 +244,7 @@ module Scripref
 
     def abbrev2book str
       s = str.strip
+      s.sub! /\.$/, ''
       @books_str ||= ('#' << book_names.map(&:names).flatten.join('#') << '#')
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
