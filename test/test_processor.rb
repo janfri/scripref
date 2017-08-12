@@ -115,12 +115,4 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
     assert_equal ast, processor.each.to_a
   end
 
-  def test_malformed_passage
-    text = 'In Mt 1,,1 usw.'
-    processor = Processor.new(text, German)
-    assert_equal [], processor.each_ref.to_a
-    ast = ['In ', 'Mt 1,,1 ', 'usw.']
-    assert_equal ast, processor.each.to_a
-  end
-
 end

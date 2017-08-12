@@ -27,10 +27,7 @@ module Scripref
       if block_given?
         scanner = StringScanner.new(text)
         while scanner.scan_until(reference_re)
-          begin
-            yield @parser.parse(scanner.matched)
-          rescue ParserError
-          end
+          yield @parser.parse(scanner.matched)
         end
         self
       else
@@ -45,11 +42,7 @@ module Scripref
         scanner = StringScanner.new(text)
         while scanner.scan(/(.*?)(#{reference_re.source})/)
           yield scanner[1] unless scanner[1].empty?
-          begin
-            yield @parser.parse(scanner[2])
-          rescue ParserError
-            yield scanner[2]
-          end
+          yield @parser.parse(scanner[2])
         end
         yield scanner.rest if scanner.rest?
         self
