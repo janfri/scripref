@@ -11,9 +11,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -24,9 +23,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -37,9 +35,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -50,9 +47,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -63,9 +59,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -76,9 +71,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -103,9 +97,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -116,9 +109,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -143,9 +135,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -156,9 +147,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -205,9 +195,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -218,9 +207,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -250,9 +238,8 @@ result:
     v2: 1115
     a1: :a
     a2: :a
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -263,9 +250,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -276,9 +262,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -289,9 +274,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -302,9 +286,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -334,9 +317,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: '15'
     b1: 8
@@ -358,9 +340,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -371,9 +352,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -415,9 +395,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -428,9 +407,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: '3,7'
     b1: 8
@@ -452,9 +430,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -465,9 +442,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -497,9 +473,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -510,9 +485,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -523,9 +497,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 912b
     b1: 8
@@ -536,9 +509,8 @@ result:
     v2: 912
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -549,9 +521,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -562,9 +533,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -594,9 +564,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -607,9 +576,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -620,9 +588,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12
     b1: 8
@@ -647,9 +614,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -660,9 +626,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -673,9 +638,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -686,9 +650,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: ";  "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: ";  "
   - !ruby/struct:Scripref::Passage
     text: '4'
     b1: 8
@@ -699,9 +662,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 8
@@ -712,9 +674,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 8
@@ -744,9 +705,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -757,9 +717,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -770,9 +729,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -783,9 +741,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 45,3a
     b1: 41
@@ -796,9 +753,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
     b1: 41
@@ -840,9 +796,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -853,9 +808,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -866,9 +820,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -879,9 +832,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -892,9 +844,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: '5,3'
     b1: 41
@@ -925,9 +876,8 @@ result:
     v2: 11
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
     b1: 8
@@ -938,9 +888,8 @@ result:
     v2: 15
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
     b1: 8
@@ -951,9 +900,8 @@ result:
     v2: 7
     a1: :b
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
     b1: 8
@@ -964,9 +912,8 @@ result:
     v2: 12
     a1: 
     a2: :b
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
     b1: 41
@@ -977,9 +924,8 @@ result:
     v2: 
     a1: 
     a2: 
-  - !ruby/marshalable:Scripref::PassSep
-    :__v2__: []
-    []: "; "
+  - !ruby/object:Scripref::PassSep
+    delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3a
     b1: 41
@@ -990,9 +936,8 @@ result:
     v2: 3
     a1: :a
     a2: 
-  - !ruby/marshalable:Scripref::VerseSep
-    :__v2__: []
-    []: "."
+  - !ruby/object:Scripref::VerseSep
+    delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: '18'
     b1: 41
