@@ -321,6 +321,9 @@ class TestParser < Test::Unit::TestCase
     # so the parser should be able to support such behaviour.
     text = 'Phil 4,4'
     assert_parsed_ast_for_text [pass(text, 50, 4, 4, 50, 4, 4)], text
+    # It must also work with a dot
+    text = 'Phil. 4,4'
+    assert_parsed_ast_for_text [pass(text, 50, 4, 4, 50, 4, 4)], text
   end
 
   private

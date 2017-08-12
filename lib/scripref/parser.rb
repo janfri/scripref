@@ -239,6 +239,7 @@ module Scripref
 
     def abbrev2num str
       s = str.strip
+      s.sub! /\.$/, ''
       str2book_num(s) or str2book_num(abbrev2book(s))
     end
 
