@@ -250,7 +250,8 @@ module Scripref
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
-      if names.size != 1
+      uniq_numbers = names.map {|n| str2book_num(n)}.uniq
+      if uniq_numbers.size != 1
         unscan
         give_up format("Abbreviation %s is ambiguous it matches %s!", s, names.join(', '))
       end

@@ -315,7 +315,7 @@ class TestParser < Test::Unit::TestCase
   ######################################################################
 
   def test_special_book_abbrev
-    # Abbrev "Phil" would technical match "Philipper" and "Philemon"
+    # Abbreviation "Phil" would technical match "Philipper" and "Philemon"
     # and therefore throw a ParserError because it's ambiguous,
     # but in German the abbrev "Phil" is generally used for "Philipper",
     # so the parser should be able to support such behaviour.
@@ -324,6 +324,13 @@ class TestParser < Test::Unit::TestCase
     # It must also work with a dot
     text = 'Phil. 4,4'
     assert_parsed_ast_for_text [pass(text, 50, 4, 4, 50, 4, 4)], text
+  end
+
+  def test_book_abbrev_which_seems_to_be_ambiguous
+    # Abbreviation 'Psm' matches 'Psalm' and 'Psalmen' which is the same
+    # book so it is not an ambiguous error.
+    text = 'Psm 23,6'
+    assert_parsed_ast_for_text [pass(text, 19, 23, 6, 19, 23, 6)], text
   end
 
   private
