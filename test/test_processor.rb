@@ -128,4 +128,17 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
     assert_equal [prefix, ast, postfix], processor.each.to_a
   end
 
+  def test_reference_ends_with_chapter_or_verse
+    text = 'Joh 8.'
+    processor = Processor.new(text, German)
+    ast = [pass('Joh 8', 43, 8, nil, 43, 8, nil)]
+    assert_equal [ast], processor.each_ref.to_a
+    assert_equal [ast, '.'], processor.each.to_a
+    text = 'Joh 8,12.'
+    processor = Processor.new(text, German)
+    ast = [pass('Joh 8,12', 43, 8, 12, 43, 8, 12)]
+    assert_equal [ast], processor.each_ref.to_a
+    assert_equal [ast, '.'], processor.each.to_a
+  end
+
 end

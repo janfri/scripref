@@ -55,20 +55,25 @@ module Scripref
       "#<#{self.class} #{@mods.inspect}>"
     end
 
-#    private
+    private
 
     # Regular expression to heuristically identify a reference
     def reference_re
       return @reference_re if @reference_re
-      verse_with_optional_addon_or_postfix = '(' << [postfix_one_following_verse_re, postfix_more_following_verses_re, verse_addon_re].map {|e| verse_re.source << e.source}.join(')|(') << ')'
+      verse_with_optional_addon_or_postfix =
+        ['(', verse_re, '((', postfix_one_following_verse_re, ')|(', postfix_more_following_verses_re, ')|(', verse_addon_re, '))?)']
       re_parts = [
-        '(', book_re, ')', '((', verse_with_optional_addon_or_postfix, ')|(', chapter_re, ')|(', verse_re, '))',
+        '(', book_re, ')', '((', verse_with_optional_addon_or_postfix, ')|(', chapter_re, '))',
+        # more than one passage
         '(',
-        '(', book_re, ')',
+        '((', [cv_sep_re, verse_sep_re, hyphen_re, pass_sep_re].map(&:source).join(')|('), '))',
+        '(',
+        '((', book_re, ')', '((', verse_with_optional_addon_or_postfix, ')|(', chapter_re, ')))',
         '|',
         verse_with_optional_addon_or_postfix,
         '|',
-        '(', [chapter_re, cv_sep_re, verse_re, verse_sep_re, hyphen_re, pass_sep_re].map(&:source).join(')|('), ')',
+        '(', chapter_re, ')',
+        ')',
         ')*'
       ].map {|e| Regexp === e ? e.source : e}
       @reference_re = Regexp.compile(re_parts.join, nil)
