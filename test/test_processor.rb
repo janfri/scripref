@@ -115,4 +115,17 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
     assert_equal ast, processor.each.to_a
   end
 
+  def test_complex_reference
+    prefix = 'Wie in den Stellen '
+    ref = 'Apg 2,3; 4,8; 7,55; 8,29-39; Röm 8,2-9; Gal 6,8 '
+    postfix = 'nachzulesen ...'
+    text = prefix + ref + postfix
+    processor = Processor.new(text, German)
+    ast = [pass('Apg 2,3', 44, 2, 3, 44, 2, 3), '; ', pass('4,8', 44, 4, 8, 44, 4, 8), '; ',
+            pass('7,55', 44, 7, 55, 44, 7, 55), '; ', pass('8,29-39', 44, 8, 29, 44, 8, 39), '; ',
+            pass('Röm 8,2-9', 45, 8, 2, 45, 8, 9), '; ', pass('Gal 6,8 ', 48, 6, 8, 48, 6, 8)]
+    assert_equal [ast], processor.each_ref.to_a
+    assert_equal [prefix, ast, postfix], processor.each.to_a
+  end
+
 end
