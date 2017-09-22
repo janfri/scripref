@@ -2,7 +2,6 @@ require 'ostruct'
 require 'regtest'
 require 'scripref'
 
-include Regtest
 include Scripref
 
 o = OpenStruct.new
@@ -20,7 +19,7 @@ combinations(o).each do |c|
   pass = Passage.new('', *a)
   h = pass.to_h
   h.shift
-  sample h do
+  Regtest.sample h do
     formatter.format([pass])
   end
 end

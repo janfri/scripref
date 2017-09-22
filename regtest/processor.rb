@@ -1,11 +1,10 @@
 require 'regtest'
 require 'scripref'
 
-include Regtest
 include Scripref
 
 def s text
-  sample text do
+  Regtest.sample text do
     p = Processor.new(text, German)
     p.each.to_a
   end

@@ -1,11 +1,10 @@
 require 'regtest'
 require 'scripref'
 
-include Regtest
 include Scripref
 
 def s text
-  sample text do
+  Regtest.sample text do
     res = Parser.new(German).parse(text)
     res.map {|r| r.respond_to?(:to_h) ? r.to_h : r.to_s}
   end

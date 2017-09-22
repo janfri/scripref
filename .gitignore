@@ -1,4 +1,5 @@
 *~
 .*.swp
-pkg
+.regtestrc
 .rimrc
+pkg
