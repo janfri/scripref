@@ -78,6 +78,9 @@ module Scripref
       [31, 57, 63, 64, 65].include?(book)
     end
 
+    # Regular expression to match punctuation marks
+    PUNCTUATION_MARKS_RE = /[:;.\-]\s*/
+
     # Generate attr_reader methods for all constants
     extend ConstReader
     const_reader constants

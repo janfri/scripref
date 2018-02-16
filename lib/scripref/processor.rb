@@ -26,8 +26,9 @@ module Scripref
     def each_ref
       if block_given?
         scanner = StringScanner.new(text)
-        while scanner.scan_until(reference_re)
-          yield @parser.parse(scanner.matched)
+        while scanner.scan(/(.*?)(#{reference_re.source})/)
+          _, ref = fix_scanner_and_results(scanner)
+          yield @parser.parse(ref)
         end
         self
       else
@@ -41,8 +42,9 @@ module Scripref
       if block_given?
         scanner = StringScanner.new(text)
         while scanner.scan(/(.*?)(#{reference_re.source})/)
-          yield scanner[1] unless scanner[1].empty?
-          yield @parser.parse(scanner[2])
+          text, ref = fix_scanner_and_results(scanner)
+          yield text unless text.empty?
+          yield @parser.parse(ref)
         end
         yield scanner.rest if scanner.rest?
         self
@@ -68,6 +70,17 @@ module Scripref
         '(', verse_with_optional_addon_or_postfix, '|', Regexp.union(cv_sep_re, verse_sep_re, hyphen_re, pass_sep_re, book_re, chapter_re), ')*'
       ].map {|e| Regexp === e ? e.source : e}
       @reference_re = Regexp.compile(re_parts.join, nil)
+    end
+
+    def fix_scanner_and_results scanner
+      text = scanner[1]
+      ref = scanner[2]
+      re = /#{punctuation_marks_re.source}$/
+      if ref =~ re
+        scanner.pos -= $&.size
+        ref.sub! re, ''
+      end
+      [text, ref]
     end
 
   end
