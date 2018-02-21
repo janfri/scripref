@@ -26,7 +26,7 @@ module Scripref
     def each_ref
       if block_given?
         scanner = StringScanner.new(text)
-        while scanner.scan(/(.*?)(#{reference_re.source})/)
+        while scanner.scan(/(.*?)(#{reference_re.source})/m)
           _, ref = fix_scanner_and_results(scanner)
           yield @parser.parse(ref)
         end
@@ -41,7 +41,7 @@ module Scripref
     def each
       if block_given?
         scanner = StringScanner.new(text)
-        while scanner.scan(/(.*?)(#{reference_re.source})/)
+        while scanner.scan(/(.*?)(#{reference_re.source})/m)
           text, ref = fix_scanner_and_results(scanner)
           yield text unless text.empty?
           yield @parser.parse(ref)
