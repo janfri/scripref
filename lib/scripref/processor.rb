@@ -57,8 +57,6 @@ module Scripref
       "#<#{self.class} #{@mods.inspect}>"
     end
 
-    private
-
     # Regular expression to heuristically identify a reference
     def reference_re
       return @reference_re if @reference_re
