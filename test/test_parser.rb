@@ -288,22 +288,20 @@ class TestParser < Test::Unit::TestCase
   # malformed references
   ######################################################################
 
-  def test_error_message
+  def test_exception_and_error_message
     text = 'Ruth 2,x'
-    begin
+    assert_raise ParserError do
       @parser.parse text
-    rescue ParserError
     end
     assert_equal 'Verse expected!', @parser.error
     formated_error = "Verse expected!\nRuth 2,x\n       ^"
     assert_equal formated_error, @parser.format_error
   end
 
-  def test_error_message_for_unambiguous_book
+  def test_exception_and_error_message_for_ambiguous_book
     text = 'Ruth 2,4; M 3,8'
-    begin
+    assert_raise ParserError do
       @parser.parse text
-    rescue ParserError
     end
     assert_match /^Abbreviation M is ambiguous/, @parser.error
     formated_error = "Abbreviation M is ambiguous it matches Micha, Maleachi, Matthäus, Markus!\nRuth 2,4; M 3,8\n          ^"
