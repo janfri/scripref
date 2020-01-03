@@ -15,8 +15,7 @@ o.v2 = [4, nil]
 formatter = Formatter.new(German)
 
 Regtest.combinations(o).each do |c|
-  a = [c.b1, c.c1, c.v1, c.b2, c.c2, c.v2]
-  pass = Passage.new('', *a)
+  pass = Passage.new(text: '', b1: c.b1, c1: c.c1, v1: c.v1, b2: c.b2, c2: c.c2, v2: c.v2)
   h = pass.to_h
   h.shift
   Regtest.sample h do

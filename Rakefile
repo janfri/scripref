@@ -15,5 +15,6 @@ Rim.setup do
   if feature_loaded? 'rim/irb'
     irb_requires %w(scripref scripref/include scripref/pipelining)
   end
+  ruby_version '>=2.5.0'
   test_warning false
 end

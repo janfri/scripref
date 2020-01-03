@@ -232,7 +232,7 @@ module Scripref
     end
 
     def push_passage
-      @result << Passage.new(@text, @b1, @c1, @v1, @b2, @c2, @v2, a1: @a1, a2: @a2)
+      @result << Passage.new(text: @text, b1: @b1, c1: @c1, v1: @v1, b2: @b2, c2: @c2, v2: @v2, a1: @a1, a2: @a2)
       @text = ''
       @a1 = @a2 = nil
     end
