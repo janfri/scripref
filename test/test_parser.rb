@@ -12,21 +12,21 @@ class TestParser < Test::Unit::TestCase
 
   def test_only_book
     text = 'Ruth'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: nil, v1: nil, b2: 8, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, b2: 8)], text
   end
 
   def test_book_abbrev
     text = 'Ru'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: nil, v1: nil, b2: 8, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, b2: 8)], text
     text = 'Offb'
-    assert_parsed_ast_for_text [pass(text: text, b1: 66, c1: nil, v1: nil, b2: 66, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 66, b2: 66)], text
   end
 
   def test_book_abbrev_with_period
     text = 'Ru.'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: nil, v1: nil, b2: 8, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, b2: 8)], text
     text = 'Offb.'
-    assert_parsed_ast_for_text [pass(text: text, b1: 66, c1: nil, v1: nil, b2: 66, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 66, b2: 66)], text
   end
 
   def test_ambiguous_book
@@ -38,7 +38,7 @@ class TestParser < Test::Unit::TestCase
 
   def test_book_and_chapter
     text = 'Ruth 2'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: 2, v1: nil, b2: 8, c2: 2, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: 2, b2: 8, c2: 2)], text
   end
 
   def test_book_chapter_and_verse
@@ -58,17 +58,17 @@ class TestParser < Test::Unit::TestCase
 
   def test_chapter_range
     text = 'Ruth 2-3'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: 2, v1: nil, b2: 8, c2: 3, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: 2, b2: 8, c2: 3)], text
   end
 
   def test_book_range
     text = '1. Mose - Offenbarung'
-    assert_parsed_ast_for_text [pass(text: text, b1: 1, c1: nil, v1: nil, b2: 66, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 1, b2: 66)], text
   end
 
   def test_book_chapter_range
     text = '1. Mose 1 - Offenbarung 22'
-    assert_parsed_ast_for_text [pass(text: text, b1: 1, c1: 1, v1: nil, b2: 66, c2: 22, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 1, c1: 1, b2: 66, c2: 22)], text
   end
 
   def test_book_chapter_verse_range
@@ -104,7 +104,7 @@ class TestParser < Test::Unit::TestCase
   def test_reset_addons
     @parser.parse 'Ruth 2,5b-7a'
     text = 'Ruth'
-    assert_parsed_ast_for_text [pass(text: text, b1: 8, c1: nil, v1: nil, b2: 8, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 8, b2: 8)], text
   end
 
   def test_book_with_only_one_chapter
@@ -131,7 +131,7 @@ class TestParser < Test::Unit::TestCase
 
   def test_book_with_only_one_chapter_at_begin_of_range
     text = 'Obad - Jona'
-    assert_parsed_ast_for_text [pass(text: text, b1: 31, c1: 1, v1: nil, b2: 32, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: text, b1: 31, c1: 1, b2: 32)], text
     text = 'Obad 3 - Jona 2,4'
     assert_parsed_ast_for_text [pass(text: text, b1: 31, c1: 1, v1: 3, b2: 32, c2: 2, v2: 4)], text
     text = 'Obad 1,3 - Jona 2,4'
@@ -156,7 +156,7 @@ class TestParser < Test::Unit::TestCase
   def test_two_books
     text = 'Ruth; Markus'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: nil, v1: nil, b2: 8, c2: nil, v2: nil), semi, pass(text: t2, b1: 41, c1: nil, v1: nil, b2: 41, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, b2: 8), semi, pass(text: t2, b1: 41, b2: 41)], text
   end
 
   def test_two_complete_refs
@@ -174,13 +174,13 @@ class TestParser < Test::Unit::TestCase
   def test_two_chapters_same_book
     text = 'Ruth 2; 5'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: nil, b2: 8, c2: 2, v2: nil), semi, pass(text: t2, b1: 8, c1: 5, v1: nil, b2: 8, c2: 5, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, b2: 8, c2: 2), semi, pass(text: t2, b1: 8, c1: 5, b2: 8, c2: 5)], text
   end
 
   def test_two_chapters_different_book
     text = 'Ruth 2; Markus 4'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: nil, b2: 8, c2: 2, v2: nil), semi, pass(text: t2, b1: 41, c1: 4, v1: nil, b2: 41, c2: 4, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, b2: 8, c2: 2), semi, pass(text: t2, b1: 41, c1: 4, b2: 41, c2: 4)], text
   end
 
   def test_two_verses
@@ -192,13 +192,13 @@ class TestParser < Test::Unit::TestCase
   def test_partial_passage_after_full_passage
     text = 'Ruth 2,5; 4'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 8, c1: 4, v1: nil, b2: 8, c2: 4, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 8, c1: 4, b2: 8, c2: 4)], text
     text = 'Ruth 2,5; Markus'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 41, c1: nil, v1: nil, b2: 41, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 41, b2: 41)], text
     text = 'Ruth 2,5; Markus 4'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 41, c1: 4, v1: nil, b2: 41, c2: 4, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 2, v1: 5, b2: 8, c2: 2, v2: 5), semi, pass(text: t2, b1: 41, c1: 4, b2: 41, c2: 4)], text
   end
 
   ######################################################################
@@ -238,31 +238,31 @@ class TestParser < Test::Unit::TestCase
   def test_book_range_and_following_book
     text = 'Ruth-Markus; Johannes'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: nil, v1: nil, b2: 41, c2: nil, v2: nil), semi, pass(text: t2, b1: 43, c1: nil, v1: nil, b2: 43, c2: nil, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, b2: 41), semi, pass(text: t2, b1: 43, b2: 43)], text
   end
 
   def test_chapter_range_and_following_book
     text = 'Ruth 1-2; Joh 4'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 1, v1: nil, b2: 8, c2: 2, v2: nil), semi, pass(text: t2, b1: 43, c1: 4, v1: nil, b2: 43, c2: 4, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 1, b2: 8, c2: 2), semi, pass(text: t2, b1: 43, c1: 4, b2: 43, c2: 4)], text
   end
 
   def test_chapter_range_and_following_chapter
     text = 'Ruth 1-2; 4'
     t1, t2 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 1, v1: nil, b2: 8, c2: 2, v2: nil), semi, pass(text: t2, b1: 8, c1: 4, v1: nil, b2: 8, c2: 4, v2: nil)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 8, c1: 1, b2: 8, c2: 2), semi, pass(text: t2, b1: 8, c1: 4, b2: 8, c2: 4)], text
   end
 
   def test_book_only_after_full_passage
     text = 'Matt 3,4; Mar; Joh 3,16'
     t1, t2, t3 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 40, c1: 3, v1: 4, b2: 40, c2: 3, v2: 4), semi, pass(text: t2, b1: 41, c1: nil, v1: nil, b2: 41, c2: nil, v2: nil), semi, pass(text: t3, b1: 43, c1: 3, v1: 16, b2: 43, c2: 3, v2: 16)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 40, c1: 3, v1: 4, b2: 40, c2: 3, v2: 4), semi, pass(text: t2, b1: 41, b2: 41), semi, pass(text: t3, b1: 43, c1: 3, v1: 16, b2: 43, c2: 3, v2: 16)], text
   end
 
   def test_chapter_only_after_full_passage
     text = 'Matt 3,4; 8; Joh 3,16'
     t1, t2, t3 = text.split(semi)
-    assert_parsed_ast_for_text [pass(text: t1, b1: 40, c1: 3, v1: 4, b2: 40, c2: 3, v2: 4), semi, pass(text: t2, b1: 40, c1: 8, v1: nil, b2: 40, c2: 8, v2: nil), semi, pass(text: t3, b1: 43, c1: 3, v1: 16, b2: 43, c2: 3, v2: 16)], text
+    assert_parsed_ast_for_text [pass(text: t1, b1: 40, c1: 3, v1: 4, b2: 40, c2: 3, v2: 4), semi, pass(text: t2, b1: 40, c1: 8, b2: 40, c2: 8), semi, pass(text: t3, b1: 43, c1: 3, v1: 16, b2: 43, c2: 3, v2: 16)], text
   end
 
   ######################################################################
@@ -277,7 +277,7 @@ class TestParser < Test::Unit::TestCase
       pass(text: t2, b1: 8, c1: 2, v1: 15, b2: 8, c2: 2, v2: 15), semi,
       pass(text: t3, b1: 8, c1: 3, v1: 7, b2: 8, c2: 3, v2: 7), dot,
       pass(text: t4, b1: 8, c1: 3, v1: 9, b2: 8, c2: 3, v2: 12), semi,
-      pass(text: t5, b1: 41, c1: 4, v1: nil, b2: 41, c2: 4, v2: nil), semi,
+      pass(text: t5, b1: 41, c1: 4, b2: 41, c2: 4), semi,
       pass(text: t6, b1: 41, c1: 5, v1: 3, b2: 41, c2: 5, v2: 3), dot,
       pass(text: t7, b1: 41, c1: 5, v1: 18, b2: 41, c2: 5, v2: 21)
     ]

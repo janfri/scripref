@@ -9,7 +9,7 @@ class TestProcessorIterators < Test::Unit::TestCase
   def setup
     @text = 'Some text Mt 1,1 and Mr 2 and so on ...'
     @mt = [pass(text: 'Mt 1,1 ', b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1)]
-    @mr = [pass(text: 'Mr 2 ', b1: 41, c1: 2, v1: nil, b2: 41, c2: 2, v2: nil)]
+    @mr = [pass(text: 'Mr 2 ', b1: 41, c1: 2, b2: 41, c2: 2)]
     @processor = Processor.new(@text, German)
     @chunks = ['Some text ', @mt, 'and ', @mr, 'and so on ...']
   end
@@ -131,7 +131,7 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
   def test_reference_ends_with_chapter_or_verse
     text = 'Joh 8.'
     processor = Processor.new(text, German)
-    ast = [pass(text: 'Joh 8', b1: 43, c1: 8, v1: nil, b2: 43, c2: 8, v2: nil)]
+    ast = [pass(text: 'Joh 8', b1: 43, c1: 8, b2: 43, c2: 8)]
     assert_equal [ast], processor.each_ref.to_a
     assert_equal [ast, '.'], processor.each.to_a
     text = 'Joh 8,12.'
