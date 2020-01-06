@@ -66,24 +66,24 @@ class TestPassage < Test::Unit::TestCase
   end
 
   def test_start
-    p = pass('', 1, 2, 3, 4, 5, 6)
+    p = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
     assert_equal [1, 2, 3], p.start
   end
 
   def test_end
-    p = pass('', 1, 2, 3, 4, 5, 6)
+    p = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
     assert_equal [4, 5, 6], p.end
   end
 
   def test_sum
-    p1 = pass('', 1, 2, 3, 4, 5, 6)
-    p2 = pass('', 1, 1, 1, 1, 1, 1)
+    p1 = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
+    p2 = pass(text: '', b1: 1, c1: 1, v1: 1, b2: 1, c2: 1, v2: 1)
     assert_equal [2, 3, 4, 5, 6, 7], p1 + p2
   end
 
   def test_differenz
-    p1 = pass('', 1, 2, 3, 4, 5, 6)
-    p2 = pass('', 1, 1, 1, 1, 1, 1)
+    p1 = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
+    p2 = pass(text: '', b1: 1, c1: 1, v1: 1, b2: 1, c2: 1, v2: 1)
     assert_equal [0, 1, 2, 3, 4, 5], p2 - p1
   end
 
