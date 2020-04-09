@@ -1,21 +1,22 @@
-personal_ws-1.1 en 20 
-Scripref
-autoload
-Psalmen
-struct
-mixins
-addons
-formatter
+personal_ws-1.1 en 21 
+Bookname
 ParserError
 PassSep
-refactoring
-VerseSep
-regtest
 Philipper
-Bookname
+Psalmen
+Psm
+Scripref
+VerseSep
+addons
+autoload
+formatter
+fullref
+mixins
+pipelining
 postfix
 postfixes
+refactoring
 refactorings
-fullref
+regtest
 sep
-pipelining
+struct

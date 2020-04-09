@@ -2,4 +2,5 @@
 .*.swp
 .regtestrc
 .rimrc
+.ruby-version
 pkg
