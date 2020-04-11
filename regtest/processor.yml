@@ -1,5 +1,5 @@
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -62,14 +62,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -84,7 +84,7 @@ result:
     a1: :b
     a2: :a
 ---
-sample: " 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a"
+sample: " 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a"
 result:
 - " 2,1a-11.15a; 3,7b.9-12b; "
 - - !ruby/struct:Scripref::Passage
@@ -100,14 +100,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -122,7 +122,7 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth ,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - 'Ruth ,1a-11.15a; 3,7b.9-12b; '
 - - !ruby/struct:Scripref::Passage
@@ -138,14 +138,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -160,19 +160,19 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
-  Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 21a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
          ^
 ---
-sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Verse expected!
-  Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
          ^
 ---
-sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1
@@ -198,14 +198,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -220,13 +220,13 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Chapter or verse expected!
-  Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
             ^
 ---
-sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-1115a
@@ -277,14 +277,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -299,13 +299,13 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Verse expected!
-  Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
                ^
 ---
-sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -343,14 +343,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -365,25 +365,25 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Book or chapter expected!
-  Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; ,7b.9-12b; Markus 4; 5,3c.18b-21a
                     ^
 ---
-sample: Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
-  Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; 37b.9-12b; Markus 4; 5,3c.18b-21a
                       ^
 ---
-sample: Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Verse expected!
-  Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; 3,.9-12b; Markus 4; 5,3c.18b-21a
                       ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -433,14 +433,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -455,13 +455,13 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3c.18b-21a
 exception: |-
   Verse expected!
-  Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; 3,7b.-12b; Markus 4; 5,3c.18b-21a
                          ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -524,14 +524,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -546,13 +546,13 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3c.18b-21a
 exception: |-
   Chapter or verse expected!
-  Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; 3,7b.9-; Markus 4; 5,3c.18b-21a
                            ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -600,9 +600,9 @@ result:
     v2: 12
     a1: 
     a2: 
-- bMarkus 4; 5,3a.18b-21a
+- bMarkus 4; 5,3c.18b-21a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -665,14 +665,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 8
     c1: 5
     v1: 3
     b2: 8
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -687,13 +687,13 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3c.18b-21a
 exception: |-
   EOS or book expected!
-  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3a.18b-21a
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus ; 5,3c.18b-21a
                                          ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -744,14 +744,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: Markus 45,3a
+    text: Markus 45,3c
     b1: 41
     c1: 45
     v1: 3
     b2: 41
     c2: 45
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -766,16 +766,16 @@ result:
     a1: :b
     a2: :a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3c.18b-21a
 exception: |-
   Book or chapter expected!
-  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3a.18b-21a
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; ,3c.18b-21a
                                           ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53c.18b-21a
 exception: |-
   EOS or chapter verse separator or hyphen and book or hyphen and chapter or passage separator and book or passage separator and chapter expected!
-  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53a.18b-21a
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 53c.18b-21a
                                             ^
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
@@ -784,7 +784,7 @@ exception: |-
   Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,.18b-21a
                                             ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a18b-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -856,15 +856,15 @@ result:
     v2: 3
     a1: 
     a2: 
-- a18b-21a
+- c18b-21a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.-21a
 exception: |-
   Verse expected!
-  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.-21a
+  Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.-21a
                                                ^
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b21a
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -927,14 +927,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
@@ -950,7 +950,7 @@ result:
     a2: 
 - b21a
 ---
-sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-
+sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
@@ -1013,14 +1013,14 @@ result:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
-    text: 5,3a
+    text: 5,3c
     b1: 41
     c1: 5
     v1: 3
     b2: 41
     c2: 5
     v2: 3
-    a1: :a
+    a1: :c
     a2: 
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."

@@ -10,7 +10,7 @@ def s text
   end
 end
 
-text = 'Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3a.18b-21a'
+text = 'Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a'
 
 s text
 
