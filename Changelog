@@ -1,3 +1,6 @@
+0.14.0
+Allow 'c' as verse add-on.
+
 0.13.0
 Use keyword arguments for Passage.
 Adapt regular expression to match multiple lines.
