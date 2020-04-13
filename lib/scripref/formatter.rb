@@ -1,4 +1,5 @@
-# - encoding: utf-8 -
+# encoding: utf-8
+# frozen_string_literal: true
 
 module Scripref
 
@@ -27,9 +28,9 @@ module Scripref
     end
 
     # Formats a book
-    # @param num number of book (starting at 1)
-    def format_book num
-      book_names[num - 1].send @bookformat
+    # @param osis_book_id OSIS-ID for book
+    def format_book osis_book_id
+      osis_book_id_to_book_name[osis_book_id].send @bookformat
     end
 
     # Formats a chapter
