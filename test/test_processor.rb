@@ -8,8 +8,8 @@ class TestProcessorIterators < Test::Unit::TestCase
 
   def setup
     @text = 'Some text Mt 1,1 and Mr 2 and so on ...'
-    @mt = [pass(text: 'Mt 1,1 ', b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1)]
-    @mr = [pass(text: 'Mr 2 ', b1: 41, c1: 2, b2: 41, c2: 2)]
+    @mt = [pass(text: 'Mt 1,1 ', b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: 1)]
+    @mr = [pass(text: 'Mr 2 ', b1: :Mark, c1: 2, b2: :Mark, c2: 2)]
     @processor = Processor.new(@text, German)
     @chunks = ['Some text ', @mt, 'and ', @mr, 'and so on ...']
   end
@@ -49,7 +49,7 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
 
   def test_reference_without_other_text
     text = 'Mt 1,1'
-    ast = [[pass(text: 'Mt 1,1 ', b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1)]]
+    ast = [[pass(text: 'Mt 1,1 ', b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: 1)]]
     processor = Processor.new(text, German)
     assert_equal ast, processor.each_ref.to_a
     assert_equal ast, processor.each.to_a
@@ -72,46 +72,46 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
   def test_numerical_context
     text = '1. Mt 1,1'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1)]]
+    ast = [[pass(text: text, b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: 1)]]
     assert_equal ast, processor.each_ref.to_a
-    ast = ['1. ', [pass(text: text, b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1)]]
+    ast = ['1. ', [pass(text: text, b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: 1)]]
     assert_equal ast, processor.each.to_a
   end
 
   def test_verse_addon_or_postfix
     text = 'Mt 1,1a'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: 1, a1: 'a')]]
+    ast = [[pass(text: text, b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: 1, a1: 'a')]]
     assert_equal ast, processor.each.to_a
     text = 'Mt 1,1f'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: :f)]]
+    ast = [[pass(text: text, b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: :f)]]
     assert_equal ast, processor.each.to_a
     text = 'Mt 1,1ff'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 40, c1: 1, v1: 1, b2: 40, c2: 1, v2: :ff)]]
+    ast = [[pass(text: text, b1: :Matt, c1: 1, v1: 1, b2: :Matt, c2: 1, v2: :ff)]]
     assert_equal ast, processor.each.to_a
   end
 
   def test_verse_addon_or_postfix_for_books_with_only_one_chapter
     text = '2. Joh 5b'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 63, c1: 1, v1: 5, b2: 63, c2: 1, v2: 5, a1: 'b')]]
+    ast = [[pass(text: text, b1: :'2John', c1: 1, v1: 5, b2: :'2John', c2: 1, v2: 5, a1: 'b')]]
     assert_equal ast, processor.each.to_a
     text = '2. Joh 5f'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 63, c1: 1, v1: 5, b2: 63, c2: 1, v2: :f)]]
+    ast = [[pass(text: text, b1: :'2John', c1: 1, v1: 5, b2: :'2John', c2: 1, v2: :f)]]
     assert_equal ast, processor.each.to_a
     text = '2. Joh 5ff'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 63, c1: 1, v1: 5, b2: 63, c2: 1, v2: :ff)]]
+    ast = [[pass(text: text, b1: :'2John', c1: 1, v1: 5, b2: :'2John', c2: 1, v2: :ff)]]
     assert_equal ast, processor.each.to_a
   end
 
   def test_verse_sep
     text = '2. Joh 5.8'
     processor = Processor.new(text, German)
-    ast = [[pass(text: text, b1: 63, c1: 1, v1: 5, b2: 63, c2: 1, v2: 5), '.', pass(text: text, b1: 63, c1: 1, v1: 8, b2: 63, c2: 1, v2: 8)]]
+    ast = [[pass(text: text, b1: :'2John', c1: 1, v1: 5, b2: :'2John', c2: 1, v2: 5), '.', pass(text: text, b1: :'2John', c1: 1, v1: 8, b2: :'2John', c2: 1, v2: 8)]]
     assert_equal ast, processor.each.to_a
   end
 
@@ -121,9 +121,9 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
     postfix = 'nachzulesen ...'
     text = prefix + ref + postfix
     processor = Processor.new(text, German)
-    ast = [pass(text: 'Apg 2,3', b1: 44, c1: 2, v1: 3, b2: 44, c2: 2, v2: 3), '; ', pass(text: '4,8', b1: 44, c1: 4, v1: 8, b2: 44, c2: 4, v2: 8), '; ',
-            pass(text: '7,55', b1: 44, c1: 7, v1: 55, b2: 44, c2: 7, v2: 55), '; ', pass(text: '8,29-39', b1: 44, c1: 8, v1: 29, b2: 44, c2: 8, v2: 39), '; ',
-            pass(text: 'Röm 8,2-9', b1: 45, c1: 8, v1: 2, b2: 45, c2: 8, v2: 9), '; ', pass(text: 'Gal 6,8 ', b1: 48, c1: 6, v1: 8, b2: 48, c2: 6, v2: 8)]
+    ast = [pass(text: 'Apg 2,3', b1: :Acts, c1: 2, v1: 3, b2: :Acts, c2: 2, v2: 3), '; ', pass(text: '4,8', b1: :Acts, c1: 4, v1: 8, b2: :Acts, c2: 4, v2: 8), '; ',
+            pass(text: '7,55', b1: :Acts, c1: 7, v1: 55, b2: :Acts, c2: 7, v2: 55), '; ', pass(text: '8,29-39', b1: :Acts, c1: 8, v1: 29, b2: :Acts, c2: 8, v2: 39), '; ',
+            pass(text: 'Röm 8,2-9', b1: :Rom, c1: 8, v1: 2, b2: :Rom, c2: 8, v2: 9), '; ', pass(text: 'Gal 6,8 ', b1: :Gal, c1: 6, v1: 8, b2: :Gal, c2: 6, v2: 8)]
     assert_equal [ast], processor.each_ref.to_a
     assert_equal [prefix, ast, postfix], processor.each.to_a
   end
@@ -131,12 +131,12 @@ class TestProcessorVariousContexts < Test::Unit::TestCase
   def test_reference_ends_with_chapter_or_verse
     text = 'Joh 8.'
     processor = Processor.new(text, German)
-    ast = [pass(text: 'Joh 8', b1: 43, c1: 8, b2: 43, c2: 8)]
+    ast = [pass(text: 'Joh 8', b1: :John, c1: 8, b2: :John, c2: 8)]
     assert_equal [ast], processor.each_ref.to_a
     assert_equal [ast, '.'], processor.each.to_a
     text = 'Joh 8,12.'
     processor = Processor.new(text, German)
-    ast = [pass(text: 'Joh 8,12', b1: 43, c1: 8, v1: 12, b2: 43, c2: 8, v2: 12)]
+    ast = [pass(text: 'Joh 8,12', b1: :John, c1: 8, v1: 12, b2: :John, c2: 8, v2: 12)]
     assert_equal [ast], processor.each_ref.to_a
     assert_equal [ast, '.'], processor.each.to_a
   end
