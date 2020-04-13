@@ -30,21 +30,21 @@ class TestEnglish < Test::Unit::TestCase
     assert_match book_re, 'Rev'
   end
 
-  def test_book2num
-    assert_book_num 1, 'Genesis'
-    assert_book_num 40, 'Matthew'
-    assert_book_num 66, 'Revelation'
-    assert_book_num 1, 'Gen'
-    assert_book_num 1, 'Ge'
-    assert_book_num 55, '2 Tim'
-    assert_book_num 55, '2Tim'
-    assert_book_num 55, '2Tm'
-    assert_book_num 40, 'Mat'
-    assert_book_num 66, 'Rev'
+  def test_book2osis_id
+    assert_osis_book_id :Gen, 'Genesis'
+    assert_osis_book_id :Matt, 'Matthew'
+    assert_osis_book_id :Rev, 'Revelation'
+    assert_osis_book_id :Gen, 'Gen'
+    assert_osis_book_id :Gen, 'Ge'
+    assert_osis_book_id :'2Tim', '2 Tim'
+    assert_osis_book_id :'2Tim', '2Tim'
+    assert_osis_book_id :'2Tim', '2Tm'
+    assert_osis_book_id :Matt, 'Mat'
+    assert_osis_book_id :Rev, 'Rev'
   end
 
-  def assert_book_num num, str
-    assert_equal num, @parser.parse(str).first.b1
+  def assert_osis_book_id id, str
+    assert_equal id, @parser.parse(str).first.b1
   end
 
 end

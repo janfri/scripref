@@ -31,15 +31,15 @@ class TestGerman < Test::Unit::TestCase
   end
 
   def test_book2num
-    assert_book_num 1, '1. Mose'
-    assert_book_num 40, 'Matthäus'
-    assert_book_num 66, 'Offenbarung'
-    assert_book_num 1, '1. Mo'
-    assert_book_num 1, '1.Mo'
-    assert_book_num 1, '1M'
-    assert_book_num 40, 'Mat'
-    assert_book_num 50, 'Phil'
-    assert_book_num 66, 'Off'
+    assert_book_num :Gen, '1. Mose'
+    assert_book_num :Matt, 'Matthäus'
+    assert_book_num :Rev, 'Offenbarung'
+    assert_book_num :Gen, '1. Mo'
+    assert_book_num :Gen, '1.Mo'
+    assert_book_num :Gen, '1M'
+    assert_book_num :Matt, 'Mat'
+    assert_book_num :Phil, 'Phil'
+    assert_book_num :Rev, 'Off'
   end
 
   def assert_book_num num, str
