@@ -4,9 +4,10 @@ module Scripref
 
   class Bookname
 
-    attr_reader :names, :abbrevs
+    attr_reader :osis_id, :names, :abbrevs
 
-    def initialize names, abbrevs
+    def initialize osis_id:, names:, abbrevs:
+      @osis_id = osis_id
       @names = Array(names)
       @abbrevs = Array(abbrevs)
     end
@@ -20,7 +21,7 @@ module Scripref
     end
 
     def to_s
-      @names.first
+      @osis_id
     end
 
     alias to_str to_s

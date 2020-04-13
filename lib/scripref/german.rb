@@ -7,6 +7,16 @@ module Scripref
   # Mixin for parsing references in German.
   module German
 
+    # Standardized IDs for bible books in order with BOOK_NAMES.
+    # (see https://wiki.crosswire.org/OSIS_Book_Abbreviations)
+    osis_book_ids = %i[
+      Gen Exod Lev Num Deut Josh Judg Ruth 1Sam 2Sam 1Kgs 2Kgs 1Chr 2Chr Ezra
+      Neh Esth Job Ps Prov Eccl Song Isa Jer Lam Ezek Dan Hos Joel Amos Obad
+      Jonah Mic Nah Hab Zeph Hag Zech Mal Matt Mark Luke John Acts Rom 1Cor
+      2Cor Gal Eph Phil Col 1Thess 2Thess 1Tim 2Tim Titus Phlm Heb Jas 1Pet
+      2Pet 1John 2John 3John Jude Rev
+    ]
+
     book_names = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
       1. Mose, 2. Mose, 3. Mose, 4. Mose, 5. Mose, Josua, Richter, Ruth, 1. Samuel, 2. Samuel,
       1. Könige, 2. Könige, 1. Chronika, 2. Chronika, Esra, Nehemia, Esther, Hiob, Psalm|Psalmen,
@@ -31,7 +41,10 @@ module Scripref
     END
 
     # Array of book names.
-    BOOK_NAMES = book_names.zip(book_abbrevs).map {|name, abbrev| Bookname.new(name, abbrev)}
+    BOOK_NAMES = osis_book_ids.zip(book_names, book_abbrevs).map {|osis_book_id, names, abbrevs| Bookname.new(osis_id: osis_book_id, names: names, abbrevs: abbrevs)}
+
+    # Map of OSIS book ID to instance of Bookname
+    OSIS_BOOK_ID_TO_BOOK_NAME = osis_book_ids.zip(BOOK_NAMES).map {|id, n| [id, n]}.to_h
 
     # Separator between chapter and verse.
     CV_SEPARATOR = ','
@@ -73,9 +86,9 @@ module Scripref
     POSTFIX_MORE_FOLLOWING_VERSES_RE = /ff\b\s*/o
 
     # Check if book has only one chapter
-    # @param book book as number
-    def book_has_only_one_chapter? book
-      [31, 57, 63, 64, 65].include?(book)
+    # @param osis_id OSIS-ID of the book
+    def book_has_only_one_chapter? osis_id
+      %i[Obad Phlm 2John 3John Jude].include?(osis_id)
     end
 
     # Regular expression to match punctuation marks
