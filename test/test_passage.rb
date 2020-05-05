@@ -12,7 +12,7 @@ class TestPassage < Test::Unit::TestCase
 
   def test_to_a
     pass = @parser.parse('Mr 1,2-Luk 3,4').first
-    assert_equal [41, 1, 2, 42, 3, 4], pass.to_a
+    assert_equal [:Mark, 1, 2, :Luke, 3, 4], pass.to_a
   end
 
   def test_spaceship_operator
@@ -66,13 +66,13 @@ class TestPassage < Test::Unit::TestCase
   end
 
   def test_start
-    p = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
-    assert_equal [1, 2, 3], p.start
+    p = pass(text: '', b1: :Gen, c1: 2, v1: 3, b2: :Num, c2: 5, v2: 6)
+    assert_equal [:Gen, 2, 3], p.start
   end
 
   def test_end
-    p = pass(text: '', b1: 1, c1: 2, v1: 3, b2: 4, c2: 5, v2: 6)
-    assert_equal [4, 5, 6], p.end
+    p = pass(text: '', b1: :Gen, c1: 2, v1: 3, b2: :Num, c2: 5, v2: 6)
+    assert_equal [:Num, 5, 6], p.end
   end
 
   protected
