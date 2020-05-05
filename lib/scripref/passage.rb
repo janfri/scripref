@@ -1,17 +1,9 @@
-# - encoding: utf-8 -
+# encoding: utf-8
 module Scripref
 
   Passage = Struct.new(:text, :b1, :c1, :v1, :b2, :c2, :v2, :a1, :a2, keyword_init: true) do
 
     include Comparable
-
-    def + other
-      to_a.zip(other.to_a).map {|a, b| a + b}
-    end
-
-    def - other
-      to_a.zip(other.to_a).map {|a, b| b - a}
-    end
 
     def to_a
       [b1, c1, v1, b2, c2, v2]
