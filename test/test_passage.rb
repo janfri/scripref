@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'test_helper'
+# frozen_string_literal: true
 
 class TestPassage < Test::Unit::TestCase
 

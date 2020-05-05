@@ -1,4 +1,6 @@
-# - encoding: utf-8 -
+# encoding: utf-8
+# frozen_string_literal: false
+
 module Scripref
 
   # Mixin with methods of basic functionality
