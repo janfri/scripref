@@ -19,11 +19,15 @@ module Scripref
     END
 
     book_abbrevs = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
-      1.Mo, 2.Mo, 3.Mo, 4.Mo, 5.Mo, Jos, Ri, Ruth, 1.Sam, 2.Sam, 1.Kön, 2.Kön, 1.Chr, 2.Chr,
-      Esr, Neh, Est, Hi, Ps, Spr, Pred, Hohel, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos, Obad,
-      Jona, Mich, Nah, Hab, Zef, Hag, Sach, Mal, Mat, Mar, Luk, Joh, Apg, Röm, 1.Ko, 2.Ko,
-      Gal, Eph, Phil, Kol, 1.Thes, 2.Thes, 1.Tim, 2.Tim, Tit, Philem, Heb, Jak, 1.Pet, 2.Pet,
-      1.Joh, 2.Joh, 3.Joh, Jud, Off
+      1.Mo|1Mo|1M, 2.Mo|2Mo|2M, 3.Mo|3Mo|3M, 4.Mo|4Mo|4M, 5.Mo|5Mo|5M, Jos, Ri,
+      Ruth, 1.Sam|1Sam|1Sm, 2.Sam|2Sam|2Sm, 1.Kön|1Kön|1Kö, 2.Kön|2Kön|2Kö,
+      1.Chr|1Chr|1Ch, 2.Chr|2Chr|2Ch, Esr, Neh, Est, Hi, Ps, Spr, Pred,
+      Hohel|Hoh|Hl, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos|Am, Obad|Ob,
+      Jona|Jon, Mich|Mi, Nah, Hab, Zef, Hag, Sach, Mal, Mat|Mt, Mar|Mr, Luk|Lk,
+      Joh|Jh, Apg, Röm|Rö, 1.Ko|1Ko, 2.Ko|2Ko, Gal, Eph, Phil, Kol,
+      1.Thes|1Thes|1Th, 2.Thes|2Thes|2Th, 1.Tim, 2.Tim, Tit, Philem|Phm, Heb,
+      Jak, 1.Pet|1Pet|1Pe, 2.Pet|2Pet|2Pe, 1.Joh|1Joh|1Jo, 2.Joh|2Joh|2Jo,
+      3.Joh|3Joh|3Jo, Jud, Off
     END
 
     # Array of book names.
