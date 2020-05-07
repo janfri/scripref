@@ -13,15 +13,15 @@ module Scripref
 
     def <=> other
       return unless other.kind_of? Passage
-      Passage.make_comparable(self) <=> Passage.make_comparable(other)
+      self.to_numeric_array <=> other.to_numeric_array
     end
 
     # Returns true if the instance and the given passage overlap.
     # That means both has at least one verse in common.
     def overlap? passage
       fail ArgumentError, 'value must be a passage' unless passage.kind_of? Passage
-      a = Passage.make_comparable(self)
-      b = Passage.make_comparable(passage)
+      a = self.to_numeric_array
+      b = passage.to_numeric_array
       [a[0..2] <=> b[3..5], b[0..2] <=> a[3..5]].max < 1
     end
 
@@ -33,6 +33,22 @@ module Scripref
     # Returns an array of b2, c2, v2
     def end
       [b2, c2, v2]
+    end
+
+    def to_numeric_array max: 999, ff: 3
+      _b1 = Passage.book_id2num[b1]
+      _c1 = c1 || 1
+      _v1 = v1 || 1
+      _b2 = Passage.book_id2num[b2]
+      _c2 = c2 || max
+      _v2 = v2 || max
+      if _v2 == :f
+        _v2 = _v1 + 1
+      end
+      if _v2 == :ff
+        _v2 = _v1 + ff
+      end
+      [_b1, _c1, _v1, _b2, _c2, _v2]
     end
 
     alias to_s text
@@ -50,26 +66,7 @@ module Scripref
     end
 
     class << self
-
-      # Makes the Passage instance comparable, that means
-      # all values are numeric.
-      # This is a heuristic approach.
-      def make_comparable pass, max: 999, ff: 3
-        b1 = @book_id2num[pass.b1]
-        c1 = pass.c1 || 1
-        v1 = pass.v1 || 1
-        b2 = @book_id2num[pass.b2]
-        c2 = pass.c2 || max
-        v2 = pass.v2 || max
-        if v2 == :f
-          v2 = v1 + 1
-        end
-        if v2 == :ff
-          v2 = v1 + ff
-        end
-        [b1, c1, v1, b2, c2, v2]
-      end
-
+      attr_reader :book_id2num
     end
 
   end
