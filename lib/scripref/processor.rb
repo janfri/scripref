@@ -3,7 +3,6 @@
 
 require 'strscan'
 require 'scripref/basic_methods'
-require 'scripref/parser'
 
 module Scripref
 
