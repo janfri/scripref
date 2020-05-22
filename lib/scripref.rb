@@ -8,6 +8,7 @@ module Scripref
   VERSION = '0.15.0'
 
   autoload :Bookname, 'scripref/bookname'
+  autoload :Bookorder, 'scripref/bookorder'
   autoload :English, 'scripref/english'
   autoload :Formatter, 'scripref/formatter'
   autoload :German, 'scripref/german'
