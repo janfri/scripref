@@ -5,7 +5,7 @@ require 'delegate'
 
 module Scripref
 
-  VERSION = '0.15.0'
+  VERSION = '1.0.0'
 
   autoload :Bookname, 'scripref/bookname'
   autoload :Bookorder, 'scripref/bookorder'

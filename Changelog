@@ -1,3 +1,9 @@
+1.0.0
+Major release with following two incompatible changes:
+Use OSIS abbreviations for books.
+Remove Passage#+ and Passage#-. This methods seems not to be so useful.
+Further a new module Bookorder is introduced.
+
 0.15.0
 Add some more abbreviations for German book names.
 
