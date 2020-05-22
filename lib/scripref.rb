@@ -3,7 +3,7 @@ require 'delegate'
 
 module Scripref
 
-  VERSION = '0.14.0'
+  VERSION = '0.15.0'
 
   autoload :Bookname, 'scripref/bookname'
   autoload :English, 'scripref/english'
