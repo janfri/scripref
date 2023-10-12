@@ -3,82 +3,82 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -89,34 +89,34 @@ result:
 - " 2,1a-11.15a; 3,7b.9-12b; "
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -127,34 +127,34 @@ result:
 - 'Ruth ,1a-11.15a; 3,7b.9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -176,45 +176,45 @@ sample: Ruth 2,1a11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 1
-    a1: 
-    a2: 
+    a1:
+    a2:
 - 'a11.15a; 3,7b.9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -230,10 +230,10 @@ sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-1115a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 1115
     a1: :a
@@ -242,58 +242,58 @@ result:
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -309,57 +309,57 @@ sample: Ruth 2,1a-11.15a3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: '15'
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
-    a1: 
-    a2: 
+    a1:
+    a2:
 - 'a3,7b.9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -387,69 +387,69 @@ sample: Ruth 2,1a-11.15a; 3,7b9-12b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: '3,7'
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
-    a1: 
-    a2: 
+    a1:
+    a2:
 - 'b9-12b; '
 - - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -465,82 +465,82 @@ sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 912b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 912
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 912
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 21
     a1: :b
@@ -556,132 +556,132 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12bMarkus 4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
-    a2: 
+    a1:
+    a2:
 - bMarkus 4; 5,3c.18b-21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: ";  "
   - !ruby/struct:Scripref::Passage
     text: '4'
-    b1: 8
+    b1: :Ruth
     c1: 4
-    v1: 
-    b2: 8
+    v1:
+    b2: :Ruth
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 8
+    b1: :Ruth
     c1: 5
     v1: 3
-    b2: 8
+    b2: :Ruth
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 8
+    b1: :Ruth
     c1: 5
     v1: 18
-    b2: 8
+    b2: :Ruth
     c2: 5
     v2: 21
     a1: :b
@@ -697,70 +697,70 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3c.18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 45,3c
-    b1: 41
+    b1: :Mark
     c1: 45
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 45
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b-21a
-    b1: 41
+    b1: :Mark
     c1: 45
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 45
     v2: 21
     a1: :b
@@ -788,74 +788,74 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c18b-21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: '5,3'
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
-    a1: 
-    a2: 
+    a1:
+    a2:
 - c18b-21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.-21a
@@ -868,170 +868,170 @@ sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b21a
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: '18'
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 18
-    a1: 
-    a2: 
+    a1:
+    a2:
 - b21a
 ---
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-
 result:
 - - !ruby/struct:Scripref::Passage
     text: Ruth 2,1a-11
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 1
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 11
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 15a
-    b1: 8
+    b1: :Ruth
     c1: 2
     v1: 15
-    b2: 8
+    b2: :Ruth
     c2: 2
     v2: 15
     a1: :a
-    a2: 
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 3,7b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 7
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 7
     a1: :b
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 9-12b
-    b1: 8
+    b1: :Ruth
     c1: 3
     v1: 9
-    b2: 8
+    b2: :Ruth
     c2: 3
     v2: 12
-    a1: 
+    a1:
     a2: :b
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: Markus 4
-    b1: 41
+    b1: :Mark
     c1: 4
-    v1: 
-    b2: 41
+    v1:
+    b2: :Mark
     c2: 4
-    v2: 
-    a1: 
-    a2: 
+    v2:
+    a1:
+    a2:
   - !ruby/object:Scripref::PassSep
     delegate_dc_obj: "; "
   - !ruby/struct:Scripref::Passage
     text: 5,3c
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 3
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 3
     a1: :c
-    a2: 
+    a2:
   - !ruby/object:Scripref::VerseSep
     delegate_dc_obj: "."
   - !ruby/struct:Scripref::Passage
     text: 18b
-    b1: 41
+    b1: :Mark
     c1: 5
     v1: 18
-    b2: 41
+    b2: :Mark
     c2: 5
     v2: 18
     a1: :b
-    a2: 
+    a2:
 - "-"

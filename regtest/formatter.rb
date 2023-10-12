@@ -5,10 +5,10 @@ require 'scripref'
 include Scripref
 
 o = OpenStruct.new
-o.b1 = [42]
+o.b1 = [:Luke]
 o.c1 = [1, nil]
 o.v1 = [2, nil]
-o.b2 = [43, nil]
+o.b2 = [:John, nil]
 o.c2 = [3, nil]
 o.v2 = [4, nil]
 

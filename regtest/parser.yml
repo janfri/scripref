@@ -2,70 +2,70 @@
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - :text: Ruth 2,1a-11
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 1
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 11
   :a1: :a
-  :a2: 
+  :a2:
 - "."
 - :text: 15a
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 15
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 15
   :a1: :a
-  :a2: 
+  :a2:
 - "; "
 - :text: 3,7b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 7
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 7
   :a1: :b
-  :a2: 
+  :a2:
 - "."
 - :text: 9-12b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 9
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 12
-  :a1: 
+  :a1:
   :a2: :b
 - "; "
 - :text: Markus 4
-  :b1: 41
+  :b1: :Mark
   :c1: 4
-  :v1: 
-  :b2: 41
+  :v1:
+  :b2: :Mark
   :c2: 4
-  :v2: 
-  :a1: 
-  :a2: 
+  :v2:
+  :a1:
+  :a2:
 - "; "
 - :text: 5,3c
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 3
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 3
   :a1: :c
-  :a2: 
+  :a2:
 - "."
 - :text: 18b-21a
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 18
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 21
   :a1: :b
@@ -110,60 +110,60 @@ exception: |-
 sample: Ruth 2,1a-1115a; 3,7b.9-12b; Markus 4; 5,3c.18b-21a
 result:
 - :text: Ruth 2,1a-1115a
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 1
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 1115
   :a1: :a
   :a2: :a
 - "; "
 - :text: 3,7b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 7
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 7
   :a1: :b
-  :a2: 
+  :a2:
 - "."
 - :text: 9-12b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 9
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 12
-  :a1: 
+  :a1:
   :a2: :b
 - "; "
 - :text: Markus 4
-  :b1: 41
+  :b1: :Mark
   :c1: 4
-  :v1: 
-  :b2: 41
+  :v1:
+  :b2: :Mark
   :c2: 4
-  :v2: 
-  :a1: 
-  :a2: 
+  :v2:
+  :a1:
+  :a2:
 - "; "
 - :text: 5,3c
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 3
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 3
   :a1: :c
-  :a2: 
+  :a2:
 - "."
 - :text: 18b-21a
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 18
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 21
   :a1: :b
@@ -214,70 +214,70 @@ exception: |-
 sample: Ruth 2,1a-11.15a; 3,7b.912b; Markus 4; 5,3c.18b-21a
 result:
 - :text: Ruth 2,1a-11
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 1
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 11
   :a1: :a
-  :a2: 
+  :a2:
 - "."
 - :text: 15a
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 15
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 15
   :a1: :a
-  :a2: 
+  :a2:
 - "; "
 - :text: 3,7b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 7
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 7
   :a1: :b
-  :a2: 
+  :a2:
 - "."
 - :text: 912b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 912
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 912
   :a1: :b
-  :a2: 
+  :a2:
 - "; "
 - :text: Markus 4
-  :b1: 41
+  :b1: :Mark
   :c1: 4
-  :v1: 
-  :b2: 41
+  :v1:
+  :b2: :Mark
   :c2: 4
-  :v2: 
-  :a1: 
-  :a2: 
+  :v2:
+  :a1:
+  :a2:
 - "; "
 - :text: 5,3c
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 3
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 3
   :a1: :c
-  :a2: 
+  :a2:
 - "."
 - :text: 18b-21a
-  :b1: 41
+  :b1: :Mark
   :c1: 5
   :v1: 18
-  :b2: 41
+  :b2: :Mark
   :c2: 5
   :v2: 21
   :a1: :b
@@ -298,70 +298,70 @@ exception: |-
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b;  4; 5,3c.18b-21a
 result:
 - :text: Ruth 2,1a-11
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 1
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 11
   :a1: :a
-  :a2: 
+  :a2:
 - "."
 - :text: 15a
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 15
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 15
   :a1: :a
-  :a2: 
+  :a2:
 - "; "
 - :text: 3,7b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 7
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 7
   :a1: :b
-  :a2: 
+  :a2:
 - "."
 - :text: 9-12b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 9
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 12
-  :a1: 
+  :a1:
   :a2: :b
 - ";  "
 - :text: '4'
-  :b1: 8
+  :b1: :Ruth
   :c1: 4
-  :v1: 
-  :b2: 8
+  :v1:
+  :b2: :Ruth
   :c2: 4
-  :v2: 
-  :a1: 
-  :a2: 
+  :v2:
+  :a1:
+  :a2:
 - "; "
 - :text: 5,3c
-  :b1: 8
+  :b1: :Ruth
   :c1: 5
   :v1: 3
-  :b2: 8
+  :b2: :Ruth
   :c2: 5
   :v2: 3
   :a1: :c
-  :a2: 
+  :a2:
 - "."
 - :text: 18b-21a
-  :b1: 8
+  :b1: :Ruth
   :c1: 5
   :v1: 18
-  :b2: 8
+  :b2: :Ruth
   :c2: 5
   :v2: 21
   :a1: :b
@@ -376,60 +376,60 @@ exception: |-
 sample: Ruth 2,1a-11.15a; 3,7b.9-12b; Markus 45,3c.18b-21a
 result:
 - :text: Ruth 2,1a-11
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 1
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 11
   :a1: :a
-  :a2: 
+  :a2:
 - "."
 - :text: 15a
-  :b1: 8
+  :b1: :Ruth
   :c1: 2
   :v1: 15
-  :b2: 8
+  :b2: :Ruth
   :c2: 2
   :v2: 15
   :a1: :a
-  :a2: 
+  :a2:
 - "; "
 - :text: 3,7b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 7
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 7
   :a1: :b
-  :a2: 
+  :a2:
 - "."
 - :text: 9-12b
-  :b1: 8
+  :b1: :Ruth
   :c1: 3
   :v1: 9
-  :b2: 8
+  :b2: :Ruth
   :c2: 3
   :v2: 12
-  :a1: 
+  :a1:
   :a2: :b
 - "; "
 - :text: Markus 45,3c
-  :b1: 41
+  :b1: :Mark
   :c1: 45
   :v1: 3
-  :b2: 41
+  :b2: :Mark
   :c2: 45
   :v2: 3
   :a1: :c
-  :a2: 
+  :a2:
 - "."
 - :text: 18b-21a
-  :b1: 41
+  :b1: :Mark
   :c1: 45
   :v1: 18
-  :b2: 41
+  :b2: :Mark
   :c2: 45
   :v2: 21
   :a1: :b
