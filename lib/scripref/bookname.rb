@@ -22,7 +22,7 @@ module Scripref
     end
 
     def to_s
-      @osis_id
+      @osis_id.to_s
     end
 
     alias to_str to_s
