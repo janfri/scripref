@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.version = Scripref::VERSION
   s.authors = 'Jan Friedrich'
   s.email = 'janfri26@gmail.com'
+  s.license = 'MIT'
 
   s.homepage = 'https://github.com/janfri/scripref'
   s.metadata = {
