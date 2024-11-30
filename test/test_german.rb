@@ -32,21 +32,21 @@ class TestGerman < Test::Unit::TestCase
     assert_match book_re, 'Off'
   end
 
-  def test_book2num
-    assert_book_num :Gen, '1. Mose'
-    assert_book_num :Matt, 'Matthäus'
-    assert_book_num :Rev, 'Offenbarung'
-    assert_book_num :Gen, '1. Mo'
-    assert_book_num :Gen, '1.Mo'
-    assert_book_num :Gen, '1M'
-    assert_book_num :Matt, 'Mat'
-    assert_book_num :Phil, 'Phil'
-    assert_book_num :Rev, 'Off'
+  def test_book2osis_id
+    assert_osis_book_id :Gen, '1. Mose'
+    assert_osis_book_id :Matt, 'Matthäus'
+    assert_osis_book_id :Rev, 'Offenbarung'
+    assert_osis_book_id :Gen, '1. Mo'
+    assert_osis_book_id :Gen, '1.Mo'
+    assert_osis_book_id :Gen, '1M'
+    assert_osis_book_id :Matt, 'Mat'
+    assert_osis_book_id :Phil, 'Phil'
+    assert_osis_book_id :Rev, 'Off'
   end
 
-  def assert_book_num num, str
+  def assert_osis_book_id id, str
     @parser ||= Scripref::Parser.new(Scripref::German)
-    assert_equal num, @parser.parse(str).first.b1
+    assert_equal id, @parser.parse(str).first.b1
   end
 
 end
