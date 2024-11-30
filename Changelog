@@ -1,3 +1,6 @@
+1.1.1
+Fix Bookname#to_s and add license to gemspec.
+
 1.1.0
 Adapt German abbreviations.
 

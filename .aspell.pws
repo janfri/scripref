@@ -1,4 +1,4 @@
-personal_ws-1.1 en 23 
+personal_ws-1.1 en 24 
 Bookname
 Bookorder
 OSIS
@@ -13,6 +13,7 @@ addons
 autoload
 formatter
 fullref
+gemspec
 mixins
 pipelining
 postfix
