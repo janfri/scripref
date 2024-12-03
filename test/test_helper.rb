@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-require 'scripref'
+require_relative '../lib/scripref'
 require 'test/unit'
 
 module Test::Helper

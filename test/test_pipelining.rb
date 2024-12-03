@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-require 'test_helper'
+require_relative 'test_helper'
 
 class TestPipelining < Test::Unit::TestCase
 
@@ -17,7 +17,7 @@ class TestPipelining < Test::Unit::TestCase
   end
 
   def test_left_to_right
-    require 'scripref/pipelining'
+    require_relative '../lib/scripref/pipelining'
     text = 'Hebräer 13,8'
     parser = Parser.new(German)
     formatter = Formatter.new(English)

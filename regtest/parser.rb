@@ -1,5 +1,5 @@
 require 'regtest'
-require 'scripref'
+require_relative '../lib/scripref'
 
 include Scripref
 

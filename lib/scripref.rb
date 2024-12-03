@@ -7,14 +7,14 @@ module Scripref
 
   VERSION = '1.1.1'
 
-  autoload :Bookname, 'scripref/bookname'
-  autoload :Bookorder, 'scripref/bookorder'
-  autoload :English, 'scripref/english'
-  autoload :Formatter, 'scripref/formatter'
-  autoload :German, 'scripref/german'
-  autoload :Parser, 'scripref/parser'
-  autoload :Passage, 'scripref/passage'
-  autoload :Processor, 'scripref/processor'
+  require_relative 'scripref/bookname'
+  require_relative 'scripref/bookorder'
+  require_relative 'scripref/english'
+  require_relative 'scripref/formatter'
+  require_relative 'scripref/german'
+  require_relative 'scripref/parser'
+  require_relative 'scripref/passage'
+  require_relative 'scripref/processor'
 
   class Token < DelegateClass(String)
     def initialize *args

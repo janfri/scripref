@@ -1,7 +1,7 @@
 # encoding: utf-8
 # frozen_string_literal: false
 
-require 'scripref/basic_methods'
+require_relative 'basic_methods'
 require 'strscan'
 
 module Scripref
