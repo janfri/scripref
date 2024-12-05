@@ -15,6 +15,7 @@ module Scripref
   require_relative 'scripref/parser'
   require_relative 'scripref/passage'
   require_relative 'scripref/processor'
+  require_relative 'scripref/sorter'
 
   class Token < DelegateClass(String)
     def initialize *args

@@ -1,6 +1,5 @@
 TODO for version 2.0
 
-- implement Sorter
 - remove Comparable mixin and depending methods from Passage
 - remove Bookorder::CANONICAL, add Bookname::BOOK_IDS instead
 - adapt Exception hierarchy
