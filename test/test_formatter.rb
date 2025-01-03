@@ -168,6 +168,11 @@ class TestFormatter < Test::Unit::TestCase
     assert_formated_text_for_ast text, [pass(text: t1, b1: :Ruth, c1: 2, v1: 5, b2: :Ruth, c2: 2, v2: 5), semi, pass(text: t2, b1: :Mark, c1: 4, b2: :Mark, c2: 4)]
   end
 
+  def test_two_refs_with_book_with_only_one_chapter
+    text = 'Obadja 3.5'
+    assert_formated_text_for_ast text, [pass(text: text, b1: :Obad, c1: 1, v1: 3, b2: :Obad, c2: 1, v2: 3), pass(b1: :Obad, c1: 1, v1: 5, b2: :Obad, c2: 1, v2: 5)]
+  end
+
   ######################################################################
   # mixed variants of more than one passage
   ######################################################################

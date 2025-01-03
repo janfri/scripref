@@ -109,7 +109,12 @@ module Scripref
             push_sep cv_separator
           end
         else
-          push_space
+          case last_token
+          when Verse
+            push_sep verse_separator
+          else
+            push_space
+          end
         end
         push_verse v1
         @last_v = v1
