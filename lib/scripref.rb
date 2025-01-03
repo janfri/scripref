@@ -5,7 +5,7 @@ require 'delegate'
 
 module Scripref
 
-  VERSION = '1.1.1'
+  VERSION = '1.1.2'
 
   require_relative 'scripref/bookname'
   require_relative 'scripref/bookorder'
