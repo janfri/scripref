@@ -19,6 +19,6 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Install Dependencies
-        run: gem install rim regtest
+        run: bundle
       - name: Run Tests
         run: rake test
