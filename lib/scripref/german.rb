@@ -26,8 +26,8 @@ module Scripref
       Hohel|Hoh|Hl, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos|Am, Obad|Ob,
       Jona|Jon, Mich|Mi, Nah, Hab, Zef, Hag, Sach, Mal, Mat|Mt, Mar|Mr, Luk|Lk,
       Joh|Jh, Apg, Röm|Rö, 1. Kor|1Ko, 2. Kor|2Ko, Gal, Eph, Phil, Kol,
-      1. Thes|1.Thes|1Thes|1Th, 2. Thes|2.Thes|2Thes|2Th, 1. Tim|1Tim, 2. Tim|2Tim, Tit, Philem|Phm, Heb, Jak, 1. Pet|1Pet|1Pe, 2. Pet|2Pet|2Pe, 1.
-      Joh|1Joh|1Jo, 2. Joh|2Joh|2Jo, 3. Joh|3Joh|3Jo, Jud, Off
+      1. Thes|1.Thes|1Thes|1Th, 2. Thes|2.Thes|2Thes|2Th, 1. Tim|1Tim, 2. Tim|2Tim, Tit, Philem|Phm, Heb, Jak, 1. Pet|1Pet|1Pe, 2. Pet|2Pet|2Pe,
+      1. Joh|1Joh|1Jo, 2. Joh|2Joh|2Jo, 3. Joh|3Joh|3Jo, Jud, Off
     END
 
     # Array of book names.
