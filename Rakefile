@@ -8,3 +8,5 @@ Rim.setup do
   end
   test_warning false
 end
+
+task :default => :regtest
