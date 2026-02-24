@@ -8,34 +8,83 @@ module Scripref
   # Mixin for parsing references in English.
   module English
 
-    book_names = <<-END.strip.split(/,\s*/)
-      Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges,
-      Ruth, 1 Samuel, 2 Samuel, 1 Kings, 2 Kings, 1 Chronicles,
-      2 Chronicles, Ezra, Nehemiah, Esther, Job, Psalms, Proverbs,
-      Ecclesiastes, Song of Songs, Isaiah, Jeremiah, Lamentations,
-      Ezekiel, Daniel, Hosea, Joel, Amos, Obadiah, Jonah, Micah, Nahum,
-      Habakkuk, Zephaniah, Haggai, Zechariah, Malachi,
-      Matthew, Mark, Luke, John, Acts, Romans, 1 Corinthians,
-      2 Corinthians, Galatians, Ephesians, Philippians, Colossians,
-      1 Thessalonians, 2 Thessalonians, 1 Timothy, 2 Timothy, Titus,
-      Philemon, Hebrews, James, 1 Peter, 2 Peter, 1 John, 2 John, 3 John,
-      Jude, Revelation
-    END
-
-    book_abbrevs = <<-END.strip.split(/,\s*/)
-      Gen, Ex, Lev, Num, Deut, Josh, Judg, Rth, 1 Sam, 2 Sam, 1 Kgs, 2 Kgs,
-      1 Chron, 2 Chron, Ezr, Neh, Esth, Job, Ps, Prov, Eccles, Song, Isa,
-      Jer, Lam, Ezek, Dan, Hos, Joel, Am, Obad, Jon, Mic, Nah, Hab, Zeph, Hag,
-      Zech, Mal, Matt, Mrk, Luk, John, Acts, Rom, 1 Cor, 2 Cor, Gal, Eph, Phil,
-      Col, 1 Thess, 2 Thess, 1 Tim, 2 Tim, Tit, Philem, Heb, Jas, 1 Pet, 2 Pet,
-      1 Joh, 2 Joh, 3 Joh, Jud, Rev
-    END
-
-    # Array of book names.
-    BOOK_NAMES = Bookorder::CANONICAL.zip(book_names, book_abbrevs).map {|osis_book_id, names, abbrevs| Bookname.new(osis_id: osis_book_id, names: names, abbrevs: abbrevs)}
+    osis_book_id_to_book_name = {
+      Gen: 'Genesis|Gen',
+      Exod: 'Exodus|Ex',
+      Lev: 'Leviticus|Lev',
+      Num: 'Numbers|Num',
+      Deut: 'Deuteronomy|Deut',
+      Josh: 'Joshua|Josh',
+      Judg: 'Judges|Judg',
+      Ruth: 'Ruth|Rth',
+      '1Sam': '1 Samuel|1 Sam',
+      '2Sam': '2 Samuel|2 Sam',
+      '1Kgs': '1 Kings|1 Kgs',
+      '2Kgs': '2 Kings|2 Kgs',
+      '1Chr': '1 Chronicles|1 Chron',
+      '2Chr': '2 Chronicles|2 Chron',
+      Ezra: 'Ezra|Ezr',
+      Neh: 'Nehemiah|Neh',
+      Esth: 'Esther|Esth',
+      Job: 'Job|Job',
+      Ps: 'Psalms|Ps',
+      Prov: 'Proverbs|Prov',
+      Eccl: 'Ecclesiastes|Eccles',
+      Song: 'Song of Songs|Song',
+      Isa: 'Isaiah|Isa',
+      Jer: 'Jeremiah|Jer',
+      Lam: 'Lamentations|Lam',
+      Ezek: 'Ezekiel|Ezek',
+      Dan: 'Daniel|Dan',
+      Hos: 'Hosea|Hos',
+      Joel: 'Joel|Joel',
+      Amos: 'Amos|Am',
+      Obad: 'Obadiah|Obad',
+      Jonah: 'Jonah|Jon',
+      Mic: 'Micah|Mic',
+      Nah: 'Nahum|Nah',
+      Hab: 'Habakkuk|Hab',
+      Zeph: 'Zephaniah|Zeph',
+      Hag: 'Haggai|Hag',
+      Zech: 'Zechariah|Zech',
+      Mal: 'Malachi|Mal',
+      Matt: 'Matthew|Matt',
+      Mark: 'Mark|Mrk',
+      Luke: 'Luke|Luk',
+      John: 'John|John',
+      Acts: 'Acts|Acts',
+      Rom: 'Romans|Rom',
+      '1Cor': '1 Corinthians|1 Cor',
+      '2Cor': '2 Corinthians|2 Cor',
+      Gal: 'Galatians|Gal',
+      Eph: 'Ephesians|Eph',
+      Phil: 'Philippians|Phil',
+      Col: 'Colossians|Col',
+      '1Thess': '1 Thessalonians|1 Thess',
+      '2Thess': '2 Thessalonians|2 Thess',
+      '1Tim': '1 Timothy|1 Tim',
+      '2Tim': '2 Timothy|2 Tim',
+      Titus: 'Titus|Tit',
+      Phlm: 'Philemon|Philem',
+      Heb: 'Hebrews|Heb',
+      Jas: 'James|Jas',
+      '1Pet': '1 Peter|1 Pet',
+      '2Pet': '2 Peter|2 Pet',
+      '1John': '1 John|1 Joh',
+      '2John': '2 John|2 Joh',
+      '3John': '3 John|3 Joh',
+      Jude: 'Jude|Jud',
+      Rev: 'Revelation|Rev'
+    }.transform_values {|v| v.split('|')}
 
     # Map of OSIS book ID to instance of Bookname
-    OSIS_BOOK_ID_TO_BOOK_NAME = Bookorder::CANONICAL.zip(BOOK_NAMES).map {|id, n| [id, n]}.to_h
+    OSIS_BOOK_ID_TO_BOOK_NAME = {}
+    osis_book_id_to_book_name.each_pair do |id, names|
+      OSIS_BOOK_ID_TO_BOOK_NAME[id] = Bookname.new(osis_id: id, names: names)
+    end
+
+    # Array of book names
+    BOOK_NAMES = OSIS_BOOK_ID_TO_BOOK_NAME.values
 
     # Separator between chapter and verse.
     CV_SEPARATOR = ':'

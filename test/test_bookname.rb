@@ -8,15 +8,11 @@ class TestBookname < Test::Unit::TestCase
   include Scripref
 
   def setup
-    @zef = Bookname.new(osis_id: :Zeph, names: %w(Zefanja Zephanja), abbrevs: %w(Zef Zefan Zeph Zephan))
+    @zef = Bookname.new(osis_id: :Zeph, names: %w(Zefanja Zefan Zef), alt_names: %w(Zephanja Zeph))
   end
 
   def test_name
     assert_equal 'Zefanja', @zef.name
-  end
-
-  def test_abbrev
-    assert_equal 'Zef', @zef.abbrev
   end
 
 end

@@ -5,14 +5,14 @@ module Scripref
 
   class Formatter
 
-    attr_accessor :bookformat, :cv_separator, :hyphen_separator, :pass_separator
+    attr_accessor :abbrev_level, :cv_separator, :hyphen_separator, :pass_separator
 
     # @param mods one or more modules to include
-    # @param bookformat (:short use abbreviations, :long use full names of books)
-    def initialize *mods, bookformat: :name
+    # @param abbrev_level if 0: full name, if >0 an abbreviation
+    def initialize *mods, abbrev_level: 0
       @mods = mods
       mods.each {|m| extend m}
-      @bookformat = bookformat
+      @abbrev_level = abbrev_level
     end
 
     # Formats a reference (array of passages and maybe separators)
@@ -30,7 +30,7 @@ module Scripref
     # Formats a book
     # @param osis_book_id OSIS-ID for book
     def format_book osis_book_id
-      osis_book_id_to_book_name[osis_book_id].send @bookformat
+      osis_book_id_to_book_name[osis_book_id].name abbrev_level: abbrev_level
     end
 
     # Formats a chapter

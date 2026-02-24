@@ -261,18 +261,12 @@ class TestFormatter < Test::Unit::TestCase
   ######################################################################
 
   def test_formatting_with_book_abbrevs
-    @german_formatter.bookformat = :abbrev
+    @german_formatter.abbrev_level = 1
     text = 'Mat 3,4; Mar; Joh 3,16'
     t1, t2, t3 = text.split(semi)
     assert_formated_text_for_ast text, [pass(text: t1, b1: :Matt, c1: 3, v1: 4, b2: :Matt, c2: 3, v2: 4), semi, pass(text: t2, b1: :Mark, b2: :Mark), semi, pass(text: t3, b1: :John, c1: 3, v1: 16, b2: :John, c2: 3, v2: 16)]
   end
 
-  def test_exception_for_unhandled_bookformat
-    assert_raise NoMethodError do
-      @german_formatter.bookformat = :unknown
-      @german_formatter.format [pass(text: 1, b1: :Exod, c1: 3, v1: 4, b2: :Deut, c2: 6, v2: 7)]
-    end
-  end
   private
 
   def assert_formated_text_for_ast text, ast

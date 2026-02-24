@@ -21,11 +21,11 @@ module Scripref
     # Regular expression to match a book.
     def book_re
       return @book_re if @book_re
-      books_res_as_strings = book_names.map do |bn|
-        bn.names.map do |n|
+      books_res_as_strings = book_names.flat_map do |bn|
+        [bn.names.first, bn.alt_names.first].compact.map do |n|
           (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
         end
-      end.flatten
+      end
       @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\.?\s*)' }.join('|'), nil)
     end
 
