@@ -43,8 +43,6 @@ module Scripref
 
     end
 
-    CANONICAL = Canonical::BOOK_IDS
-
   end
 
 end
