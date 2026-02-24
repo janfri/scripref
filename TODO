@@ -2,6 +2,7 @@ TODO for version 2.0
 
 - remove Comparable mixin and depending methods from Passage
 - remove Bookorder::CANONICAL, add Bookname::BOOK_IDS instead
+- rethink Bookname (i. e. names, alternatives) or remove class complete and use arrays for names and alternatives
 - adapt Exception hierarchy
 - implement Versification and PassageValidator?
 - remove Formatter bookformat and implement format_book in Mixin
