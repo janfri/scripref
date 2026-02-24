@@ -21,7 +21,7 @@ module Scripref
 
     book_abbrevs = <<-END.strip.split(/,\s*/).map {|e| e.split('|')}
       1. Mos|1Mo|1M, 2. Mos|2Mo|2M, 3. Mos|3Mo|3M, 4. Mos|4Mo|4M, 5. Mos|5Mo|5M, Jos, Ri,
-      Ruth, 1. Sam|1Sam|1Sm, 2. Sam|2Sam|2Sm, 1. Kön|1Kön|1Kö, 2. Kön|2Kön|2Kö,
+      Ruth|Rt, 1. Sam|1Sam|1Sm, 2. Sam|2Sam|2Sm, 1. Kön|1Kön|1Kö, 2. Kön|2Kön|2Kö,
       1. Chr|1Chr|1Ch, 2. Chr|2Chr|2Ch, Esr, Neh, Est, Hi, Ps, Spr, Pred,
       Hohel|Hoh|Hl, Jes, Jer, Klag, Hes, Dan, Hos, Joel, Amos|Am, Obad|Ob,
       Jona|Jon, Mich|Mi, Nah, Hab, Zef, Hag, Sach, Mal, Mat|Mt, Mar|Mr, Luk|Lk,
