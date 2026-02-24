@@ -73,16 +73,7 @@ module ConstReader
   def const_accessor *consts
     consts.flatten.each do |c|
       class_exec(c.to_s, c.to_s.downcase) do |c_name, m_name|
-        define_method m_name do
-          ivar = '@' << m_name
-          if instance_variable_defined? ivar
-            return instance_variable_get(ivar)
-          else
-            val = self.singleton_class.const_get c_name
-            instance_variable_set ivar, val
-            return val
-          end
-        end
+        const_reader c_name
         attr_writer m_name
       end
     end
