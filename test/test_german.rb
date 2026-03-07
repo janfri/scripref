@@ -13,7 +13,7 @@ class TestGerman < Test::Unit::TestCase
   end
 
   def test_size_of_book_array
-    assert_equal 66, German::BOOK_NAMES.size
+    assert_equal 66, German::OSIS_BOOK_ID_TO_BOOK_NAME.size
   end
 
   def test_book_re

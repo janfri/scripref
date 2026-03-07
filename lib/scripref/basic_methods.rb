@@ -18,12 +18,13 @@ module Scripref
       NUMBER_RE
     end
 
-    # Regular expression to match a book.
+    # Regular expression to match a book
     def book_re
       return @book_re if @book_re
-      books_res_as_strings = book_names.flat_map do |bn|
-        [bn.names.first, bn.alt_names.first].compact.map do |n|
-          (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
+      books_res_as_strings = []
+      osis_book_id_to_book_name.each_value do |bn|
+        bn.each_name do |n|
+          books_res_as_strings << (n.gsub(/([^\dA-Z])/, '\1?').gsub('.', '\.'))
         end
       end
       @book_re = Regexp.compile(books_res_as_strings.map {|s| '(\b' << s << '\b\.?\s*)' }.join('|'), nil)
