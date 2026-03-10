@@ -6,7 +6,7 @@ require 'strscan'
 
 module Scripref
 
-  class Parser < StringScanner
+  class Parser
 
     attr_reader :error
 
@@ -21,7 +21,7 @@ module Scripref
     # Parsing a string of a scripture reference
     # @param str string to parse
     def parse str
-      self.string = str
+      @scanner = StringScanner.new(str)
       @result = []
       @error = nil
       start
@@ -35,14 +35,14 @@ module Scripref
 
     # try to parse first book
     def b1
-      s = scan(book_re) or return nil
+      s = @scanner.scan(book_re) or return nil
       @text << s
       @b1 = @b2 = str2book_id(s)
       @c1 = @v1 = @c2 = @v2 = nil
 
       if pass_sep
         b1 or give_up 'EOS or book expected!'
-      elsif check(Regexp.new(chapter_re.source + cv_sep_re.source))
+      elsif @scanner.check(Regexp.new(chapter_re.source + cv_sep_re.source))
         @c1 = @v1 = nil
         @c2 = @v2 = nil
         c1
@@ -60,7 +60,7 @@ module Scripref
 
     # try parse first chapter
     def c1
-      s = scan(chapter_re) or return nil
+      s = @scanner.scan(chapter_re) or return nil
       @text << s
       @c1 = @c2 = s.to_i
       @v1 = @v2 = nil
@@ -78,7 +78,7 @@ module Scripref
 
     # try to parse first verse
     def v1
-      s = scan(verse_re) or return nil
+      s = @scanner.scan(verse_re) or return nil
       @text << s
       @v1 = @v2 = s.to_i
 
@@ -92,7 +92,7 @@ module Scripref
 
       if hyphen
         b2 or (
-        if check(Regexp.new(chapter_re.source + cv_sep_re.source))
+        if @scanner.check(Regexp.new(chapter_re.source + cv_sep_re.source))
           c2
         else
           v2 or give_up 'Chapter or verse expected!'
@@ -108,14 +108,14 @@ module Scripref
 
     # try to parse second book
     def b2
-      s = scan(book_re) or return nil
+      s = @scanner.scan(book_re) or return nil
       @text << s
       @b2 = str2book_id(s)
       @c2 = @v2 = nil
 
       if pass_sep
         b1 or give_up 'EOS or book expected!'
-      elsif check(Regexp.new(chapter_re.source + cv_sep_re.source))
+      elsif @scanner.check(Regexp.new(chapter_re.source + cv_sep_re.source))
         c2
       else
         if book_has_only_one_chapter?(@b2)
@@ -129,7 +129,7 @@ module Scripref
 
     # try to parse second chapter
     def c2
-      s = scan(chapter_re) or return nil
+      s = @scanner.scan(chapter_re) or return nil
       @text << s
       @c2 = s.to_i
 
@@ -144,7 +144,7 @@ module Scripref
 
     # try to parse second verse
     def v2
-      s = scan(verse_re) or return nil
+      s = @scanner.scan(verse_re) or return nil
       @text << s
       @v2 = s.to_i
 
@@ -163,7 +163,7 @@ module Scripref
 
     # try to parse <tt>end of string</tt>
     def epsilon
-      if eos?
+      if @scanner.eos?
         push_passage
         return @result
       end
@@ -172,7 +172,7 @@ module Scripref
 
     # try to parse separator or chapter and verse
     def cv_sep
-      if s = scan(cv_sep_re)
+      if s = @scanner.scan(cv_sep_re)
         @text << s
         s
       else
@@ -182,7 +182,7 @@ module Scripref
 
     # try to parse hyphen
     def hyphen
-      if s = scan(hyphen_re)
+      if s = @scanner.scan(hyphen_re)
         @text << s
         s
       else
@@ -192,7 +192,7 @@ module Scripref
 
     # try to parse separator between passages
     def pass_sep
-      if s = scan(pass_sep_re)
+      if s = @scanner.scan(pass_sep_re)
         push_passage
         @result << PassSep.new(s)
         s
@@ -203,7 +203,7 @@ module Scripref
 
     # try to parse verse separator
     def verse_sep
-      if s = scan(verse_sep_re)
+      if s = @scanner.scan(verse_sep_re)
         push_passage
         @result << VerseSep.new(s)
         s
@@ -214,7 +214,7 @@ module Scripref
 
     # try to parse addons for verses
     def verse_addon
-      if s = scan(verse_addon_re)
+      if s = @scanner.scan(verse_addon_re)
         @text << s
         s.to_sym
       else
@@ -224,7 +224,7 @@ module Scripref
 
     # try to parse postfixes for verse
     def verse_postfix
-      s = (scan(postfix_one_following_verse_re) or scan(postfix_more_following_verses_re))
+      s = (@scanner.scan(postfix_one_following_verse_re) or @scanner.scan(postfix_more_following_verses_re))
       if s
         @text << s
         s.to_sym
@@ -254,7 +254,7 @@ module Scripref
       names = @books_str.scan(re)
       uniq_numbers = names.map {|n| str2book_id_cache(n)}.uniq
       if uniq_numbers.size != 1
-        unscan
+        @scanner.unscan
         give_up format("Abbreviation %s is ambiguous it matches %s!", s, names.join(', '))
       end
       book_id = str2book_id_cache(names.first)
@@ -289,7 +289,7 @@ module Scripref
 
     def format_error
       if error
-        format("%s\n%s\n%s^", error, string, ' ' * pointer)
+        format("%s\n%s\n%s^", error, @scanner.string, ' ' * @scanner.pointer)
       else
         ''
       end
