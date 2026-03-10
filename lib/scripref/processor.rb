@@ -71,6 +71,8 @@ module Scripref
       @reference_re = Regexp.compile(re_parts.join, nil)
     end
 
+    private
+
     def fix_scanner_and_results scanner
       text = scanner[1]
       ref = scanner[2]

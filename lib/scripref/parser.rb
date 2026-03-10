@@ -27,6 +27,22 @@ module Scripref
       start
     end
 
+    def format_error
+      if error
+        format("%s\n%s\n%s^", error, @scanner.string, ' ' * @scanner.pointer)
+      else
+        ''
+      end
+    end
+
+    def inspect
+      "#<#{self.class} #{@mods.inspect}>"
+    end
+
+    alias << parse
+
+    private
+
     # start of parsing grammer
     def start
       @text = ''
@@ -278,24 +294,10 @@ module Scripref
       @str2book_id_cache[str]
     end
 
-    def inspect
-      "#<#{self.class} #{@mods.inspect}>"
-    end
-
     def give_up msg
       @error = msg
       fail ParserError, format_error
     end
-
-    def format_error
-      if error
-        format("%s\n%s\n%s^", error, @scanner.string, ' ' * @scanner.pointer)
-      else
-        ''
-      end
-    end
-
-    alias << parse
 
   end
 
