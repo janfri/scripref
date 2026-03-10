@@ -81,7 +81,7 @@ module Scripref
     BOOKNAMES_HASH = {}
     booknames.each_line do |l|
       bn = Bookname.parse_line(l)
-      BOOKNAMES_HASH[bn.osis_id] = bn
+      BOOKNAMES_HASH[bn.book_id] = bn
     end
 
     # Separator between chapter and verse.
@@ -124,9 +124,9 @@ module Scripref
     POSTFIX_MORE_FOLLOWING_VERSES_RE = /ff\b\s*/o
 
     # Check if book has only one chapter
-    # @param osis_id OSIS-ID of the book
-    def book_has_only_one_chapter? osis_id
-      %i[Obad Phlm 2John 3John Jude].include?(osis_id)
+    # @param book_id OSIS-ID of the book
+    def book_has_only_one_chapter? book_id
+      %i[Obad Phlm 2John 3John Jude].include?(book_id)
     end
 
     # Regular expression to match punctuation marks

@@ -5,14 +5,14 @@ module Scripref
 
   class Bookname
 
-    attr_reader :osis_id
+    attr_reader :book_id
 
-    # @param osis_id: OSID-ID of book
+    # @param book_id: OSID-ID of book
     # @param name: full name of the book
     # @param abbrevs: possible abbreviations
     # @param alternatives: further Bookname instances with alternative names and abbreviations
-    def initialize osis_id:, name:, abbrevs: [], alternatives: []
-      @osis_id = osis_id
+    def initialize book_id:, name:, abbrevs: [], alternatives: []
+      @book_id = book_id
       @name = name
       @abbrevs = Array(abbrevs)
       @alternatives = Array(alternatives)
@@ -71,15 +71,15 @@ module Scripref
     class << self
 
       def parse_line l
-        osis_id, rest = l.split(/:\s*/).map(&:strip)
-        osis_id = osis_id.to_sym
+        book_id, rest = l.split(/:\s*/).map(&:strip)
+        book_id = book_id.to_sym
         org, *alternatives = rest.split(/,\s*/).map(&:strip)
         name, *abbrevs = org.split('|').map(&:strip)
         alternatives.map! do |s|
           n, *a = s.split('|').map(&:strip)
-          Bookname.new(osis_id: osis_id, name: n, abbrevs: a)
+          Bookname.new(book_id: book_id, name: n, abbrevs: a)
         end
-        Bookname.new(osis_id: osis_id, name: name, abbrevs: abbrevs, alternatives: alternatives)
+        Bookname.new(book_id: book_id, name: name, abbrevs: abbrevs, alternatives: alternatives)
       end
 
     end

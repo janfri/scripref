@@ -18,9 +18,9 @@ module Scripref
         2Pet 1John 2John 3John Jude Rev
       ]
 
-      def book2num osis_id
+      def book2num book_id
         @book2num ||= BOOK_IDS.zip(1..).to_h
-        @book2num[osis_id]
+        @book2num[book_id]
       end
 
     end
@@ -36,9 +36,9 @@ module Scripref
         2John 3John Heb Jas Jude Rev
       ]
 
-      def book2num osis_id
+      def book2num book_id
         @book2num ||= BOOK_IDS.zip(1..).to_h
-        @book2num[osis_id]
+        @book2num[book_id]
       end
 
     end

@@ -8,7 +8,7 @@ class TestBookname < Test::Unit::TestCase
   include Scripref
 
   def setup
-    @zef = Bookname.new(osis_id: :Zeph, name: 'Zefanja', abbrevs: %w(Zefan Zef), alternatives: Bookname.new(osis_id: :Zeph, name: 'Zephanja', abbrevs: 'Zeph'))
+    @zef = Bookname.new(book_id: :Zeph, name: 'Zefanja', abbrevs: %w(Zefan Zef), alternatives: Bookname.new(book_id: :Zeph, name: 'Zephanja', abbrevs: 'Zeph'))
   end
 
   def test_each_name

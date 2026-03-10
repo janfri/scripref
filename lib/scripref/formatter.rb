@@ -28,9 +28,9 @@ module Scripref
     end
 
     # Formats a book
-    # @param osis_book_id OSIS-ID for book
-    def format_book osis_book_id
-      booknames_hash[osis_book_id].format(abbrev_level: abbrev_level)
+    # @param book_id OSIS-ID for book
+    def format_book book_id
+      booknames_hash[book_id].format(abbrev_level: abbrev_level)
     end
 
     # Formats a chapter

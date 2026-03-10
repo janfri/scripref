@@ -37,7 +37,7 @@ module Scripref
     def b1
       s = scan(book_re) or return nil
       @text << s
-      @b1 = @b2 = abbrev2osis_book_id(s)
+      @b1 = @b2 = abbrev2book_id(s)
       @c1 = @v1 = @c2 = @v2 = nil
 
       if pass_sep
@@ -110,7 +110,7 @@ module Scripref
     def b2
       s = scan(book_re) or return nil
       @text << s
-      @b2 = abbrev2osis_book_id(s)
+      @b2 = abbrev2book_id(s)
       @c2 = @v2 = nil
 
       if pass_sep
@@ -239,10 +239,10 @@ module Scripref
       @a1 = @a2 = nil
     end
 
-    def abbrev2osis_book_id str
+    def abbrev2book_id str
       s = str.strip
       s.sub! /\.$/, ''
-      str2osis_book_id(s) or str2osis_book_id(abbrev2book(s))
+      str2book_id(s) or str2book_id(abbrev2book(s))
     end
 
     def abbrev2book str
@@ -252,7 +252,7 @@ module Scripref
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
-      uniq_numbers = names.map {|n| str2osis_book_id(n)}.uniq
+      uniq_numbers = names.map {|n| str2book_id(n)}.uniq
       if uniq_numbers.size != 1
         unscan
         give_up format("Abbreviation %s is ambiguous it matches %s!", s, names.join(', '))
@@ -260,20 +260,20 @@ module Scripref
       names.first
     end
 
-    def init_str2osis_book_id
-      unless @str2osis_book_id
-        @str2osis_book_id = {}
+    def init_str2book_id
+      unless @str2book_id
+        @str2book_id = {}
         each_bookname do |bn|
           bn.each_string do |n|
-            @str2osis_book_id[n] = bn.osis_id
+            @str2book_id[n] = bn.book_id
           end
         end
       end
     end
 
-    def str2osis_book_id str
-      init_str2osis_book_id
-      @str2osis_book_id[str]
+    def str2book_id str
+      init_str2book_id
+      @str2book_id[str]
     end
 
     def inspect
