@@ -186,7 +186,7 @@ module Scripref
       nil
     end
 
-    # try to parse separator or chapter and verse
+    # try to parse separator of chapter and verse
     def cv_sep
       if s = @scanner.scan(cv_sep_re)
         @text << s
