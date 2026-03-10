@@ -32,7 +32,7 @@ module Scripref
 
     # Enumerator over booknames
     def each_bookname &blk
-      osis_book_id_to_book_name.each_value(&blk)
+      booknames_hash.each_value(&blk)
     end
 
   end

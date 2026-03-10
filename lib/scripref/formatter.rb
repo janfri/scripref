@@ -30,7 +30,7 @@ module Scripref
     # Formats a book
     # @param osis_book_id OSIS-ID for book
     def format_book osis_book_id
-      osis_book_id_to_book_name[osis_book_id].format(abbrev_level: abbrev_level)
+      booknames_hash[osis_book_id].format(abbrev_level: abbrev_level)
     end
 
     # Formats a chapter

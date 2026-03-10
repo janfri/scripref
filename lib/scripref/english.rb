@@ -78,10 +78,10 @@ module Scripref
     END
 
     # Map of OSIS book ID to instance of Bookname
-    OSIS_BOOK_ID_TO_BOOK_NAME = {}
+    BOOKNAMES_HASH = {}
     booknames.each_line do |l|
       bn = Bookname.parse_line(l)
-      OSIS_BOOK_ID_TO_BOOK_NAME[bn.osis_id] = bn
+      BOOKNAMES_HASH[bn.osis_id] = bn
     end
 
     # Separator between chapter and verse.
