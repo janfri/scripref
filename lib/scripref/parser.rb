@@ -248,7 +248,7 @@ module Scripref
     def abbrev2book str
       s = str.strip
       s.sub! /\.$/, ''
-      @books_str ||= ('#' << osis_book_id_to_book_name.each_value.map(&:each_name).flat_map(&:to_a).join('#') << '#')
+      @books_str ||= ('#' << each_bookname.map(&:each_name).flat_map(&:to_a).join('#') << '#')
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
@@ -263,7 +263,7 @@ module Scripref
     def init_str2osis_book_id
       unless @str2osis_book_id
         @str2osis_book_id = {}
-        osis_book_id_to_book_name.each_value do |bn|
+        each_bookname do |bn|
           bn.each_string do |n|
             @str2osis_book_id[n] = bn.osis_id
           end
