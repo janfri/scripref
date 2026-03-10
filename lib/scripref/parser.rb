@@ -37,7 +37,7 @@ module Scripref
     def b1
       s = scan(book_re) or return nil
       @text << s
-      @b1 = @b2 = abbrev2book_id(s)
+      @b1 = @b2 = str2book_id(s)
       @c1 = @v1 = @c2 = @v2 = nil
 
       if pass_sep
@@ -110,7 +110,7 @@ module Scripref
     def b2
       s = scan(book_re) or return nil
       @text << s
-      @b2 = abbrev2book_id(s)
+      @b2 = str2book_id(s)
       @c2 = @v2 = nil
 
       if pass_sep
@@ -239,41 +239,43 @@ module Scripref
       @a1 = @a2 = nil
     end
 
-    def abbrev2book_id str
+    def str2book_id str
       s = str.strip
       s.sub! /\.$/, ''
-      str2book_id(s) or str2book_id(abbrev2book(s))
+      str2book_id_cache(s) or calculate_str2book_id(s)
     end
 
-    def abbrev2book str
+    def calculate_str2book_id str
       s = str.strip
       s.sub! /\.$/, ''
       @books_str ||= ('#' << each_bookname.map(&:each_name).flat_map(&:to_a).join('#') << '#')
       pattern = s.chars.map {|c| Regexp.escape(c) << '[^#]*'}.join
       re = /(?<=#)#{pattern}(?=#)/
       names = @books_str.scan(re)
-      uniq_numbers = names.map {|n| str2book_id(n)}.uniq
+      uniq_numbers = names.map {|n| str2book_id_cache(n)}.uniq
       if uniq_numbers.size != 1
         unscan
         give_up format("Abbreviation %s is ambiguous it matches %s!", s, names.join(', '))
       end
-      names.first
+      book_id = str2book_id_cache(names.first)
+      @str2book_id_cache[s] = book_id
+      book_id
     end
 
-    def init_str2book_id
-      unless @str2book_id
-        @str2book_id = {}
+    def init_str2book_id_cache
+      unless @str2book_id_cache
+        @str2book_id_cache = {}
         each_bookname do |bn|
-          bn.each_string do |n|
-            @str2book_id[n] = bn.book_id
+          bn.each_string do |s|
+            @str2book_id_cache[s] = bn.book_id
           end
         end
       end
     end
 
-    def str2book_id str
-      init_str2book_id
-      @str2book_id[str]
+    def str2book_id_cache str
+      init_str2book_id_cache
+      @str2book_id_cache[str]
     end
 
     def inspect
