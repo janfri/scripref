@@ -77,7 +77,7 @@ module Scripref
       Rev: Offenbarung|Off
     END
 
-    # Map of OSIS book ID to instance of Bookname
+    # Mapping of OSIS book ID to instance of Bookname
     BOOKNAMES_HASH = {}
     booknames.each_line do |l|
       bn = Bookname.parse_line(l)
