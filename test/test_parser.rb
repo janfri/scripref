@@ -333,6 +333,17 @@ class TestParser < Test::Unit::TestCase
     assert_parsed_ast_for_text [pass(text: text, b1: :Ps, c1: 23, v1: 6, b2: :Ps, c2: 23, v2: 6)], text
   end
 
+  def test_alternatives
+    # In German Zephanja is alternative name for Zefanja
+    a = pass(b1: :Zeph, c1: 2, b2: :Zeph, c2: 2).to_a
+    assert_equal a, @parser.parse('Zefanja 2').first.to_a
+    assert_equal a, @parser.parse('Zefa 2').first.to_a
+    assert_equal a, @parser.parse('Zef 2').first.to_a
+    assert_equal a, @parser.parse('Zephanja 2').first.to_a
+    assert_equal a, @parser.parse('Zepha 2').first.to_a
+    assert_equal a, @parser.parse('Zeph 2').first.to_a
+  end
+
   private
 
   def assert_equal_passage expected, actual
