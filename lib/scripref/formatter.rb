@@ -8,7 +8,7 @@ module Scripref
     attr_accessor :abbrev_level, :cv_separator, :hyphen_separator, :pass_separator
 
     # @param mods one or more modules to include
-    # @param abbrev_level if 0: full name, if >0 an abbreviation
+    # @param abbrev_level if 0 full name, if >0 an abbreviation
     def initialize *mods, abbrev_level: 0
       @mods = mods
       mods.each {|m| extend m}

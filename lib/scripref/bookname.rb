@@ -7,10 +7,10 @@ module Scripref
 
     attr_reader :book_id
 
-    # @param book_id: OSID-ID of book
-    # @param name: full name of the book
-    # @param abbrevs: possible abbreviations
-    # @param alternatives: further Bookname instances with alternative names and abbreviations
+    # @param book_id OSID-ID of the book
+    # @param name full name of the book
+    # @param abbrevs possible abbreviations for the book
+    # @param alternatives further Bookname instances with alternative names and abbreviations for book
     def initialize book_id:, name:, abbrevs: [], alternatives: []
       @book_id = book_id
       @name = name
@@ -19,7 +19,7 @@ module Scripref
     end
 
     # Format the bookname (full name or abbreviation)
-    # @param abbrev_level if 0: full name, if >0 an abbreviation
+    # @param abbrev_level if 0 full name, if >0 an abbreviation
     def format abbrev_level: 0
       case
       when abbrev_level == 0
