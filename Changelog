@@ -1,3 +1,13 @@
+2.0.0
+Major release with following breaking changes:
+Rewrite Bookorder and Bookname and adapt Formatter#format accordingly.
+Remove Comparable mixin and depending methods from Passage and implement
+Sorter instead.
+Rename all osis_*_id names to book_id.
+Rename OSIS_BOOK_ID_TO_BOOK_NAME -> BOOKNAMES_HASH
+
+Further: Implement a lot of internal optimizations.
+
 1.2.2
 Extend German abbreviations.
 
