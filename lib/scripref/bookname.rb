@@ -76,6 +76,10 @@ module Scripref
       Kernel.format('#<%s %s>', self.class, dump.inspect)
     end
 
+    def == other
+      other.respond_to?(:dump) && dump == other.dump
+    end
+
     alias to_str to_s
 
     class << self
