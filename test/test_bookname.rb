@@ -19,4 +19,12 @@ class TestBookname < Test::Unit::TestCase
     assert_equal %w(Zefanja Zefan Zef Zephanja Zeph), @zef.each_string.to_a
   end
 
+  def test_parse
+    assert_equal @zef, Bookname.parse('Zeph: Zefanja|Zefan|Zef, Zephanja|Zeph')
+  end
+
+  def test_dump
+    assert_equal 'Zeph: Zefanja|Zefan|Zef, Zephanja|Zeph', @zef.dump
+  end
+
 end
