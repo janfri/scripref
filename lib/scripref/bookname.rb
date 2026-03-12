@@ -66,6 +66,16 @@ module Scripref
       @name
     end
 
+    # Convert the instance to an equivalent string representation
+    def dump
+      s = Kernel.format('%s: %s', @book_id, [@name, @abbrevs].flatten.join('|'))
+      [s, @alternatives.map(&:dump).map {|s| s.sub(/^.+?: /, '')}].flatten.join(', ')
+    end
+
+    def inspect
+      Kernel.format('#<%s %s>', self.class, dump.inspect)
+    end
+
     alias to_str to_s
 
     class << self
