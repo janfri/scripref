@@ -70,8 +70,15 @@ module Scripref
 
     class << self
 
-      def parse_line l
-        book_id, rest = l.split(/:\s*/).map(&:strip)
+      # Helper method to create Bookname instances from a String
+      # @param s string to parse
+      # format: [book_id]: [full name]|[abbrev1]|[abbrev2]|...(, [alternative name]|[abbrev1],...]*
+      # @example Format
+      #   Zeph: Zefanja|Zef, Zephanja|Zeph
+      # @example Code equivalent
+      #   Bookname.new(book_id: :Zeph, name: 'Zefanja', abbrevs: ['Zef'], alternatives: Bookname.new(book_id: :Zeph, name: 'Zephanja', abbrevs: ['Zeph']))
+      def parse s
+        book_id, rest = s.split(/:\s*/).map(&:strip)
         book_id = book_id.to_sym
         org, *alternatives = rest.split(/,\s*/).map(&:strip)
         name, *abbrevs = org.split('|').map(&:strip)

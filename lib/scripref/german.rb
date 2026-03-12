@@ -80,7 +80,7 @@ module Scripref
     # Mapping of OSIS book ID to instance of Bookname
     BOOKNAMES_HASH = {}
     booknames.each_line do |l|
-      bn = Bookname.parse_line(l)
+      bn = Bookname.parse(l)
       BOOKNAMES_HASH[bn.book_id] = bn
     end
 
