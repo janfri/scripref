@@ -1,3 +1,6 @@
+2.1.0
+Implement correct sorting for passages with addons.
+
 2.0.0
 Major release with following breaking changes:
 Rewrite Bookorder and Bookname and adapt Formatter#format accordingly.
