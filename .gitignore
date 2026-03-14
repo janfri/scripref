@@ -1,5 +1,6 @@
 *~
 .*.swp
+.irb_init.rb
 .regtestrc
 .rimrc
 .ruby-version
