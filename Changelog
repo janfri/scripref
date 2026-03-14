@@ -1,3 +1,6 @@
+2.1.1
+Use the verse separator between addon and verse when formatting.
+
 2.1.0
 Implement correct sorting for passages with addons.
 
