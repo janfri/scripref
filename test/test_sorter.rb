@@ -45,4 +45,31 @@ class TestSorter < Test::Unit::TestCase
     assert_equal [@john_1_1_3, @john_1_1_18, @john_1, @john_2], sorter.sort([@john_1, @john_1_1_3, @john_2, @john_1_1_18])
   end
 
+  def test_sort_with_addons
+    sorter = Sorter.new(Bookorder::Canonical)
+    f = Formatter.new(German, abbrev_level: 1)
+    ref = [
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a2: :b),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a2: :a),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a, a2: :b),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a, a2: :a),
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :b)
+    ]
+    assert_equal ref, sorter.sort(ref)
+    assert_equal ref, sorter.sort(ref.reverse)
+  end
+
+  def test_sort_with_addon_and_postfix
+    sorter = Sorter.new(Bookorder::Canonical)
+    p = Parser.new(German)
+    pass1 = p.parse('Spr 25,6f').first
+    pass2 = p.parse('Spr 25,6b-7').first
+    assert_equal -1, sorter.signum(pass1, pass2)
+    assert_equal 1, sorter.signum(pass2, pass1)
+    assert_equal [pass1, pass2], sorter.sort([pass1, pass2])
+    assert_equal [pass1, pass2], sorter.sort([pass2, pass1])
+  end
+
 end

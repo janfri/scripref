@@ -23,7 +23,7 @@ module Scripref
     module SortUpDown
       def signum pass1, pass2
         a, b = passage2arr(pass1), passage2arr(pass2)
-        a[0, 3] + b[3, 3] <=> b[0, 3] + a[3, 3]
+        a[0, 4] + b[4, 4] <=> b[0, 4] + a[4, 4]
       end
     end
 
@@ -43,8 +43,41 @@ module Scripref
 
     def passage2arr pass
       b1 = book2num(pass.b1)
+      c1 = pass.c1 || 1
+      v1 = pass.v1 || 1
+      a1 = case pass.a1.to_s
+           when ''
+             0
+           when 'a'
+             1
+           when 'b'
+             2
+           when 'c'
+             3
+           end
       b2 = book2num(pass.b2)
-      [b1, pass.c1 || 1, pass.v1 || 1, b2, pass.c2 || Float::INFINITY, pass.v2 || Float::INFINITY]
+      c2 = pass.c2 || Float::INFINITY
+      v2 = case pass.v2
+           when nil
+             Float::INFINITY
+           when Integer
+             pass.v2
+           when :f
+             pass.v1.to_i + 1
+           when :ff
+             pass.v1.to_i + 3
+           end
+      a2 = case pass.a2.to_s
+           when ''
+             0
+           when 'a'
+             -3
+           when 'b'
+             -2
+           when 'c'
+             -1
+           end
+      [b1, c1, v1, a1, b2, c2, v2, a2]
     end
 
   end
