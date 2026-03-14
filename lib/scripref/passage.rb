@@ -6,7 +6,7 @@ module Scripref
   Passage = Struct.new(:text, :b1, :c1, :v1, :b2, :c2, :v2, :a1, :a2, keyword_init: true) do
 
     def to_a
-      [b1, c1, v1, b2, c2, v2]
+      [b1, c1, v1, a1, b2, c2, v2, a2]
     end
 
     def == other
