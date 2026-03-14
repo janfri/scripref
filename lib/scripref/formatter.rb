@@ -103,7 +103,7 @@ module Scripref
       if v1 && (@changed || @last_v != v1)
         if ! book_has_only_one_chapter?(@pass.b1)
           case last_token
-          when Verse
+          when Verse, Addon
             push_sep verse_separator
           when Token
             push_sep cv_separator

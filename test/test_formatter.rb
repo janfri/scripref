@@ -238,6 +238,21 @@ class TestFormatter < Test::Unit::TestCase
     assert_formated_text_for_ast text, [pass(text: t1, b1: :Matt, c1: 3, v1: 4, b2: :Matt, c2: 3, v2: 4), semi, pass(text: t2, b1: :Matt, c1: 8, b2: :Matt, c2: 8), semi, pass(text: t3, b1: :John, c1: 3, v1: 16, b2: :John, c2: 3, v2: 16)]
   end
 
+  def test_verse_after_addon
+    text = 'Johannes 1,1-3.1-3a.1-3b.1a-3.1b-3.1a-3a.1a-3b'
+    ast = [
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a2: :a), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a2: :b), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :b), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a, a2: :a), dot,
+      pass(b1: :John, c1: 1, v1: 1, b2: :John, c2: 1, v2: 3, a1: :a, a2: :b)
+    ]
+    assert_formated_text_for_ast text, ast
+  end
+
+
   ######################################################################
   # complex variants of references
   ######################################################################
